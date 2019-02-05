@@ -1,4 +1,4 @@
-# whiteboard
+# Paleoscript
 Simple compiler for teaching programming language concepts
 
 ## Contributors:
