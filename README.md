@@ -1,4 +1,4 @@
-# PALEOSCRIPT
+# Paleoscript
 Ooooga
 
 ## Contributors:
