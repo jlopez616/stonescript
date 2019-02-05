@@ -1,5 +1,5 @@
-# Paleoscript
-Simple compiler for teaching programming language concepts
+# PALEOSCRIPT
+Ooooga
 
 ## Contributors:
 * Anthony Boyac 
