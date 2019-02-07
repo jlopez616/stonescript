@@ -85,6 +85,8 @@ For Loop
 ## Functions
 return is ____
 
+SUPPORTS CURRYING
+
 ## Error Handling
 To do next homework? @rtoal
 
