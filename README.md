@@ -113,12 +113,12 @@ To do next homework
 
 # Example Programs
 
-'''
+```
 🦖OOGA WORLD <br/>
 SPEAK ( "OOOGA" )
-'''
+```
 
-'''
+```
 🦖BIG SPIRAL MATH PROBLEM <br/>
 
 ROCK FIB IS BE (N) PART
@@ -133,7 +133,8 @@ ROCK FIB IS BE (N) PART
   GIVE F
 NOT PART
 
-'''
+```
+
 🦖KIRKMAN'S OOO-GIRL PROBLEM <br/>
 
 STUFFS X IS CAVEIN 0 1 8 2 6 14 3 4 13 5 7 11 9 10 12 CAVEOUT
