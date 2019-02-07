@@ -14,12 +14,12 @@ Ooooga
 # List of Features
 
 ## Comments
- 🦖This is how you do
- 🦖Single line comments
+ 🦖THIS IS HOW YOU DO
+ 🦖SINGLE LINE COMMENTS
 
 🦕
-This is a multi
-line comment
+THIS IS A MULTI
+LINE COMMENT
 🦕
 
 ## Types
@@ -39,27 +39,27 @@ There will be variables you can change
 
 ## Operators
 ### Arithmetic Operators
-* \+ squish
-* \- rip
-* \/ break
-* many
-* %
-* ++ little squish
-* --
-* ** many many
+* \+ SQUISH
+* \- RIP | STEAL | TAKE
+* \/ BREAK 
+* \* MANY
+* % LEFT
+* ++ LITTLE SQUISH
+* -- LITTLE STEAL /RIP
+* ** MANY MANY
 
 ### Relational Operators
-* == is is 
-* <= 
-* >=
-* <
-* >
-* !=
+* == IS IS
+* <= NOT SMASH OR IS
+* >= SMASH OR IS
+* < NOT SMASH
+* > SMASH
+* != NOT IS
 
 ### Logical Operator
-* &&
-* ||
-* !
+* && AND
+* || OR
+* ! NOT
 
 ### Bitwise Operators
 * &	Binary AND Operator copies a bit to the result if it exists in both operands.	(A & B) = 12, i.e., 0000 1100
