@@ -14,12 +14,10 @@ Ooooga
 # List of Features
 
 ## Comments
- 🦖THIS IS HOW YOU DO
- 
+ 🦖THIS IS HOW YOU DO <br/>
  🦖SINGLE LINE COMMENTS
 
-🦕THIS IS A MULTI
-
+🦕THIS IS A MULTI <br/>
 LINE COMMENT🦕
 
 ## Types
