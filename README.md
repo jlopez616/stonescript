@@ -96,6 +96,9 @@ There will be variables you can change
 
 * ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
 
+[ = CAVEIN
+] = CAVEOUT
+
 * LAZY EVALUATION
 
 * SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
@@ -106,7 +109,10 @@ There will be variables you can change
 To do next homework
 
 # Example Programs
+'''
+🦖KIRKMAN'S OOOGAGIRL PROBLEM <br/>
 
+STUFFS X IS 
 # Contributors:
 * Anthony Boyac 
 * John Lopez
