@@ -91,6 +91,8 @@ For Loop
 ## Functions
 return is ____
 
+Will have parameters
+
 SUPPORTS CURRYING
 
 ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
@@ -98,6 +100,8 @@ ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
 LAZY EVALUATION
 
 SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
+
+No Async
 
 ## Error Handling
 To do next homework? @rtoal
@@ -108,5 +112,6 @@ To do next homework? @rtoal
 * Anthony Boyac 
 * John Lopez
 * Kevin Patterson
+* Alex Richardson
 
 
