@@ -71,38 +71,39 @@ There will be variables you can change
 * &	Binary AND Operator copies a bit to the result if it exists in both operands.	(A & B) = 12, i.e., 0000 1100
 * |	Binary OR Operator copies a bit if it exists in either operand.	(A | B) = 61, i.e., 0011 1101
 * ^	Binary XOR Operator copies the bit if it is set in one operand but not both.	(A ^ B) = 49, i.e., 0011 0001
-* *~	Binary One's Complement Operator is unary and has the effect of 'flipping' bits.	(~A ) = ~(60), i.e,. -0111101
+* ~	Binary One's Complement Operator is unary and has the effect of 'flipping' bits.	(~A ) = ~(60), i.e,. -0111101
 * <<	Binary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.	
-* >>	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right 
+* \>\>	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right 
 
 
 ## Control Flow
 
-Chainable if, else if, else statements
+* Chainable if, else if, else statements
 
-If, other if, other other if, other other other if, other other other other if, final if.
+* If, other if, other other if, other other other if, other other other other if, final if.
 
 ## Loops
-While Loop
-For Loop
+* WHILE LOOP
+
+* FOR LOOP
 
 ## Functions
-return is ____
+* return is GIVE
 
-Will have parameters
+* WILL HAVE PARAMETERS
 
-SUPPORTS CURRYING
+* SUPPORTS CURRYING
 
-ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
+* ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
 
-LAZY EVALUATION
+* LAZY EVALUATION
 
-SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
+* SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
 
-No Async
+* NO ASYNC
 
 ## Error Handling
-To do next homework? @rtoal
+To do next homework
 
 # Example Programs
 
