@@ -135,13 +135,27 @@ NOT PART
 
 ```
 
+```
 🦖KIRKMAN'S OOO-GIRL PROBLEM <br/>
 
 STUFFS X IS CAVEIN 0 1 8 2 6 14 3 4 13 5 7 11 9 10 12 CAVEOUT
 
 FOR ( BE I IS 0 ; I NOT SMASH 7 ; I LITTLE SQUISH )
 SPEAK ( DO 
+```
 
+```
+OOF  num NOT SMASH 1 PART
+	FOR (BE index IS 2 ; index NOT SMASH num ; index LITTLE SQUISH) PART
+		IF num LEFT index IS IS 0 PART
+			SPEAK num "is not prime"
+		NOT PART
+		ELSE PART
+			SPEAK num "is prime"
+		NOT PART
+	NOT PART
+NOT PART
+```
 
 
 # Contributors:
