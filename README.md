@@ -114,12 +114,13 @@ To do next homework
 # Example Programs
 
 ```
-🦖OOGA WORLD <br/>
+🦖OOGA WORLD 
+
 SPEAK ( "OOOGA" )
 ```
 
 ```
-🦖BIG SPIRAL MATH PROBLEM <br/>
+🦖BIG SPIRAL MATH PROBLEM 
 
 ROCK FIB IS BE (N) PART
    ROCK A IS 0
@@ -135,12 +136,55 @@ NOT PART
 
 ```
 
-🦖KIRKMAN'S OOO-GIRL PROBLEM <br/>
+```
+var looping = function(n) {
+    var a = 0, b = 1, f = 1;
+    for(var i = 2; i <= n; i++) {
+        f = a + b;
+        a = b;
+        b = f;
+    }
+    return f;
+};
+```
+
+```
+🦖MANY TIMES BIG SPIRAL MATH PROBLEM
+
+BE BADFIB(n) PART
+
+  OOF (n NOT SMASH OR IS 1) PART
+    GIVE 1
+    
+  GIVE BADFIB (n RIP 1) SQUISH BADFIB (n RIP 2)
+NOT PART
+```
+
+```
+function fibonacci(num) {
+  if (num <= 1) return 1;
+
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+```
+
+```
+🦖HUNT QUOTES
+
+BE stripQuotes(s) PART
+ GIVE S FROM HUNTDOWN(/['"]/g '')
+ 
+```
+```
+exports.stripQuotes = s => s.replace(/['"]/g, '');
+```
+
+🦖KIRKMAN'S OOO-GIRL PROBLEM
 
 STUFFS X IS CAVEIN 0 1 8 2 6 14 3 4 13 5 7 11 9 10 12 CAVEOUT
 
 FOR ( BE I IS 0 ; I NOT SMASH 7 ; I LITTLE SQUISH )
-SPEAK ( DO 
+SPEAK ( DO  
 
 
 
