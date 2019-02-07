@@ -15,12 +15,12 @@ Ooooga
 
 ## Comments
  🦖THIS IS HOW YOU DO
+ 
  🦖SINGLE LINE COMMENTS
 
-🦕
-THIS IS A MULTI
-LINE COMMENT
-🦕
+🦕THIS IS A MULTI
+
+LINE COMMENT🦕
 
 ## Types
 
