@@ -40,7 +40,8 @@ NO PROTOTYPES, NO 'THIS', NO 'NEW' (Think Crockford Classless)
 
 ## Variables 
 
-There will be constants
+BEDROCK = ROCK
+LET = ROCK
 There will be variables you can change 
 
 ## Operators
@@ -88,6 +89,8 @@ There will be variables you can change
 * FOR LOOP
 
 ## Functions
+
+* DO
 * return is GIVE
 
 * WILL HAVE PARAMETERS
@@ -109,10 +112,37 @@ There will be variables you can change
 To do next homework
 
 # Example Programs
-'''
-🦖KIRKMAN'S OOOGAGIRL PROBLEM <br/>
 
-STUFFS X IS 
+'''
+🦖OOGA WORLD <br/>
+SPEAK ( "OOOGA" )
+'''
+
+'''
+🦖BIG SPIRAL MATH PROBLEM <br/>
+
+ROCK FIB IS BE (N) PART
+   ROCK A IS 0
+   ROCK B IS 1
+   ROCK F IS 1
+   FOR ( ROCK I IS 2; I NOT SMASH OR IS N; I LITTLE SQUISH) PART
+     F IS A SQUISH B
+     A IS B
+     B IS F
+  NOT PART
+  GIVE F
+NOT PART
+
+'''
+🦖KIRKMAN'S OOO-GIRL PROBLEM <br/>
+
+STUFFS X IS CAVEIN 0 1 8 2 6 14 3 4 13 5 7 11 9 10 12 CAVEOUT
+
+FOR ( BE I IS 0 ; I NOT SMASH 7 ; I LITTLE SQUISH )
+SPEAK ( DO 
+
+
+
 # Contributors:
 * Anthony Boyac 
 * John Lopez
@@ -120,3 +150,12 @@ STUFFS X IS
 * Alex Richardson
 
 
+var looping = function(n) {
+    var a = 0, b = 1, f = 1;
+    for(var i = 2; i <= n; i++) {
+        f = a + b;
+        a = b;
+        b = f;
+    }
+    return f;
+};
