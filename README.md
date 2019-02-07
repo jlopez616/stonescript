@@ -26,13 +26,19 @@ LINE COMMENT
 
 WEAKLY TYPED, WILL BE TYPE INFERENCE
 
-* Numbers
+Primitive Types:
+* Numbers 
 * Strings (NO CHARACTERS)
 * Booleans
+* Undefined (Whut)
+
+
+Reference Types:
 * Objects (Things)
 * Arrays (Stuffs) Homogenous Types
 * Function (Be)
-* Undefined (Whut)
+
+NO PROTOTYPES, NO 'THIS', NO 'NEW' (Think Crockford Classless)
 
 ## Variables 
 
@@ -86,6 +92,12 @@ For Loop
 return is ____
 
 SUPPORTS CURRYING
+
+ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
+
+LAZY EVALUATION
+
+SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
 
 ## Error Handling
 To do next homework? @rtoal
