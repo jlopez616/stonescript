@@ -24,11 +24,13 @@ LINE COMMENT
 
 ## Types
 
+WEAKLY TYPED, WILL BE TYPE INFERENCE
+
 * Numbers
 * Strings (NO CHARACTERS)
 * Booleans
 * Objects (Things)
-* Arrays (Stuffs)
+* Arrays (Stuffs) Homogenous Types
 * Function (Be)
 * Undefined (Whut)
 
