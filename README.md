@@ -57,9 +57,9 @@ There will be variables you can change
 ### Relational Operators
 * == IS IS
 * <= NOT SMASH OR IS
-* >= SMASH OR IS
+* \>= SMASH OR IS
 * < NOT SMASH
-* > SMASH
+* \> SMASH
 * != NOT IS
 
 ### Logical Operator
