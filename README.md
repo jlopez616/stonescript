@@ -28,7 +28,12 @@ WEAKLY TYPED, WILL BE TYPE INFERENCE
 Primitive Types:
 * Number = COUNTERS
 * String = WORDERS
+
 * Boolean = YESNOS
+
+* True = OOGA	
+* False = NOOGA
+
 * Undefined = WHAT
 
 
@@ -40,8 +45,8 @@ Reference Types:
 
 ## Variables 
 
-CONST = BEDROCK
-LET = ROCK
+CONST = BEDROCK <br/>
+LET = ROCK <br/>
 There will be variables you can change 
 
 ## Operators
@@ -83,6 +88,7 @@ There will be variables you can change
 * return = GIVE
 * Accept parameters
 * Support Currying
+* HUNTDOWN = replace
 
 * Arrays (STUFFS) will have comprehensions
 * \[ = CAVEIN
@@ -90,9 +96,6 @@ There will be variables you can change
 * Lazy Evaluation
 * Support Pattern matching via Regular Expressions
 * Do not allow async calls
-
-## Error Handling
-To do next homework
 
 # Example Programs
 
@@ -103,6 +106,7 @@ SPEAK ( "OOOGA" )
 ```
 
 ```
+// Hello World
 console.log("Hello, World!")
 ```
 
@@ -148,11 +152,43 @@ NOT PART
 ```
 
 ```
-function fibonacci(num) {
-  if (num <= 1) return 1;
+function badfib(n) {
+  if (n <= 1) return 1;
 
-  return fibonacci(num - 1) + fibonacci(num - 2);
+  return badfib(n - 1) + badfib(n - 2);
 }
+```
+
+``` 
+
+// 🦖MAKE CYLINDER
+
+ROCK CYLINDER IS YABBADABBADOO(radius,height) PART
+    BEDROCK surface_area is radius MANY height
+    
+    GIVE PART
+    radius THINGIS radius THINGENDS
+    height THINGIS height THINGENDS
+    surface_area THINGIS surfaceArea THINGENDS
+    NOTPART
+    
+    NOTPART
+ 
+```
+
+```
+// Cylinder Object
+
+let cylinder = function(radius, height) {
+  const surface_area = radius * height
+  
+  return {
+   radius: radius
+   height: height
+   surfaceArea: surface_area
+   }
+}
+
 ```
 
 ```
@@ -162,16 +198,14 @@ YABBADABBADO stripQuotes(s) PART
  GIVE S FROM HUNTDOWN(/['"]/g '')
  
 ```
+
 ```
-exports.stripQuotes = s => s.replace(/['"]/g, '');
+
+// Simple stripQuotes function
+function stripQuotes(s) {
+    return s.replace(/['"]/g, '');
+}
 ```
-
-🦖KIRKMAN'S OOO-GIRL PROBLEM
-
-STUFFS X IS CAVEIN 0 1 8 2 6 14 3 4 13 5 7 11 9 10 12 CAVEOUT
-
-FOR ( BE I IS 0 ; I NOT SMASH 7 ; I LITTLE SQUISH )
-SPEAK ( DO  
 
 
 
