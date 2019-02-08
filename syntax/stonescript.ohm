@@ -23,7 +23,8 @@ StoneScript {
                |  "NOOGA"
   nothing      = "WHAT"
   ExpList      =  Exp ("," Exp)*
-  for          = "FOR" LoopContainer "PART" body "NOT PART"
+  Array        = "CAVEIN" ListOf<primtype> "CAVEOUT"
+  for           = "FOR" LoopContainer "PART" body "NOT PART"
   LoopContainer = "(" setup "," relop "," incop ")"
   setup         = Declaration | Assignment
   while         = "WHILE" conditional "PART" body "NOTPART"
