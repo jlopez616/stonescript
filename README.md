@@ -216,12 +216,6 @@ SPEAK (CAVERN)
 🦖WILL SAY (CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT)
 ```
 <hr>
-```
-
-YABBADABBADO stripQuotes(s) PART
- GIVE S FROM HUNTDOWN(/['"]/g '')
- 
-```
 
 ```
 🦖HUNT QUOTES
