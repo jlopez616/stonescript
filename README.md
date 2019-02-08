@@ -37,6 +37,7 @@ StoneScript {
                |  "NOOGA"
   nothing      = "WHAT"
   ExpList      =  Exp ("," Exp)*
+  Array        =  "CAVEIN" ListOf<primtype> "CAVEOUT"
   for          = "FOR" LoopContainer "PART" body "NOT PART"
   LoopContainer = "(" setup "," relop "," incop ")"
   setup         = Declaration | Assignment
