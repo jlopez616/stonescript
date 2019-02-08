@@ -40,8 +40,8 @@ Reference Types:
 
 ## Variables 
 
-CONST = BEDROCK
-LET = ROCK
+CONST = BEDROCK <br/>
+LET = ROCK <br/>
 There will be variables you can change 
 
 ## Operators
