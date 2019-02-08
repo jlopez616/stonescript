@@ -70,7 +70,7 @@ There will be variables you can change
 
 ## Control Flow
 
-* Chainable if, else if, else statements = IF, OTHER IF, AND LAST IF
+* Chainable if, else if, else statements = OOF, OTHER OOF, AND LAST OOF
 
 ## Loops
 * While Loops = WHILE
@@ -103,9 +103,13 @@ SPEAK ( "OOOGA" )
 ```
 
 ```
+console.log("Hello, World!")
+```
+
+```
 🦖BIG SPIRAL MATH PROBLEM 
 
-ROCK FIB IS BE (N) PART
+ROCK FIB IS YABBADABBADO (N) PART
    ROCK A IS 0
    ROCK B IS 1
    ROCK F IS 1
@@ -134,7 +138,7 @@ var looping = function(n) {
 ```
 🦖MANY TIMES BIG SPIRAL MATH PROBLEM
 
-BE BADFIB(n) PART
+YABBADABBADO BADFIB(n) PART
 
   OOF (n NOT SMASH OR IS 1) PART
     GIVE 1
@@ -154,7 +158,7 @@ function fibonacci(num) {
 ```
 🦖HUNT QUOTES
 
-BE stripQuotes(s) PART
+YABBADABBADO stripQuotes(s) PART
  GIVE S FROM HUNTDOWN(/['"]/g '')
  
 ```
@@ -176,14 +180,3 @@ SPEAK ( DO
 * John Lopez
 * Kevin Patterson
 * Alex Richardson
-
-
-var looping = function(n) {
-    var a = 0, b = 1, f = 1;
-    for(var i = 2; i <= n; i++) {
-        f = a + b;
-        a = b;
-        b = f;
-    }
-    return f;
-};
