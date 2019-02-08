@@ -14,7 +14,7 @@ const parse = require('../../syntax/parser');
 
 describe('The grammar', () => {
   fs.readdirSync(__dirname).forEach((name) => {
-    if (name.endsWith('.pls')) {
+    if (name.endsWith('.st')) {
       it(`matches the program ${name}`, (done) => {
         fs.readFile(`${__dirname}/${name}`, 'utf-8', (err, input) => {
           // In this test we just care that it parses without errors
