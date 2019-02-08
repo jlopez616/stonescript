@@ -110,6 +110,8 @@ SPEAK ( "OOOGA" )
 console.log("Hello, World!")
 ```
 
+<hr>
+
 ```
 🦖BIG SPIRAL MATH PROBLEM 
 
@@ -128,7 +130,7 @@ NOT PART
 ```
 
 ```
-var looping = function(n) {
+var fib = function(n) {
     var a = 0, b = 1, f = 1;
     for(var i = 2; i <= n; i++) {
         f = a + b;
@@ -138,6 +140,7 @@ var looping = function(n) {
     return f;
 };
 ```
+<hr>
 
 ```
 🦖MANY TIMES BIG SPIRAL MATH PROBLEM
@@ -158,6 +161,7 @@ function badfib(n) {
   return badfib(n - 1) + badfib(n - 2);
 }
 ```
+<hr>
 
 ``` 
 
@@ -190,6 +194,7 @@ let cylinder = function(radius, height) {
 }
 
 ```
+<hr>
 
 ```
 // Little Array Declaration
@@ -210,7 +215,7 @@ SPEAK (CAVERN)
 
 🦖WILL SAY (CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT)
 ```
-
+<hr>
 ```
 
 YABBADABBADO stripQuotes(s) PART
