@@ -1,4 +1,4 @@
-CaveScript {
+StoneScript {
 
   Tablet = Program
   Program = Statement*
