@@ -24,17 +24,28 @@ StoneScript {
   Declaration      = "ROCK" id "IS" FuncOrExp "\n"
   Assignment       = id "IS" FuncOrExp
   Calls            = id "(" Primary ")"
-  FuncOrExp        = Func | Exp1
+  FuncOrExp        = Func | Exp
   Func             = "(" id ")" "PART" Program "NOT PART"
-  Exp1             =  Exp2 (relop Exp2)?
-  Exp2             =  Exp3 (shiftop Exp2)*
-  Exp3             =  Exp4 (addop Exp4)*
-  Exp4             =  Exp5 (mulop Exp5)*
-  Exp5             =  Primary
-  Primary          =  Literal
-  Literal          =  nothing
-                   |  "OOGA"
-                   |  "NOOGA"
+  Exp              =  Exp "or" Exp1                    -- or
+                   |  Exp "and" Exp1                   -- and
+                   |  Exp1
+  Exp1             =  Exp2 relop Exp2                  -- binary
+                   |  Exp2
+  Exp2             =  Exp2 addop Exp3                  -- binary
+                   |  Exp3
+  Exp3             =  Exp3 mulop Exp4                  -- binary
+                   |  Exp4
+  Exp4             =  prefixop Exp5                    -- unary
+                   |  Exp5
+  Exp5             =  boollit
+                   |  numlit
+                   |  strlit
+                   |  Array
+                   |  "(" Exp ")" 
+  boollit          = "OOGA"
+                   | "NOOGA"     
+  numlit           = digit+ ("." digit+)?
+  strlit           = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
   nothing          = "WHAT"
   ExpList          =  Exp ("," Exp)*
   Array            =  "CAVEIN" ListOf<primtype> "CAVEOUT"
@@ -56,6 +67,7 @@ StoneScript {
 
   space           :=  "\x20" | "\x09" | "\x0A" | "\x0D" | comment
   comment          =  "//" (~"\n" any)* "\n"
+  
 }
 
 ```
