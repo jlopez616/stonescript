@@ -84,7 +84,7 @@ There will be variables you can change
 
 ## Functions
 
-* YABBADABBADO
+* function = YABBADABBADO
 * return = GIVE
 * Accept parameters
 * Support Currying
