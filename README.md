@@ -192,6 +192,33 @@ let cylinder = function(radius, height) {
 ```
 
 ```
+// Little Array Declaration
+
+let cavern = [1, 2, 4, 8 16, 32]
+console.log (cavern)
+// will say "[1, 2, 4, 8, 16, 32]"
+
+
+```
+
+```
+🦖LIL CAVERN DECLARATION
+
+ROCK CAVERN = CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT
+
+SPEAK (CAVERN)
+
+🦖WILL SAY (CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT)
+```
+
+```
+
+YABBADABBADO stripQuotes(s) PART
+ GIVE S FROM HUNTDOWN(/['"]/g '')
+ 
+```
+
+```
 🦖HUNT QUOTES
 
 YABBADABBADO stripQuotes(s) PART
