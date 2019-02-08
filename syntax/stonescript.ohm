@@ -12,15 +12,19 @@ StoneScript {
   Calls            = id "(" Primary ")"
   FuncOrExp        = Func | Exp1
   Func             = "(" id ")" "PART" Program "NOT PART"
-  Exp1             =  Exp2 (relop Exp2)?
-  Exp2             =  Exp3 (shiftop Exp2)*
-  Exp3             =  Exp4 (addop Exp4)*
-  Exp4             =  Exp5 (mulop Exp5)*
-  Exp5             =  Primary
-  Primary          =  Literal
-  Literal          =  nothing
-                   |  "OOGA"
-                   |  "NOOGA"
+  Exp1             = Exp2 (relop Exp2)?
+                   | Exp2
+  Exp2             = Exp3 (shiftop Exp2)*
+                   | Exp3
+  Exp3             = Exp4 (addop Exp4)*
+                   | Exp4
+  Exp4             = Exp5 (mulop Exp5)*
+                   | Exp5
+  Exp5             = Primary
+  Primary          = Literal
+  Literal          = nothing
+                   | "OOGA"
+                   | "NOOGA"
   nothing          = "WHAT"
   ExpList          =  Exp ("," Exp)*
   Array            =  "CAVEIN" ListOf<primtype> "CAVEOUT"
