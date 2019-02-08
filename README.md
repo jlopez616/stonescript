@@ -1,5 +1,5 @@
 # StoneScript
-Ooooga
+The 2.5 Million Year Old Caveman coding Language
 
 ![StoneScrippt Logo](https://i.imgur.com/dvywB1b.png)
 
@@ -26,18 +26,17 @@ LINE COMMENT🦕
 WEAKLY TYPED, WILL BE TYPE INFERENCE
 
 Primitive Types:
-* Numbers 
-* Strings (NO CHARACTERS)
-* Booleans
-* Undefined (Whut)
+* Number = COUNTERS
+* String = WORDERS
+* Boolean = YESNOS
+* Undefined = WHAT
 
 
 Reference Types:
-* Objects (Things)
-* Arrays (Stuffs) Homogenous Types
-* Function (Be)
-
-NO PROTOTYPES, NO 'THIS', NO 'NEW' (Think Crockford Classless)
+* Objects = THINGS
+* Arrays = STUFFS
+* Function = YABBADABBADO
+* No prototypes, this, or new (Think Crockford Classless)
 
 ## Variables 
 
@@ -71,34 +70,26 @@ There will be variables you can change
 
 ## Control Flow
 
-* Chainable if, else if, else statements
-
-* If, other if, other other if, other other other if, other other other other if, final if.
+* Chainable if, else if, else statements = IF, OTHER IF, AND LAST IF
 
 ## Loops
-* WHILE LOOP
+* While Loops = WHILE
 
-* FOR LOOP
+* For loops = FOR
 
 ## Functions
 
-* DO
-* return is GIVE
+* YABBADABBADO
+* return = GIVE
+* Accept parameters
+* Support Currying
 
-* WILL HAVE PARAMETERS
-
-* SUPPORTS CURRYING
-
-* ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
-
-[ = CAVEIN
-] = CAVEOUT
-
-* LAZY EVALUATION
-
-* SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
-
-* NO ASYNC
+* Arrays (STUFFS) will have comprehensions
+* \[ = CAVEIN
+* ] = CAVEOUT
+* Lazy Evaluation
+* Support Pattern matching via Regular Expressions
+* Do not allow async calls
 
 ## Error Handling
 To do next homework
