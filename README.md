@@ -14,49 +14,60 @@ Full grammar may be found at https://github.com/johnllopez616/stonescript/blob/m
 ```
 StoneScript {
 
-  Tablet           = Program
-  Program          = Statement*
-  Statement        = Conditional
-                   | Loops
-                   | Declaration
-                   | Assignment
-                   | Calls
-  Declaration      = "ROCK" id "IS" FuncOrExp "\n"
-  Assignment       = id "IS" FuncOrExp
-  Calls            = id "(" Primary ")"
-  FuncOrExp        = Func | Exp
-  Func             = "(" id ")" "PART" Program "NOT PART"
-  Exp              =  Exp "or" Exp1                    -- or
-                   |  Exp "and" Exp1                   -- and
+  Tablet           =  Program
+  Program          =  Statement*
+  Statement        =  Conditional                             -- conditional
+                   |  Loops                                   -- loop
+                   |  Declaration                             -- decl
+                   |  Assignment                              -- assign
+                   |  Call                                    -- call
+                   |  "GIVE" Exp?                             -- return
+                   |  Exp                                     -- expression
+                   
+  Declaration      =  "ROCK" id "IS" FuncOrExp "\n"           
+  Assignment       =  id "IS" FuncOrExp                       
+  Call             =  id "(" Primary ")"                      
+  FuncOrExp        =  Func | Exp
+  Func             =  "(" id ")" "PART" Program "NOT PART"
+  Suite            =  newLine* indent Program dedent
+  
+  Exp              =  Exp "or" Exp1                          -- or
+                   |  Exp "and" Exp1                         -- and
                    |  Exp1
-  Exp1             =  Exp2 relop Exp2                  -- binary
+  Exp1             =  Exp2 relop Exp2                        -- binary
                    |  Exp2
-  Exp2             =  Exp2 addop Exp3                  -- binary
+  Exp2             =  Exp2 addop Exp3                        -- binary
                    |  Exp3
-  Exp3             =  Exp3 mulop Exp4                  -- binary
+  Exp3             =  Exp3 mulop Exp4                        -- binary
                    |  Exp4
-  Exp4             =  prefixop Exp5                    -- unary
+  Exp4             =  prefixop Exp5                          -- unary
                    |  Exp5
   Exp5             =  boollit
                    |  numlit
                    |  strlit
-                   |  Array
+                   |  Array                                  -- list
+                   |  Call
+                   |  boollit
+                   |  numlit
+                   |  strlit
                    |  "(" Exp ")" 
-  boollit          = "OOGA"
-                   | "NOOGA"     
-  numlit           = digit+ ("." digit+)?
-  strlit           = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
-  nothing          = "WHAT"
+                   
+  boollit          =  "OOGA"
+                   |  "NOOGA"     
+  numlit           =  digit+ ("." digit+)?
+  strlit           =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+  nothing          =  "WHAT"
   ExpList          =  Exp ("," Exp)*
+  Return           =  Return newLine+ 
   Array            =  "CAVEIN" ListOf<primtype> "CAVEOUT"
-  for              = "FOR" LoopContainer "PART" body "NOT PART"
-  LoopContainer    = "(" setup "," relop "," incop ")"
-  setup            = Declaration | Assignment
-  while            = "WHILE" conditional "PART" body "NOTPART"
+  for              =  "FOR" LoopContainer "PART" body "NOT PART"
+  LoopContainer    =  "(" setup "," relop "," incop ")"
+  setup            =  Declaration | Assignment
+  while            =  "WHILE" conditional "PART" body "NOTPART"
   keyword          =  ("YESNOS" | "OOF" | "OTHER"
                    |  "FOR"  | "GIVE" 
                    |  "WHAT" | "WHILE" | "OOGA" | "WORDERS"
-                   | "NOOGA" | "SPEAK") ~idrest
+                   |  "NOOGA" | "SPEAK") ~idrest
   id               =  ~keyword letter idrest*
   idrest           =  "_" | alnum
   addop            =  "SQUISH" | "RIP"
@@ -64,11 +75,15 @@ StoneScript {
   mulop            =  "MANY" | "BREAK" | "LEFT"
   incop            =  "LITTLE SQUISH" | "LITTLE RIP"
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
+  indent           =  "⇨"
+  dedent           =  "⇦"
 
+  newline          =  "\n"+
   space           :=  "\x20" | "\x09" | "\x0A" | "\x0D" | comment
   comment          =  "//" (~"\n" any)* "\n"
   
 }
+
 
 ```
 # List of Features
