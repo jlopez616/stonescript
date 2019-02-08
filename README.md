@@ -19,7 +19,7 @@ StoneScript is the oldest known coding language in the world. It is believed to 
  🦖SINGLE LINE COMMENTS
 
 🦕THIS IS A MULTI <br/>
-LINE COMMENT🦕
+LINE COMMENT 🦕
 
 ## Types
 
@@ -84,7 +84,7 @@ There will be variables you can change
 
 ## Functions
 
-* YABBADABBADO
+* function = YABBADABBADO
 * return = GIVE
 * Accept parameters
 * Support Currying
@@ -95,7 +95,6 @@ There will be variables you can change
 * ] = CAVEOUT
 * Lazy Evaluation
 * Support Pattern matching via Regular Expressions
-* Do not allow async calls
 
 # Example Programs
 
@@ -109,6 +108,8 @@ SPEAK ( "OOOGA" )
 // Hello World
 console.log("Hello, World!")
 ```
+
+<hr>
 
 ```
 🦖BIG SPIRAL MATH PROBLEM 
@@ -128,7 +129,7 @@ NOT PART
 ```
 
 ```
-var looping = function(n) {
+var fib = function(n) {
     var a = 0, b = 1, f = 1;
     for(var i = 2; i <= n; i++) {
         f = a + b;
@@ -138,6 +139,7 @@ var looping = function(n) {
     return f;
 };
 ```
+<hr>
 
 ```
 🦖MANY TIMES BIG SPIRAL MATH PROBLEM
@@ -158,6 +160,7 @@ function badfib(n) {
   return badfib(n - 1) + badfib(n - 2);
 }
 ```
+<hr>
 
 ``` 
 
@@ -190,6 +193,28 @@ let cylinder = function(radius, height) {
 }
 
 ```
+<hr>
+
+```
+// Little Array Declaration
+
+let cavern = [1, 2, 4, 8 16, 32]
+console.log (cavern)
+// will say "[1, 2, 4, 8, 16, 32]"
+
+
+```
+
+```
+🦖LIL CAVERN DECLARATION
+
+ROCK CAVERN = CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT
+
+SPEAK (CAVERN)
+
+🦖WILL SAY (CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT)
+```
+<hr>
 
 ```
 🦖HUNT QUOTES
