@@ -11,28 +11,28 @@ CaveScript {
   Assignment = id "IS" FuncOrExp
   Calls = id "(" Primary ")"
   FuncOrExp = Func | Exp1
-  
   Func = "(" id ")" "PART" Program "NOT PART"
-  
   Exp1         =  Exp2 (relop Exp2)?
   Exp2         =  Exp3 (shiftop Exp2)*
   Exp3         =  Exp4 (addop Exp4)*
   Exp4         =  Exp5 (mulop Exp5)*
   Exp5         =  Primary
   Primary      =  Literal
-  Literal      =  "nothing"
+  Literal      =  nothing
                |  "OOGA"
                |  "NOOGA"
+  nothing      = "WHAT"
   ExpList      =  Exp ("," Exp)*
   for          = "FOR" LoopContainer "PART" body "NOT PART"
   LoopContainer = "(" setup "," relop "," incop ")"
-  setup         = Declaration | 
+  setup         = Declaration | Assignment
   while         = "WHILE" conditional "PART" body "NOTPART"
   keyword     =  ("YESNOS" | "OOF" | "OTHER"
               |  "FOR"  | "GIVE" 
               |  "WHAT" | "WHILE" | "OOGA" | "WORDERS"
               | "NOOGA" | "SPEAK") ~idrest
   id          =  ~keyword letter idrest*
+  idrest      =  "_" | alnum
   addop       =  "SQUISH" | "RIP"
   relop       =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop       =  "MANY" | "BREAK" | "LEFT"
