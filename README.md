@@ -19,7 +19,7 @@ StoneScript is the oldest known coding language in the world. It is believed to 
  🦖SINGLE LINE COMMENTS
 
 🦕THIS IS A MULTI <br/>
-LINE COMMENT🦕
+LINE COMMENT 🦕
 
 ## Types
 
