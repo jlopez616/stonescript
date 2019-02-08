@@ -29,6 +29,8 @@ Primitive Types:
 * Number = COUNTERS
 * String = WORDERS
 * Boolean = YESNOS
+* True = OOGA
+* False = NOOGA
 * Undefined = WHAT
 
 
