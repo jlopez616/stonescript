@@ -67,4 +67,5 @@ StoneScript {
   newline          =  "\n"+
   space           :=  "\x20" | "\x09" | "\x0A" | "\x0D" | comment
   comment          =  "//" (~"\n" any)* "\n"
+  
 }
