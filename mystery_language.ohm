@@ -21,7 +21,13 @@ Mystery {
     keyword = "fun"
     Paren = "(" Expr1 ")"
     numlit = digit+ 
-    stringlit = "\"" letter* "\""
+    stringlit = "\"" (char)* "\""
     addop = "+" | "-"
-    multop = "*" | "/"
+    multop = "*" | "/" 
+    char = essequence | anychar
+    anychar = ~"\\" ~"\"" ~"\'" ~"\\n" any
+    essequence = "\\" "\'" | "\\" "\"" | "\\" "r" | "\\" "n" | "\\" "\\" | "\\" hex
+    hex = "u" hexDigit hexDigit hexDigit hexDigit
+    space      +=  comment
+    comment     =  "--" (~"\n" any)* "\n"
 }
