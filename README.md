@@ -1,14 +1,13 @@
-# StoneScript
+# Stonescript
 Ooooga
 
-![StoneScrippt Logo](https://i.imgur.com/dvywB1b.png)
+<!--  Logo will go here -->
 
 <!-- Due by next time:
 * Solidfy all features to have grammar ready
 -->
 
 # Introduction
-StoneScript is the oldest known coding language in the world. It is believed to have originated over 2.5 million years ago and is coloquially know as the "Caveman Coding Language". Archaeologists believe if this language were developed today, it would have drawn inspiration from JavaScript, Haskell, and Python. The Stone Age engineers that created this language may not have had the greatest understanding of types, only weakly supporting the simplest of types, but included currying and list comprehension having only recently discovered it, and thinking it was the coolest thing since fire. StoneScript is not a visually pleasing language being particularly hard to read and write in, but it is the best language to yell at anything. 
 
 # Grammar
 
@@ -41,7 +40,7 @@ NO PROTOTYPES, NO 'THIS', NO 'NEW' (Think Crockford Classless)
 
 ## Variables 
 
-CONST = BEDROCK
+BEDROCK = ROCK
 LET = ROCK
 There will be variables you can change 
 
@@ -68,6 +67,15 @@ There will be variables you can change
 * && AND
 * || OR
 * ! NOT
+
+### Bitwise Operators
+* &	Binary AND Operator copies a bit to the result if it exists in both operands.	(A & B) = 12, i.e., 0000 1100
+* |	Binary OR Operator copies a bit if it exists in either operand.	(A | B) = 61, i.e., 0011 1101
+* ^	Binary XOR Operator copies the bit if it is set in one operand but not both.	(A ^ B) = 49, i.e., 0011 0001
+* ~	Binary One's Complement Operator is unary and has the effect of 'flipping' bits.	(~A ) = ~(60), i.e,. -0111101
+* <<	Binary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.	
+* \>\>	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right 
+
 
 ## Control Flow
 
