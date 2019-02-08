@@ -47,12 +47,12 @@ There will be variables you can change
 ## Operators
 ### Arithmetic Operators
 * \+ SQUISH
-* \- RIP | STEAL | TAKE
+* \- RIP 
 * \/ BREAK 
 * \* MANY
 * % LEFT
 * ++ LITTLE SQUISH
-* -- LITTLE STEAL /RIP
+* -- LITTLE RIP
 * ** MANY MANY
 
 ### Relational Operators
