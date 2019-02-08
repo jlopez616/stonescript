@@ -1,13 +1,14 @@
-# Stonescript
-Ooooga
+# StoneScript
+The 2.5 Million Year Old Caveman coding Language
 
-<!--  Logo will go here -->
+![StoneScrippt Logo](https://i.imgur.com/dvywB1b.png)
 
 <!-- Due by next time:
 * Solidfy all features to have grammar ready
 -->
 
 # Introduction
+StoneScript is the oldest known coding language in the world. It is believed to have originated over 2.5 million years ago and is coloquially know as the "Caveman Coding Language". Archaeologists believe if this language were developed today, it would have drawn inspiration from JavaScript, Haskell, and Python. The Stone Age engineers that created this language may not have had the greatest understanding of types, only weakly supporting the simplest of types, but included currying and list comprehension having only recently discovered it, and thinking it was the coolest thing since fire. StoneScript is not a visually pleasing language being particularly hard to read and write in, but it is the best language to yell at anything. 
 
 # Grammar
 
@@ -25,34 +26,33 @@ LINE COMMENT🦕
 WEAKLY TYPED, WILL BE TYPE INFERENCE
 
 Primitive Types:
-* Numbers 
-* Strings (NO CHARACTERS)
-* Booleans
-* Undefined (Whut)
+* Number = COUNTERS
+* String = WORDERS
+* Boolean = YESNOS
+* Undefined = WHAT
 
 
 Reference Types:
-* Objects (Things)
-* Arrays (Stuffs) Homogenous Types
-* Function (Be)
-
-NO PROTOTYPES, NO 'THIS', NO 'NEW' (Think Crockford Classless)
+* Objects = THINGS
+* Arrays = STUFFS
+* Function = YABBADABBADO
+* No prototypes, this, or new (Think Crockford Classless)
 
 ## Variables 
 
-BEDROCK = ROCK
+CONST = BEDROCK
 LET = ROCK
 There will be variables you can change 
 
 ## Operators
 ### Arithmetic Operators
 * \+ SQUISH
-* \- RIP | STEAL | TAKE
+* \- RIP 
 * \/ BREAK 
 * \* MANY
 * % LEFT
 * ++ LITTLE SQUISH
-* -- LITTLE STEAL /RIP
+* -- LITTLE RIP
 * ** MANY MANY
 
 ### Relational Operators
@@ -68,45 +68,28 @@ There will be variables you can change
 * || OR
 * ! NOT
 
-### Bitwise Operators
-* &	Binary AND Operator copies a bit to the result if it exists in both operands.	(A & B) = 12, i.e., 0000 1100
-* |	Binary OR Operator copies a bit if it exists in either operand.	(A | B) = 61, i.e., 0011 1101
-* ^	Binary XOR Operator copies the bit if it is set in one operand but not both.	(A ^ B) = 49, i.e., 0011 0001
-* ~	Binary One's Complement Operator is unary and has the effect of 'flipping' bits.	(~A ) = ~(60), i.e,. -0111101
-* <<	Binary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.	
-* \>\>	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right 
-
-
 ## Control Flow
 
-* Chainable if, else if, else statements
-
-* If, other if, other other if, other other other if, other other other other if, final if.
+* Chainable if, else if, else statements = OOF, OTHER OOF, AND LAST OOF
 
 ## Loops
-* WHILE LOOP
+* While Loops = WHILE
 
-* FOR LOOP
+* For loops = FOR
 
 ## Functions
 
-* DO
-* return is GIVE
+* YABBADABBADO
+* return = GIVE
+* Accept parameters
+* Support Currying
 
-* WILL HAVE PARAMETERS
-
-* SUPPORTS CURRYING
-
-* ARRAYS (STUFFS) WILL HAVE COMPREHENSIONS
-
-[ = CAVEIN
-] = CAVEOUT
-
-* LAZY EVALUATION
-
-* SUPPORTS PATTERN MATCHING VIA REGULAR EXPRESSIONS
-
-* NO ASYNC
+* Arrays (STUFFS) will have comprehensions
+* \[ = CAVEIN
+* ] = CAVEOUT
+* Lazy Evaluation
+* Support Pattern matching via Regular Expressions
+* Do not allow async calls
 
 ## Error Handling
 To do next homework
@@ -120,9 +103,13 @@ SPEAK ( "OOOGA" )
 ```
 
 ```
+console.log("Hello, World!")
+```
+
+```
 🦖BIG SPIRAL MATH PROBLEM 
 
-ROCK FIB IS BE (N) PART
+ROCK FIB IS YABBADABBADO (N) PART
    ROCK A IS 0
    ROCK B IS 1
    ROCK F IS 1
@@ -151,7 +138,7 @@ var looping = function(n) {
 ```
 🦖MANY TIMES BIG SPIRAL MATH PROBLEM
 
-BE BADFIB(n) PART
+YABBADABBADO BADFIB(n) PART
 
   OOF (n NOT SMASH OR IS 1) PART
     GIVE 1
@@ -171,7 +158,7 @@ function fibonacci(num) {
 ```
 🦖HUNT QUOTES
 
-BE stripQuotes(s) PART
+YABBADABBADO stripQuotes(s) PART
  GIVE S FROM HUNTDOWN(/['"]/g '')
  
 ```
@@ -193,14 +180,3 @@ SPEAK ( DO
 * John Lopez
 * Kevin Patterson
 * Alex Richardson
-
-
-var looping = function(n) {
-    var a = 0, b = 1, f = 1;
-    for(var i = 2; i <= n; i++) {
-        f = a + b;
-        a = b;
-        b = f;
-    }
-    return f;
-};

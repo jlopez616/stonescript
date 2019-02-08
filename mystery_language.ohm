@@ -1,0 +1,27 @@
+Mystery {
+	Program = Func +
+	Func = "fun" id Params Body
+	Params = "(" ListOf<id, ","> ")"
+    Body = "{" NonemptyListOf<Stmt, ";"> ";"? "}"
+    Stmt = Dec | IfElse | Funcall | Expr1 | vars
+    Dec = id "=" Expr1
+    Exp = IfElse | Expr1
+    Expr1 = NonemptyListOf<Expr2, addop>
+    Expr2 = NonemptyListOf<Expr3, multop>
+    Expr3 = "-"? Expr4
+    Expr4 = Expr5 "!"?
+    Expr5 = Paren | vars
+    vars = numlit
+    	  | stringlit
+          | id
+    IfElse = Stmt "if" Stmt "else" Stmt
+    Funcall = id "(" vars ")"
+    funcInput = id | numlit | stringlit
+    id = letter (alnum)*
+    keyword = "fun"
+    Paren = "(" Expr1 ")"
+    numlit = digit+ 
+    stringlit = "\"" letter* "\""
+    addop = "+" | "-"
+    multop = "*" | "/"
+}
