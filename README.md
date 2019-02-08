@@ -3,15 +3,61 @@ The 2.5 Million Year Old Caveman coding Language
 
 ![StoneScrippt Logo](https://i.imgur.com/dvywB1b.png)
 
-<!-- Due by next time:
-* Solidfy all features to have grammar ready
--->
 
 # Introduction
 StoneScript is the oldest known coding language in the world. It is believed to have originated over 2.5 million years ago and is coloquially know as the "Caveman Coding Language". Archaeologists believe if this language were developed today, it would have drawn inspiration from JavaScript, Haskell, and Python. The Stone Age engineers that created this language may not have had the greatest understanding of types, only weakly supporting the simplest of types, but included currying and list comprehension having only recently discovered it, and thinking it was the coolest thing since fire. StoneScript is not a visually pleasing language being particularly hard to read and write in, but it is the best language to yell at anything. 
 
 # Grammar
 
+Full grammar may be found at https://github.com/johnllopez616/stonescript/blob/master/syntax/stonescript.ohm
+
+```
+StoneScript {
+
+  Tablet = Program
+  Program = Statement*
+  Statement = Conditional
+            | Loops
+            | Declaration
+            | Assignment
+            | Calls
+  Declaration = "ROCK" id "IS" FuncOrExp "\n"
+  Assignment = id "IS" FuncOrExp
+  Calls = id "(" Primary ")"
+  FuncOrExp = Func | Exp1
+  Func = "(" id ")" "PART" Program "NOT PART"
+  Exp1         =  Exp2 (relop Exp2)?
+  Exp2         =  Exp3 (shiftop Exp2)*
+  Exp3         =  Exp4 (addop Exp4)*
+  Exp4         =  Exp5 (mulop Exp5)*
+  Exp5         =  Primary
+  Primary      =  Literal
+  Literal      =  nothing
+               |  "OOGA"
+               |  "NOOGA"
+  nothing      = "WHAT"
+  ExpList      =  Exp ("," Exp)*
+  for          = "FOR" LoopContainer "PART" body "NOT PART"
+  LoopContainer = "(" setup "," relop "," incop ")"
+  setup         = Declaration | Assignment
+  while         = "WHILE" conditional "PART" body "NOTPART"
+  keyword     =  ("YESNOS" | "OOF" | "OTHER"
+              |  "FOR"  | "GIVE" 
+              |  "WHAT" | "WHILE" | "OOGA" | "WORDERS"
+              | "NOOGA" | "SPEAK") ~idrest
+  id          =  ~keyword letter idrest*
+  idrest      =  "_" | alnum
+  addop       =  "SQUISH" | "RIP"
+  relop       =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
+  mulop       =  "MANY" | "BREAK" | "LEFT"
+  incop       =  "LITTLE SQUISH" | "LITTLE RIP"
+  primtype    =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
+
+  space      :=  "\x20" | "\x09" | "\x0A" | "\x0D" | comment
+  comment     =  "//" (~"\n" any)* "\n"
+}
+
+```
 # List of Features
 
 ## Comments
