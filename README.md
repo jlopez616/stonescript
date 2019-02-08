@@ -95,7 +95,6 @@ There will be variables you can change
 * ] = CAVEOUT
 * Lazy Evaluation
 * Support Pattern matching via Regular Expressions
-* Do not allow async calls
 
 # Example Programs
 
