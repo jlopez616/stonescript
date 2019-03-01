@@ -3,9 +3,3 @@ ROCK MANYBIG IS YABBADABBADOO ( x, y) PART
     ROCK BIG IS X MANY Y
     GIVE BIG
 NOTPART
-
-// simple multiplication function
-var mult = function ( x, y){
-  var prod = x * y
-  return mult
-}
