@@ -245,9 +245,9 @@ ROCK CYLINDER IS YABBADABBADOO(radius,height) PART
     BEDROCK surface_area is radius MANY height
     
     GIVE PART
-    radius THINGIS radius THINGENDS
-    height THINGIS height THINGENDS
-    surface_area THINGIS surfaceArea THINGENDS
+    radius THINGIS radius 
+    height THINGIS height 
+    surface_area THINGIS surfaceArea 
     NOTPART
     
     NOTPART
