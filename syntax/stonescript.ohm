@@ -1,6 +1,5 @@
 StoneScript {
 
-  Tablet           =  Program
   Program          =  Statement*
   Statement        =  Conditional                             -- conditional
                    |  Loops                                   -- loop
@@ -28,10 +27,7 @@ StoneScript {
                    |  Exp4
   Exp4             =  prefixop Exp5                          -- unary
                    |  Exp5
-  Exp5             =  boollit
-                   |  numlit
-                   |  strlit
-                   |  Array                                  -- list
+  Exp5             =  Array                                  -- list
                    |  Call
                    |  boollit
                    |  numlit
