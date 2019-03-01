@@ -238,7 +238,7 @@ function badfib(n) {
 
 ``` 
 
-// 🦖MAKE CYLINDER
+🦖MAKE CYLINDER
 
 ROCK CYLINDER IS YABBADABBADOO(radius,height) PART
     BEDROCK surface_area is radius MANY height
