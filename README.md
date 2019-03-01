@@ -114,7 +114,7 @@ Primitive Types:
 Reference Types:
 * Objects = THINGS
 * Arrays = STUFFS
-* Function = YABBADABBADO
+* Function = YABBADABBADOO
 * No prototypes, this, or new (Think Crockford Classless)
 
 ## Variables 
@@ -158,7 +158,7 @@ There will be variables you can change
 
 ## Functions
 
-* function = YABBADABBADO
+* function = YABBADABBADOO
 * return = GIVE
 * Accept parameters
 * Support Currying
@@ -188,7 +188,7 @@ console.log("Hello, World!")
 ```
 🦖BIG SPIRAL MATH PROBLEM 
 
-ROCK FIB IS YABBADABBADO (N) PART
+ROCK FIB IS YABBADABBADOO (N) PART
    ROCK A IS 0
    ROCK B IS 1
    ROCK F IS 1
@@ -218,7 +218,7 @@ var fib = function(n) {
 ```
 🦖MANY TIMES BIG SPIRAL MATH PROBLEM
 
-YABBADABBADO BADFIB(n) PART
+YABBADABBADOO BADFIB(n) PART
 
   OOF (n NOT SMASH OR IS 1) PART
     GIVE 1
@@ -293,7 +293,7 @@ SPEAK (CAVERN)
 ```
 🦖HUNT QUOTES
 
-YABBADABBADO stripQuotes(s) PART
+YABBADABBADOO stripQuotes(s) PART
  GIVE S FROM HUNTDOWN(/['"]/g '')
  
 ```
