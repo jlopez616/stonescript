@@ -295,6 +295,7 @@ SPEAK (CAVERN)
 
 YABBADABBADOO stripQuotes(s) PART
  GIVE S FROM HUNTDOWN(/['"]/g '')
+ NOT PART
  
 ```
 
