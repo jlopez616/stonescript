@@ -1,7 +1,7 @@
-const Context = require('../semantics/context');
+// const Context = require('../semantics/context');
 
-    module.exports = class Program {
-    constructor(body) {
-        this.body = body;
-    }
+module.exports = class Program {
+  constructor(body) {
+    this.body = body;
+  }
 };

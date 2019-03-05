@@ -1,20 +1,20 @@
 StoneScript {
   Program          =  Statement*
-  Statement        =  Loop                                    -- loop
-  				         |  Conditional                             -- conditional
-                   |  Declaration                             -- decl
-                   |  Assignment                              -- assign
-                   |  Call                                    -- call
-                   |  Return                                  -- return
-                   |  Exp                                     -- expression
+  Statement        =  Loop
+  				         |  Conditional
+                   |  Declaration
+                   |  Assignment
+                   |  Call
+                   |  Return
+                   |  Exp
                    |  comment
   Loop             =  For | While
   Declaration      =  "ROCK" id "IS" Exp
   Assignment       =  NormalAssignment
                    |  LittleAssignment
   NormalAssignment =  id "IS" Exp
-  LittleAssignment =  id "LITTLE SQUISH"
-                   |  id "LITTLE RIP"
+  LittleAssignment =  id "LITTLE" "SQUISH"                   -- squish
+                   |  id "LITTLE" "RIP"                      -- rip
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
                    |  id "(" listOf<Primary, ","> ")"
   Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
