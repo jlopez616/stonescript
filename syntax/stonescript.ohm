@@ -6,15 +6,16 @@ StoneScript {
                    |  Call                                    -- call
                    |  Return                             -- return
                    |  Exp                                     -- expression
+                   |  Comment
   Loop             =  For | While
   Declaration      =  "ROCK" id "IS" Exp         
   Assignment       =  NormalAssignment
-                     |  LittleAssignment
+                   |  LittleAssignment
   NormalAssignment =  id "IS" Exp
   LittleAssignment =  id "LITTLE SQUISH"
                    |  id "LITTLE RIP"
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
-                     |  id "(" listOf<Primary, ","> ")"
+                   |  id "(" listOf<Primary, ","> ")"
   Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
   Func             =  ("YABBADABBADOO" "(" listOf<id, ","> ")")? "PART" Statement* "NOT PART"
   Exp              =  Exp "or" Exp1                          -- or
@@ -27,7 +28,7 @@ StoneScript {
   Exp3             =  Exp3 mulop Exp4                        -- binary
                    |  Exp4
   Exp4             = Func
-  					| Exp5
+  					       | Exp5
   Exp5             =  Array                                  -- list
                    |  Call
                    |  boollit
@@ -35,15 +36,12 @@ StoneScript {
                    |  strlit
                    |  Paren
                    |  id
-  
-  Paren            = "(" Exp ")" 
-                   
+  Paren            = "(" Exp ")"               
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary 
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
   For              =  "FOR" LoopContainer "PART" Body "NOT PART"
   LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"
-  
   Setup            =  Declaration | Assignment
   While            =  "WHILE" RelExp "PART" Body "NOTPART"
   RelExp           =  id relop Primary
@@ -65,8 +63,8 @@ StoneScript {
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
   indent           =  "⇨"
   dedent           =  "⇦"
-
   newline          =  "\n"+
-  space           :=  "\x20" | "\x09" | "\x0A" | "\x0D" | comment
-  comment          =  "//" (~"\n" any)* "\n"
+  comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
+                   | multiLineComment
+  multiLineComment = "🦕" (~"🦕" any)* "🦕"
 }
