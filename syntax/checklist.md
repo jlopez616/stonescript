@@ -1,5 +1,7 @@
 StoneScript {
   Program          =  Statement*
+DONT INCLUDE STATEMENT
+
   Statement        =  Loop                                    -- loop
                    |  Declaration                             -- decl
                    |  Assignment                              -- assign

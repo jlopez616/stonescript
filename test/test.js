@@ -10,11 +10,11 @@
 
 const fs = require('fs');
 const assert = require('assert');
-const parse = require('../../syntax/parser');
+const parse = require('../syntax/parser');
 
 describe('The grammar', () => {
   fs.readdirSync(__dirname).forEach((name) => {
-    if (name.endsWith('.st')) {
+    if (name.endsWith('.rock')) {
       it(`matches the program ${name}`, (done) => {
         fs.readFile(`${__dirname}/${name}`, 'utf-8', (err, input) => {
           // In this test we just care that it parses without errors
