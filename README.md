@@ -15,20 +15,22 @@ Full grammar may be found at https://github.com/johnllopez616/stonescript/blob/m
 StoneScript {
   Program          =  Statement*
   Statement        =  Loop                                    -- loop
+  				         |  Conditional                             -- conditional
                    |  Declaration                             -- decl
                    |  Assignment                              -- assign
                    |  Call                                    -- call
-                   |  Return                             -- return
+                   |  Return                                  -- return
                    |  Exp                                     -- expression
+                   |  comment
   Loop             =  For | While
-  Declaration      =  "ROCK" id "IS" Exp         
+  Declaration      =  "ROCK" id "IS" Exp
   Assignment       =  NormalAssignment
-                     |  LittleAssignment
+                   |  LittleAssignment
   NormalAssignment =  id "IS" Exp
   LittleAssignment =  id "LITTLE SQUISH"
                    |  id "LITTLE RIP"
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
-                     |  id "(" listOf<Primary, ","> ")"
+                   |  id "(" listOf<Primary, ","> ")"
   Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
   Func             =  ("YABBADABBADOO" "(" listOf<id, ","> ")")? "PART" Statement* "NOT PART"
   Exp              =  Exp "or" Exp1                          -- or
@@ -41,7 +43,7 @@ StoneScript {
   Exp3             =  Exp3 mulop Exp4                        -- binary
                    |  Exp4
   Exp4             = Func
-  					| Exp5
+  					       | Exp5
   Exp5             =  Array                                  -- list
                    |  Call
                    |  boollit
@@ -49,24 +51,22 @@ StoneScript {
                    |  strlit
                    |  Paren
                    |  id
-  
-  Paren            = "(" Exp ")" 
-                   
+  Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
-  Return           =  "GIVE" Primary 
+  Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
   For              =  "FOR" LoopContainer "PART" Body "NOT PART"
+  Conditional  =      "OOF"
   LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"
-  
   Setup            =  Declaration | Assignment
-  While            =  "WHILE" RelExp "PART" Body "NOTPART"
+  While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Statement+
-  keyword          =  ("YESNOS" | "OOF" | "OTHER" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE" 
+  keyword          =  ("YESNOS" | "OOF" | "OTHER" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
                      | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
-                   |  "NOOGA"     
+                   |  "NOOGA"
   numlit           =  digit+ ("." digit+)?
   strlit           =  "\"" (~"\\" ~"\"" ~"\n" any)* "\""
   nothing          =  "WHAT"
@@ -79,10 +79,10 @@ StoneScript {
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
   indent           =  "⇨"
   dedent           =  "⇦"
-
   newline          =  "\n"+
-  space           :=  "\x20" | "\x09" | "\x0A" | "\x0D" | comment
-  comment          =  "//" (~"\n" any)* "\n"
+  comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
+                   | multiLineComment
+  multiLineComment = "🦕" (~"🦕" any)* "🦕"
 }
 ```
 # List of Features
