@@ -1,5 +1,5 @@
-module.exports = class CallStatement {
-    constructor(c) {
-        this.call = c;
-    }
+module.exports = class Call {
+  constructor(id, args) {
+    Object.assign(this, { id, args });
+  }
 };

@@ -1,5 +1,5 @@
 module.exports = class Assignment {
-  constructor(id, exp) {
-    Object.assign(this, { id, exp });
+  constructor(target, source) {
+    Object.assign(this, { target, source });
   }
 };
