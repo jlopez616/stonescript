@@ -1,21 +1,21 @@
 StoneScript {
-  Program          =  Statement*
-  Statement        =  Loop
-  				         |  Conditional
-                   |  Declaration
-                   |  Assignment
-                   |  Call
-                   |  Return
-                   |  Exp
-                   |  comment
+  Program          =  (Statement)*
+  Statement        =  Loop "!"
+  				         |  Conditional "!"
+                   |  Declaration "!"
+                   |  Assignment "!"
+                   |  Call "!"
+                   |  Return "!"
+                   |  Exp "!"
+                   |  comment ""
   Loop             =  For | While
   Declaration      =  "ROCK" id "IS" Exp
 
-  Assignment       = id "IS" Exp
+  Assignment     = id "IS" Exp
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
                    |  id "(" listOf<Primary, ","> ")"
   Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
-  Func             =  ("YABBADABBADOO" "(" listOf<id, ","> ")")? "PART" Statement* "NOT PART"
+  Func             =  ("YABBADABBADOO" "(" listOf<id, ", "> ")")? "PART" Statement* "NOT PART"
   Exp              =  Exp "or" Exp1                          -- or
                    |  Exp "and" Exp1                         -- and
                    |  Exp1
@@ -26,28 +26,29 @@ StoneScript {
   Exp3             =  Exp3 mulop Exp4                        -- binary
                    |  Exp4
   Exp4             = Func
-  					       | Exp5
-  Exp5             = Exp6 postfixop                          --postfix
-                   | Exp6
-  Exp6             =  Array                                  -- list
+  				         | Exp5
+  Exp5             =  Array                                  -- list
                    |  Call
                    |  boollit
                    |  numlit
                    |  strlit
                    |  Paren
+                   | id
   Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
   For              =  "FOR" LoopContainer "PART" Body "NOT PART"
-  Conditional  =      "OOF"
-  LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"
+  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART" 
+                      ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
+                      ("OOFF" "PART" Body "NOT PART" )?
+  LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"	
   Setup            =  Declaration | Assignment
   While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
-  Body             =  Statement+
-  keyword          =  ("YESNOS" | "OOF" | "OTHER" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE" | "SQUISH" | "RIP" | primtype
-                     | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
+  Body             =  Program
+  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE" | "SQUISH" | "RIP" | primtype
+                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
@@ -59,8 +60,6 @@ StoneScript {
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
-  postfixop        =  id "LITTLE" "SQUISH"
-                   |  id "LITTLE"  "RIP"
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
   indent           =  "⇨"
   dedent           =  "⇦"
