@@ -10,11 +10,8 @@ StoneScript {
                    |  comment
   Loop             =  For | While
   Declaration      =  "ROCK" id "IS" Exp
-  Assignment       =  NormalAssignment
-                   |  LittleAssignment
-  NormalAssignment =  id "IS" Exp
-  LittleAssignment =  id "LITTLE" "SQUISH"                   -- squish
-                   |  id "LITTLE" "RIP"                      -- rip
+
+  Assignment       = id "IS" Exp
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
                    |  id "(" listOf<Primary, ","> ")"
   Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
@@ -30,7 +27,9 @@ StoneScript {
                    |  Exp4
   Exp4             = Func
   					       | Exp5
-  Exp5             =  Array                                  -- list
+  Exp5             = Exp6 postfixop
+                   | Exp6
+  Exp6             =  Array                                  -- list
                    |  Call
                    |  boollit
                    |  numlit
@@ -61,7 +60,8 @@ StoneScript {
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
-  incop            =  "LITTLE SQUISH" | "LITTLE RIP"
+  postfixop        =  id "LITTLE SQUISH"
+                   |  id "LITTLE RIP"
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
   indent           =  "⇨"
   dedent           =  "⇦"
