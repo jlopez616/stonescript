@@ -1,5 +1,5 @@
-/*
- * Grammar Tests
+
+ /* Grammar Tests
  * Made using the template from Ray Toal's Plainscript
  * https://github.com/rtoal/plainscript/blob/master/test/grammar/grammar-test.js
  *
@@ -8,9 +8,9 @@
  * those that we expect not to cause an error to be thrown.
  */
 
-/* const fs = require('fs');
+const fs = require('fs');
 const assert = require('assert');
-const parse = require('../syntax/parser');
+const parse = require('../parser');
 
 describe('The grammar', () => {
   fs.readdirSync(__dirname).forEach((name) => {
@@ -33,4 +33,3 @@ describe('The grammar', () => {
     }
   });
 });
-*/

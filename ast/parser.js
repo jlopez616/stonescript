@@ -22,7 +22,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
 module.exports = (text) => {
   const match = grammar.match(text);
   if (!match.succeeded()) {
-    return false;
+    return throw new Error(`Syntax Error: ${match.message}`);
   }
   return astGenerator(match).ast();
 };
