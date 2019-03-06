@@ -2,54 +2,57 @@ const fs = require('fs');
 const ohm = require('ohm-js');
 const Program = require('../ast/program.js');
 const ForLoop = require('../ast/for-loop.js');
-const VariableDeclaration = require('../ast/variable-declaration.js');
+const Conditional = require('../ast/conditional');
+const WhileLoop = require('../ast/while-loop.js');
 const Assignment = require('../ast/assignment.js');
-const Squish = require('../ast/squish-assignment.js');
-const Rip = require('../ast/rip-assignment.js');
+const Call = require('../ast/call-statement.js');
+const Return = require('../ast/return-statement.js');
+const Declaration = require('../ast/declaration.js');
+const Func = require('../ast/function-object');
+const BinaryExp = require('../ast/binary-expression');
+const Postfix = require('../ast/postfix-expression');
+const Array = require('../ast/array');
 
-const grammar = ohm.grammar(fs.readFileSync('./syntax/stonescript.ohm', 'utf-8'));
+const grammar = ohm.grammar(fs.readFileSync('../syntax/stonescript.ohm', 'utf-8'));
 
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
-  Program(statements) { 
-    return new Program(statements.ast()); 
+  Program(statements) {
+    return new Program(statements.ast());
   },
-  ForLoop(_1, setup, _2, text_exp, _3, increment, _4, body) { 
-    return new ForLoop(setup.ast(), test_exp.ast(), increment.ast(), body.ast())
-  },   //Will likely need to be changed
-  WhileLoop(_1, testExp, _2, body) { 
-    return new WhileLoop(testExp, body)
+  ForLoop(_1, setup, _2, textExp, _3, increment, _4, body) { // Will likely need to be changed
+    return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast());
   },
-  Conditional(_1, test_exp, _2, consequent, _3, alternate) { 
-    return new Conditional(test_exp.ast(), consequent.ast(), arrayToNullable(alternate.ast()))
+  WhileLoop(_1, testExp, _2, body) {
+    return new WhileLoop(testExp, body);
   },
-  Assignment(target, _1, source) { 
-    return new Assignment(target.ast(), source.ast())
+  Conditional(_1, testExp, _2, consequent, _3, alternate) {
+    return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast()));
   },
-  Call(id, _1, args, _2) { 
-    return new Call(id.ast(), source.ast())
+  Assignment(target, _1, source) {
+    return new Assignment(target.ast(), source.ast());
   },
-  Return(_1, value) { 
-    return new Return(value.ast())
+  Call(id, _1, args, _2) {
+    return new Call(id.ast(), args.ast());
   },
-  Declaration(target, _1, source) { 
-    return new Declaration(target.ast(), source.ast())
+  Return(_1, value) {
+    return new Return(value.ast());
   },
-  Func(_1, id, params, _2, body, _3) { 
-    return new Func(id.ast(), params.ast(), body.ast())
+  Declaration(target, _1, source) {
+    return new Declaration(target.ast(), source.ast());
   },
-  BinaryExp(op, left, right) { 
-    return  new Binary(op.ast(), left.ast(), right.ast())
+  Func(_1, id, params, _2, body, _3) {
+    return new Func(id.ast(), params.ast(), body.ast());
   },
-  Postfix(op, left) { 
-    return new Postfix(op.ast(), left.ast())
+  BinaryExp(op, left, right) {
+    return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
-  Parenthesis(_1, exp, _2) { 
-    return new Parenthesis(exp.ast())
+  Postfix(op, left) {
+    return new Postfix(op.ast(), left.ast());
   },
-  Array(_1, args, _2) { 
-    return new Array(args.ast())
-  }
+  Array(_1, args, _2) {
+    return new Array(args.ast());
+  },
 });
 /* eslint-enable no-unused-vars */
 
