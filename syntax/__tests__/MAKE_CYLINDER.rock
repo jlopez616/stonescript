@@ -1,12 +1,10 @@
 🦖MAKE CYLINDER
 
-ROCK CYLINDER IS YABBADABBADOO(radius,height) PART
-    BEDROCK surface_area IS radius MANY height
-
+ROCK CYLINDER IS YABBADABBADOO(radius, height) PART
+    ROCK surface_area IS radius MANY height!
     GIVE PART
-    radius THINGIS radius THINGENDS
-    height THINGIS height THINGENDS
-    surface_area THINGIS surfaceArea THINGENDS
-    NOT PART
-
-    NOT PART
+       radius THINGIS radius THINGENDS!
+       height THINGIS height THINGENDS!
+       surface_area THINGIS surfaceArea THINGENDS!
+    NOT PART!
+   NOT PART!
