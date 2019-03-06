@@ -8,7 +8,7 @@
  * those that we expect not to cause an error to be thrown.
  */
 
-const fs = require('fs');
+/* const fs = require('fs');
 const assert = require('assert');
 const parse = require('../syntax/parser');
 
@@ -33,3 +33,4 @@ describe('The grammar', () => {
     }
   });
 });
+*/

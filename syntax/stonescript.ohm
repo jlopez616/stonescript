@@ -27,7 +27,7 @@ StoneScript {
                    |  Exp4
   Exp4             = Func
   					       | Exp5
-  Exp5             = Exp6 postfixop
+  Exp5             = Exp6 postfixop                          --postfix
                    | Exp6
   Exp6             =  Array                                  -- list
                    |  Call
@@ -35,7 +35,6 @@ StoneScript {
                    |  numlit
                    |  strlit
                    |  Paren
-                   |  id
   Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary
@@ -47,7 +46,7 @@ StoneScript {
   While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Statement+
-  keyword          =  ("YESNOS" | "OOF" | "OTHER" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
+  keyword          =  ("YESNOS" | "OOF" | "OTHER" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE" | "SQUISH" | "RIP" | primtype
                      | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
@@ -60,8 +59,8 @@ StoneScript {
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
-  postfixop        =  id "LITTLE SQUISH"
-                   |  id "LITTLE RIP"
+  postfixop        =  id "LITTLE" "SQUISH"
+                   |  id "LITTLE"  "RIP"
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
   indent           =  "⇨"
   dedent           =  "⇦"
