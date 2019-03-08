@@ -1,7 +1,7 @@
 StoneScript {
   Program          =  (Statement)*
   Statement        =  Loop "!"
-  				   |  Conditional "!"
+                   |  Conditional "!"
                    |  Declaration "!"
                    |  Assignment "!"
                    |  Call "!"
@@ -32,13 +32,12 @@ StoneScript {
                    |  strlit
                    |  Paren
                    |  id
-
   Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") id "IS" Exp
-  Assignment     = id "IS" Exp
+  Assignment       = id "IS" Exp
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
                    |  id "(" listOf<Primary, ","> ")"
   Loop             =  For | While
