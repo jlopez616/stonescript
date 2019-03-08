@@ -41,14 +41,13 @@ StoneScript {
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
                    |  id "(" listOf<Primary, ","> ")"
   Loop             =  For | While
-  LoopContainer    =  "(" Setup ";" Exp3 ";" Assignment ")"	
   Object           =  "PART" Field* "NOT" "PART"
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  For              =  "FOR" LoopContainer "PART" Body "NOT PART"
+  For              =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"	 "PART" Body "NOT PART"
   While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Program
