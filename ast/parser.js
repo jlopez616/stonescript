@@ -24,11 +24,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   ForLoop(_1, setup, _2, textExp, _3, increment, _4, body) { // Will likely need to be changed
     return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast());
   },
-  WhileLoop(_1, testExp, _2, body) {
+  WhileLoop(_1, _2, testExp, _3, _4, body _5) {
     return new WhileLoop(testExp, body);
   },
-  Conditional(_1, testExp, _2, consequent, _3, alternate) { // arrayToNullable alternate?
-    return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast());
+  Conditional(_1, _2, testExp, _3, consequent, _4, _5, alternate, final) { // arrayToNullable alternate?
+    return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast(), arrayToNullable(final.ast()));
   },
   Assignment(target, _1, source) {
     return new Assignment(target.ast(), source.ast());
@@ -39,18 +39,20 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Return(_1, value) {
     return new Return(value.ast());
   },
-  // John will take it from here!
-  Declaration(target, _1, source) {
+  Declaration(_1, target, _2, source) {
     return new Declaration(target.ast(), source.ast());
   },
-  Func(_1, id, params, _2, body, _3) {
-    return new Func(id.ast(), params.ast(), body.ast());
+  Func(_1, _2, id, params, _3, _4, statements, _5) {
+    return new Func(id.ast(), statements.ast(), body.ast());
   },
   BinaryExp(op, left, right) {
     return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
-  Postfix(op, left) {
-    return new Postfix(op.ast(), left.ast());
+  RelExp(id, relop, primary) {
+    return new RelExp(id.ast(), relop.ast(), primary.ast());
+  }
+  NotExp(_1, right) {
+    return new Postfix(right.ast());
   },
   Array(_1, args, _2) {
     return new Array(args.ast());
