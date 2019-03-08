@@ -12,6 +12,7 @@ const Func = require('../ast/function-object');
 const BinaryExp = require('../ast/binary-expression');
 const Postfix = require('../ast/postfix-expression');
 const Array = require('../ast/array');
+const Paren = require('../ast/paren');
 
 const grammar = ohm.grammar(fs.readFileSync('../syntax/stonescript.ohm', 'utf-8'));
 
@@ -52,6 +53,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   Array(_1, args, _2) {
     return new Array(args.ast());
+  },
+  Paren(_1, exp, _2) {
+    return new Paren(exp.ast());
   },
 });
 /* eslint-enable no-unused-vars */
