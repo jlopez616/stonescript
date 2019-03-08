@@ -1,7 +1,7 @@
 StoneScript {
   Program          =  (Statement)*
   Statement        =  Loop "!"
-  				         |  Conditional "!"
+  				   |  Conditional "!"
                    |  Declaration "!"
                    |  Assignment "!"
                    |  Call "!"
@@ -20,10 +20,12 @@ StoneScript {
   Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
   Exp4             = "NOT" Exp4                                -- not
-  						 | Exp5
+  						     | Exp5
   Exp5             = Func
   				         | Exp6
   Exp6             =  Array                                  -- list
+                   | Exp7
+  Exp7             =  Object                                  -- list
                    |  Call
                    |  boollit
                    |  numlit
@@ -40,17 +42,21 @@ StoneScript {
   Call             =  funckeyword "(" listOf<Primary, ","> ")"
                    |  id "(" listOf<Primary, ","> ")"
   Loop             =  For | While
-  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART" 
+  LoopContainer    =  "(" Setup ";" Exp3 ";" Assignment ")"	
+  Object           =  "PART" Field* "NOT" "PART"
+  Field            =  id "THINGIS" Exp "!"
+  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
-  LoopContainer    =  "(" Setup ";" Exp3 ";" Assignment ")"	
   Setup            =  Declaration | Assignment
   For              =  "FOR" LoopContainer "PART" Body "NOT PART"
   While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Program
-  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE" | "SQUISH" | "RIP" | primtype
-                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
+  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
+                   | "SQUISH" | "RIP" | primtype | "THINGIS"
+                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART"
+                   | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
