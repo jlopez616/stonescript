@@ -169,36 +169,36 @@ There will be variables you can change
 # Example Programs
 
 ```
-🦖OOGA WORLD 
-
-SPEAK ( "OOOGA" )
+SPEAK ("OOOGA")!
 ```
 
 ```
 // Hello World
+
 console.log("Hello, World!")
 ```
 
 <hr>
 
 ```
-🦖BIG SPIRAL MATH PROBLEM 
-
 ROCK FIB IS YABBADABBADOO (N) PART
-   ROCK A IS 0
-   ROCK B IS 1
-   ROCK F IS 1
-   FOR ( ROCK I IS 2; I NOT SMASH OR IS N; I LITTLE SQUISH) PART
-     F IS A SQUISH B
-     A IS B
-     B IS F
-  NOT PART
-  GIVE F
-NOT PART
+   ROCK A IS 0!
+   ROCK B IS 1!
+   ROCK F IS 1!
+   FOR ( ROCK I IS 2; I NOT SMASH OR IS N; I IS I SQUISH 1) PART
+     F IS A SQUISH B!
+     A IS B!
+     B IS F!
+   NOT PART!
+  GIVE F!
+NOT PART!
+
 
 ```
 
 ```
+// Big spiral math problem
+
 var fib = function(n) {
     var a = 0, b = 1, f = 1;
     for(var i = 2; i <= n; i++) {
@@ -211,43 +211,16 @@ var fib = function(n) {
 ```
 <hr>
 
-```
-🦖MANY TIMES BIG SPIRAL MATH PROBLEM
-
-YABBADABBADOO BADFIB(n) PART
-
-  OOF (n NOT SMASH OR IS 1) PART
-    GIVE 1
-  NOT PART
-    
-  GIVE BADFIB (n RIP 1) SQUISH BADFIB (n RIP 2)
-NOT PART
-```
-
-```
-function badfib(n) {
-  if (n <= 1) return 1;
-
-  return badfib(n - 1) + badfib(n - 2);
-}
-```
-<hr>
 
 ``` 
-
-🦖MAKE CYLINDER
-
-ROCK CYLINDER IS YABBADABBADOO(radius,height) PART
-    BEDROCK surface_area is radius MANY height
-    
+ROCK CYLINDER IS YABBADABBADOO(radius, height) PART
+    BEDROCK surface_area IS radius MANY height!
     GIVE PART
-    radius THINGIS radius 
-    height THINGIS height 
-    surface_area THINGIS surfaceArea 
-    NOT PART
-    
-    NOT PART
- 
+      radius THINGIS radius!
+      height THINGIS height !
+      surface_area THINGIS surfaceArea !
+    NOT PART!
+NOT PART!
 ```
 
 ```
@@ -267,40 +240,41 @@ let cylinder = function(radius, height) {
 <hr>
 
 ```
+ROCK CAVERN IS CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT!
+SPEAK (CAVERN)!
+```
+
+```
 // Little Array Declaration
 
 let cavern = [1, 2, 4, 8 16, 32]
 console.log (cavern)
+
 // will say "[1, 2, 4, 8, 16, 32]"
-
-
-```
-
-```
-🦖LIL CAVERN DECLARATION
-
-ROCK CAVERN = CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT
-
-SPEAK (CAVERN)
-
-🦖WILL SAY (CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT)
 ```
 <hr>
 
 ```
-🦖HUNT QUOTES
-
-YABBADABBADOO stripQuotes(s) PART
- GIVE S FROM HUNTDOWN(/['"]/g '')
- NOT PART
+ROCK a IS OOGA!
+OOF(a IS IS WORDER) PART
+  GIVE SPEAK ("ROCK IS WORDER NOT YESNOS")!
+NOT PART 
+OOFF PART
+  GIVE SPEAK ("ROCK IS YESNO")!
+NOT PART!
  
 ```
 
 ```
 
-// Simple stripQuotes function
-function stripQuotes(s) {
-    return s.replace(/['"]/g, '');
+// Simple yes no conditional
+
+let a = true
+if(a == "WORDER") {
+  return console.log("ROCK IS WORDER NOT YESNOS")
+}
+else {
+  return console.log("ROCK IS YESNO")
 }
 ```
 
