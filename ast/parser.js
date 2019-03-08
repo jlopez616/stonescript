@@ -1,20 +1,20 @@
 const fs = require('fs');
 const ohm = require('ohm-js');
-const Program = require('../ast/program.js');
-const ForLoop = require('../ast/for-loop.js');
-const Conditional = require('../ast/conditional');
-const WhileLoop = require('../ast/while-loop.js');
-const Assignment = require('../ast/assignment.js');
-const Call = require('../ast/call-statement.js');
-const Return = require('../ast/return-statement.js');
-const Declaration = require('../ast/declaration.js');
-const Func = require('../ast/function-object');
-const BinaryExp = require('../ast/binary-expression');
-const Postfix = require('../ast/postfix-expression');
-const Array = require('../ast/array');
-const Paren = require('../ast/paren');
+
+const {
+  Argument, Array, Assignment, BinaryExp, BooleanLiteral, BreakStatement,
+  Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
+  IfStatement, NumericLiteral, Parameter, Postfix, Program, ReturnStatement,
+  RipAssignment, SquishAssignment, StringLiteral, UnaryExpression,
+  VariableDeclaration, WhileLoop } = require.('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('../syntax/stonescript.ohm', 'utf-8'));
+
+// Ohm turns `x?` into either [x] or [], which we should clean up for our AST.
+function arrayToNullable(a) {
+  return a.length === 0 ? null : a[0];
+}
+
 
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {

@@ -28,19 +28,21 @@ class BreakStatement {
     // Intentionally empty
   }
 };
+
+class Conditional {
+  constructor(){
+    Object.assign(this, {testExp, consequent, alternate, final})
+  }
+}
 class Call {
   constructor(id, args) {
     Object.assign(this, { id, args });
   }
 };
-class WhileLoop {
-  constructor(testExp, consequent, alternate) {
-    Object.assign(this, { testExp, consequent, alternate });
-  }
-};
+
 class Declaration {
-  constructor(id, value) {
-    Object.assign(this, { id, value });
+  constructor(target, source) {
+    Object.assign(this, { target, source });
   }
 };
 class ForLoop {
@@ -48,11 +50,7 @@ class ForLoop {
     Object.assign(this, { setup, textExp, increment, body });
   }
 };
-class ForStatement {
-  constructor() {
-      // todo
-  }
-};
+
 class FunctionDeclaration {
   constructor(id, params, body) {
       this.id = id;
@@ -85,8 +83,8 @@ class Postfix {
   }
 };
 class Program {
-  constructor(stmts) {
-    this.stmts = stmts;
+  constructor(statements) {
+    this.statements = statements;
   }
 };
 class ReturnStatement {
@@ -123,4 +121,12 @@ class WhileLoop {
   constructor(testExp, body) {
     Object.assign(this, { testExp, body });
   }
+};
+
+module.exports = {
+  Argument, Array, Assignment, BinaryExp, BooleanLiteral, BreakStatement,
+  Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
+  IfStatement, NumericLiteral, Parameter, Postfix, Program, ReturnStatement,
+  RipAssignment, SquishAssignment, StringLiteral, UnaryExpression,
+  VariableDeclaration, WhileLoop
 };
