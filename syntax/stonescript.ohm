@@ -20,7 +20,7 @@ StoneScript {
   Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
   Exp4             = "NOT" Exp4                                -- not
-  						     | Exp5
+                   | Exp5
   Exp5             = Func
   				         | Exp6
   Exp6             =  Array                                  -- list
