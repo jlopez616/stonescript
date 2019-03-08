@@ -28,7 +28,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new WhileLoop(testExp, body);
   },
   Conditional(_1, testExp, _2, consequent, _3, alternate) { // arrayToNullable alternate?
-    return new Conditional(testExp.ast(), consequent.ast(), alternate.ast());
+    return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast());
   },
   Assignment(target, _1, source) {
     return new Assignment(target.ast(), source.ast());
@@ -39,6 +39,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Return(_1, value) {
     return new Return(value.ast());
   },
+  // John will take it from here!
   Declaration(target, _1, source) {
     return new Declaration(target.ast(), source.ast());
   },
