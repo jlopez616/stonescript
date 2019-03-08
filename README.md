@@ -9,7 +9,7 @@ StoneScript is the oldest known coding language in the world. It is believed to 
 
 # Grammar
 
-Full grammar may be found at https://github.com/johnllopez616/stonescript/blob/master/syntax/stonescript.ohm
+Full grammar may be found [here!](https://github.com/johnllopez616/stonescript/blob/master/syntax/stonescript.ohm)
 
 ```
 StoneScript {
@@ -101,12 +101,9 @@ WEAKLY TYPED, WILL BE TYPE INFERENCE
 Primitive Types:
 * Number = COUNTERS
 * String = WORDERS
-
 * Boolean = YESNOS
-
 * True = OOGA	
 * False = NOOGA
-
 * Undefined = WHAT
 
 
@@ -129,9 +126,6 @@ There will be variables you can change
 * \/ BREAK 
 * \* MANY
 * % LEFT
-* ++ LITTLE SQUISH
-* -- LITTLE RIP
-* ** MANY MANY
 
 ### Relational Operators
 * == IS IS
