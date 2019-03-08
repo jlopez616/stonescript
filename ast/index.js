@@ -13,7 +13,17 @@ class Assignment {
     Object.assign(this, { target, source });
   }
 };
-class BinaryExp {
+class Exp1_binary {
+  constructor(op, left, right) {
+    Object.assign(this, { op, left, right });
+  }
+};
+class Exp2_binary {
+  constructor(op, left, right) {
+    Object.assign(this, { op, left, right });
+  }
+};
+class Exp3_binary {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
   }
@@ -87,6 +97,11 @@ class Program {
     this.statements = statements;
   }
 };
+class Literal {
+  constructor(value) {
+    Object.assign(this, { value });
+  }
+}
 class ReturnStatement {
   constructor(value) {
     this.value = value;
@@ -95,6 +110,11 @@ class ReturnStatement {
 class RipAssignment {
   constructor(id) {
     this.id = id;
+  }
+};
+class Statement {
+  constructor(val) {
+    this.val = val;
   }
 };
 class SquishAssignment {
@@ -124,9 +144,9 @@ class WhileLoop {
 };
 
 module.exports = {
-  Argument, Array, Assignment, BinaryExp, BooleanLiteral, BreakStatement,
+  Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral, BreakStatement,
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, ReturnStatement,
-  RipAssignment, SquishAssignment, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop
-};
+  RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
+  VariableDeclaration, WhileLoop, Literal
+}

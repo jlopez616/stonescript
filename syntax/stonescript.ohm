@@ -1,6 +1,7 @@
 StoneScript {
   Program          =  (Statement)*
-  Statement        =  Loop "!"
+  Statement        =  ForLoop "!"
+                   | WhileLoop "!"
                    |  Conditional "!"
                    |  Declaration "!"
                    |  Assignment "!"
@@ -19,7 +20,7 @@ StoneScript {
                    |  Exp3
   Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
-  Exp4             = "NOT" Exp4                                -- not
+  Exp4             = "NOT" Exp4                                -- unary
                    | Exp5
   Exp5             = Func
                    |Exp6
@@ -38,17 +39,16 @@ StoneScript {
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") id "IS" Exp
   Assignment       = id "IS" Exp
-  Call             =  funckeyword "(" listOf<Primary, ","> ")"
-                   |  id "(" listOf<Primary, ","> ")"
-  Loop             =  For | While
+  Call             =  ("SPEAK" | id) "(" listOf<Primary, ","> ")"
+
   Object           =  "PART" Field* "NOT" "PART"
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  For              =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"	 "PART" Body "NOT PART"
-  While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
+  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"	 "PART" Body "NOT PART"
+  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Program
   keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"

@@ -1,6 +1,4 @@
 Program {
-  statements: 
-  [ Call {
-    callee: IdentifierExpression { id: 'SPEAK' },
-    args:
-    [ Argument { id: null, expression: StringLiteral { value: "OOOGA"}}]}]}
+  statements:
+   Program {
+     statements: Call { id: 'SPEAK', args: [ Literal { value: 'OOOGA' } ] } } }
