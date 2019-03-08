@@ -1,7 +1,7 @@
 StoneScript {
   Program          =  (Statement)*
   Statement        =  ForLoop "!"
-                   | WhileLoop "!"
+                   |  WhileLoop "!"
                    |  Conditional "!"
                    |  Declaration "!"
                    |  Assignment "!"
@@ -9,7 +9,7 @@ StoneScript {
                    |  Return "!"
                    |  Exp "!"
                    |  comment ""
-  Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
+  Primary          =  Func | Exp | intlit | strlit | boollit | Call | Array | id
   Func             =  "YABBADABBADOO" "(" listOf<id, ", "> ")" "PART" Statement* "NOT PART"
   Exp              =  Exp "OR" Exp1                          -- or
                    |  Exp "AND" Exp1                         -- and
@@ -29,7 +29,7 @@ StoneScript {
   Exp7             =  Object                                  -- list
                    |  Call
                    |  boollit
-                   |  numlit
+                   |  intlit
                    |  strlit
                    |  Paren
                    |  id
@@ -58,7 +58,7 @@ StoneScript {
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
-  numlit           =  digit+ ("." digit+)?
+  intlit           =  digit+ ("." digit+)?
   strlit           =  "\"" (~"\\" ~"\"" ~"\n" any)* "\""
   nothing          =  "WHAT"
   id               =  ~keyword letter idrest*

@@ -1,0 +1,3 @@
+Program {
+  statements:
+   Program { statements: Declaration { target: 'x', source: 'y' } } }
