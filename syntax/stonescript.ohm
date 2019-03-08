@@ -22,7 +22,7 @@ StoneScript {
   Exp4             = "NOT" Exp4                                -- not
                    | Exp5
   Exp5             = Func
-  				         | Exp6
+                   |Exp6
   Exp6             =  Array                                  -- list
                    | Exp7
   Exp7             =  Object                                  -- list
