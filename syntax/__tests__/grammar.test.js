@@ -10,7 +10,7 @@
  * stored in this folder, and expect the syntax checker to return true or
  * false, as appropriate.
  */
-
+const expect = require('expect');
 const fs = require('fs');
 const parse = require('../syntax-checker');
 

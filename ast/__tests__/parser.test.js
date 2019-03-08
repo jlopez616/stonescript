@@ -20,6 +20,7 @@ describe('The parser', () => {
         fs.readFile(`${__dirname}/${name}`, 'utf-8', (err, input) => {
           const ast = parse(input);
           const astText = util.inspect(ast, { depth: null });
+          console.log(astText)
           fs.readFile(`${__dirname}/${name.slice(0, -4)}ast`, 'utf-8', (_err, expected) => {
             expect(astText).toEqual(expected.trim());
             done();

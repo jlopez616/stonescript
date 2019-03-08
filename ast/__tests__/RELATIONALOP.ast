@@ -1,0 +1,4 @@
+Program {
+  statements:
+   Program {
+     statements: Declaration { target: 'mylove', source: 'NOOGA' } } }

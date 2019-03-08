@@ -20,13 +20,13 @@ StoneScript {
                    |  Exp3
   Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
-  Exp4             = "NOT" Exp4                                -- unary
-                   | Exp5
-  Exp5             = Func
-                   |Exp6
+  Exp4             =  "NOT" Exp4                                -- unary
+                   |  Exp5
+  Exp5             =  Func
+                   |  Exp6
   Exp6             =  Array                                  -- list
-                   | Exp7
-  Exp7             =  Object                                  -- list
+                   |  Exp7
+  Exp7             =  Obj                                    -- list
                    |  Call
                    |  boollit
                    |  intlit
@@ -41,7 +41,7 @@ StoneScript {
   Assignment       = id "IS" Exp
   Call             =  ("SPEAK" | id) "(" listOf<Primary, ","> ")"
 
-  Object           =  "PART" Field* "NOT" "PART"
+  Obj              =  "PART" Field* "NOT" "PART"
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*

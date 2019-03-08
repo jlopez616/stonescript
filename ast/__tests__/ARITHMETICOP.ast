@@ -1,0 +1,7 @@
+Program {
+  statements:
+   Program {
+     statements:
+      Declaration {
+        target: 'a',
+        source: Exp2_binary { op: 'a', left: 'SQUISH', right: 'b' } } } }

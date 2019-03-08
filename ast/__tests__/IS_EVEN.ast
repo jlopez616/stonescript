@@ -1,0 +1,27 @@
+Program {
+  statements:
+   Program {
+     statements:
+      Declaration {
+        target: 'is_even',
+        source:
+         Func {
+           id: [ 'x' ],
+           params:
+            [ Program {
+                statements:
+                 Declaration {
+                   target: 'is_even',
+                   source:
+                    Exp1_binary { op: 'x', left: 'LEFT', right: Literal { value: 2 } } } },
+              Program {
+                statements:
+                 Conditional {
+                   testExp:
+                    Exp3_binary { op: 'is_even', left: 'IS IS', right: Literal { value: 0 } },
+                   consequent: [],
+                   alternate: null,
+                   final:
+                    Program {
+                      statements: Program { statements: Return { value: 'FALSE' } } } } } ],
+           body: undefined } } } }

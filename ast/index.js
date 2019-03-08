@@ -13,6 +13,11 @@ class Assignment {
     Object.assign(this, { target, source });
   }
 };
+class Exp_or {
+  constructor(op, left, right) {
+    Object.assign(this, { op, left, right });
+  }
+};
 class Exp1_binary {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
@@ -33,14 +38,9 @@ class BooleanLiteral {
       this.value = value;
   }
 };
-class BreakStatement {
-  constructor() { // eslint-disable-line
-    // Intentionally empty
-  }
-};
 
 class Conditional {
-  constructor(){
+  constructor(testExp, consequent, alternate, final){
     Object.assign(this, {testExp, consequent, alternate, final})
   }
 }
@@ -61,15 +61,9 @@ class ForLoop {
   }
 };
 
-class FunctionDeclaration {
+class Func {
   constructor(id, params, body) {
-      this.id = id;
-      this.function = new FunctionObject(id, params, body);
-  }
-};
-class FunctionObject {
-  constructor(id, params, body) {
-    Object.assign(this, { id, params, body });
+      Object.assign(this, { id, params, body });
   }
 };
 class IfStatement {
@@ -80,6 +74,11 @@ class IfStatement {
 class NumericLiteral {
   constructor(value) {
     this.value = value;
+  }
+};
+class Obj {
+  constructor(field) {
+    this.field = field;
   }
 };
 class Parameter {
@@ -101,12 +100,17 @@ class Literal {
   constructor(value) {
     Object.assign(this, { value });
   }
-}
-class ReturnStatement {
+};
+class Return {
   constructor(value) {
     this.value = value;
   }
 };
+class RelExp {
+  constructor(id, relop, primary) {
+    Object.assign(this, { id, relop, primary })
+  }
+}
 class RipAssignment {
   constructor(id) {
     this.id = id;
@@ -145,8 +149,8 @@ class WhileLoop {
 
 module.exports = {
   Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral, BreakStatement,
-  Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, ReturnStatement,
+  Conditional, Call, Declaration, ForLoop, Func,
+  IfStatement, NumericLiteral, Parameter, Postfix, Program, Return,
   RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal
+  VariableDeclaration, WhileLoop, Literal, Obj, RelExp, Exp_or
 }

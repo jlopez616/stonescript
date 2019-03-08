@@ -1,0 +1,5 @@
+Program {
+  statements:
+   Program {
+     statements:
+      Declaration { target: 'COUNT', source: Literal { value: 1 } } } }

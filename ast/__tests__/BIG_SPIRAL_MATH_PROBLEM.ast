@@ -1,0 +1,36 @@
+Program {
+  statements:
+   Program {
+     statements:
+      Declaration {
+        target: 'FIB',
+        source:
+         Func {
+           id: [ 'N' ],
+           params:
+            [ Program {
+                statements: Declaration { target: 'A', source: Literal { value: 0 } } },
+              Program {
+                statements: Declaration { target: 'B', source: Literal { value: 1 } } },
+              Program {
+                statements: Declaration { target: 'F', source: Literal { value: 1 } } },
+              Program {
+                statements:
+                 ForLoop {
+                   setup: Declaration { target: 'I', source: Literal { value: 2 } },
+                   textExp: Exp3_binary { op: 'I', left: 'NOT SMASH OR IS', right: 'N' },
+                   increment:
+                    Assignment {
+                      target: 'I',
+                      source:
+                       Exp2_binary { op: 'I', left: 'SQUISH', right: Literal { value: 1 } } },
+                   body:
+                    Program {
+                      statements:
+                       Program {
+                         statements:
+                          Assignment {
+                            target: 'F',
+                            source: Exp2_binary { op: 'A', left: 'SQUISH', right: 'B' } } } } } },
+              Program { statements: Return { value: 'F' } } ],
+           body: undefined } } } }

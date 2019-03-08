@@ -1,0 +1,9 @@
+ROCK is_even IS YABBADABBADOO (x) PART
+    ROCK is_even IS x LEFT 2!
+    OOF (is_even IS IS 0 )PART
+        GIVE TRUE!
+    NOT PART
+    OOFF PART
+        GIVE FALSE!
+    NOT PART!
+NOT PART!

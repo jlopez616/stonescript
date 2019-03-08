@@ -4,9 +4,9 @@ const ohm = require('ohm-js');
 const {
   Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral, BreakStatement,
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, ReturnStatement,
-  RipAssignment, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit} = require('../ast');
+  IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp, ReturnStatement,
+  RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
+  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Exp_or} = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
 
@@ -30,11 +30,14 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   WhileLoop(_1, _2, testExp, _3, _4, body, _5) {
     return new WhileLoop(testExp.ast(), body.ast());
   },
-  /*Conditional(_1, _2, testExp, _3, consequent, _4, _5, alternate, final) { // arrayToNullable alternate?
+  Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9, alternate, _10, _11, _12, final, _13) { // arrayToNullable alternate?
     return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast()), arrayToNullable(final.ast()));
-  }, */
+  },
   Assignment(target, _1, source) {
     return new Assignment(target.ast(), source.ast());
+  },
+  Obj(_1, field, _2, _3) {
+    return new Object(field.ast());
   },
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
@@ -48,14 +51,17 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Func(_1, _2, ids, _3, _4, statements, _5) {
     return new Func(ids.ast(), statements.ast());
   },
+  Exp_or(op, left, right) {
+    return new Exp_or(op.ast(), left.ast(), right.ast());
+  },
   Exp1_binary(op, left, right) {
-    return new Exp1(op.ast(), left.ast(), right.ast());
+    return new Exp1_binary(op.ast(), left.ast(), right.ast());
   },
   Exp2_binary(op, left, right) {
-    return new Exp2(op.ast(), left.ast(), right.ast());
+    return new Exp2_binary(op.ast(), left.ast(), right.ast());
   },
   Exp3_binary(op, left, right) {
-    return new Exp3(op.ast(), left.ast(), right.ast());
+    return new Exp3_binary(op.ast(), left.ast(), right.ast());
   },
   RelExp(id, relop, primary) {
     return new RelExp(id.ast(), relop.ast(), primary.ast());
@@ -68,6 +74,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   Paren(_1, exp, _2) {
     return new Paren(exp.ast());
+  },
+  NonemptyListOf(first, _, rest) {
+  return [first.ast(), ...rest.ast()];
   },
   nonemptyListOf(first, _, rest) {
   return [first.ast(), ...rest.ast()];
