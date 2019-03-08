@@ -1,0 +1,5 @@
+FOR ( I IS 2; I SQUISH N; I IS I SQUISH 1) PART
+     F IS A SQUISH B!
+     A IS B!
+     B IS F!
+NOT PART!

@@ -8,42 +8,44 @@ StoneScript {
                    |  Return "!"
                    |  Exp "!"
                    |  comment ""
-  Loop             =  For | While
-  Declaration      =  "ROCK" id "IS" Exp
-
-  Assignment     = id "IS" Exp
-  Call             =  funckeyword "(" listOf<Primary, ","> ")"
-                   |  id "(" listOf<Primary, ","> ")"
   Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
-  Func             =  ("YABBADABBADOO" "(" listOf<id, ", "> ")")? "PART" Statement* "NOT PART"
-  Exp              =  Exp "or" Exp1                          -- or
-                   |  Exp "and" Exp1                         -- and
+  Func             =  "YABBADABBADOO" "(" listOf<id, ", "> ")" "PART" Statement* "NOT PART"
+  Exp              =  Exp "OR" Exp1                          -- or
+                   |  Exp "AND" Exp1                         -- and
                    |  Exp1
-  Exp1             =  Exp1 relop Exp2                        -- binary
+  Exp1             =  Exp1 mulop Exp2                        -- binary
                    |  Exp2
   Exp2             =  Exp2 addop Exp3                        -- binary
                    |  Exp3
-  Exp3             =  Exp3 mulop Exp4                        -- binary
+  Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
-  Exp4             = Func
-  				         | Exp5
-  Exp5             =  Array                                  -- list
+  Exp4             = "NOT" Exp4                                -- not
+  						 | Exp5
+  Exp5             = Func
+  				         | Exp6
+  Exp6             =  Array                                  -- list
                    |  Call
                    |  boollit
                    |  numlit
                    |  strlit
                    |  Paren
-                   | id
+                   |  id
+
   Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
-  For              =  "FOR" LoopContainer "PART" Body "NOT PART"
+  Declaration      =  ("ROCK" | "BEDROCK") id "IS" Exp
+  Assignment     = id "IS" Exp
+  Call             =  funckeyword "(" listOf<Primary, ","> ")"
+                   |  id "(" listOf<Primary, ","> ")"
+  Loop             =  For | While
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART" 
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
-  LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"	
+  LoopContainer    =  "(" Setup ";" Exp3 ";" Assignment ")"	
   Setup            =  Declaration | Assignment
+  For              =  "FOR" LoopContainer "PART" Body "NOT PART"
   While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Program
@@ -61,8 +63,6 @@ StoneScript {
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
   primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
-  indent           =  "⇨"
-  dedent           =  "⇦"
   newline          =  "\n"+
   comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
                    | multiLineComment
