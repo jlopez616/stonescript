@@ -13,41 +13,37 @@ Full grammar may be found [here!](https://github.com/johnllopez616/stonescript/b
 
 ```
 StoneScript {
-  Program          =  Statement*
-  Statement        =  Loop                                    -- loop
-  				         |  Conditional                             -- conditional
-                   |  Declaration                             -- decl
-                   |  Assignment                              -- assign
-                   |  Call                                    -- call
-                   |  Return                                  -- return
-                   |  Exp                                     -- expression
-                   |  comment
-  Loop             =  For | While
-  Declaration      =  "ROCK" id "IS" Exp
-  Assignment       =  NormalAssignment
-                   |  LittleAssignment
-  NormalAssignment =  id "IS" Exp
-  LittleAssignment =  id "LITTLE SQUISH"
-                   |  id "LITTLE RIP"
-  Call             =  funckeyword "(" listOf<Primary, ","> ")"
-                   |  id "(" listOf<Primary, ","> ")"
-  Primary          =  Func | Exp | numlit | strlit | boollit | Call | Array | id
-  Func             =  ("YABBADABBADOO" "(" listOf<id, ","> ")")? "PART" Statement* "NOT PART"
-  Exp              =  Exp "or" Exp1                          -- or
-                   |  Exp "and" Exp1                         -- and
+  Program          =  (Statement)*
+  Statement        =  ForLoop "!"
+                   |  WhileLoop "!"
+                   |  Conditional "!"
+                   |  Declaration "!"
+                   |  Assignment "!"
+                   |  Call "!"
+                   |  Return "!"
+                   |  Exp "!"
+                   |  comment ""
+  Primary          =  Func | Exp | intlit | strlit | boollit | Call | Array | id
+  Func             =  "YABBADABBADOO" "(" listOf<id, ", "> ")" "PART" Statement* "NOT PART"
+  Exp              =  Exp "OR" Exp1                          -- or
+                   |  Exp "AND" Exp1                         -- and
                    |  Exp1
-  Exp1             =  Exp1 relop Exp2                        -- binary
+  Exp1             =  Exp1 mulop Exp2                        -- binary
                    |  Exp2
   Exp2             =  Exp2 addop Exp3                        -- binary
                    |  Exp3
-  Exp3             =  Exp3 mulop Exp4                        -- binary
+  Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
-  Exp4             = Func
-  					       | Exp5
-  Exp5             =  Array                                  -- list
+  Exp4             =  "NOT" Exp4                                -- unary
+                   |  Exp5
+  Exp5             =  Func
+                   |  Exp6
+  Exp6             =  Array                                  -- list
+                   |  Exp7
+  Exp7             =  Obj                                    -- list
                    |  Call
                    |  boollit
-                   |  numlit
+                   |  intlit
                    |  strlit
                    |  Paren
                    |  id
@@ -55,19 +51,28 @@ StoneScript {
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
-  For              =  "FOR" LoopContainer "PART" Body "NOT PART"
-  Conditional  =      "OOF"
-  LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"
+  Declaration      =  ("ROCK" | "BEDROCK") id "IS" Exp
+  Assignment       = id "IS" Exp
+  Call             =  ("SPEAK" | id) "(" listOf<Primary, ","> ")"
+
+  Obj              =  "PART" Field* "NOT" "PART"
+  Field            =  id "THINGIS" Exp "!"
+  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
+                      ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
+                      ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
+  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"	 "PART" Body "NOT PART"
+  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
-  Body             =  Statement+
-  keyword          =  ("YESNOS" | "OOF" | "OTHER" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
-                     | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
+  Body             =  Program
+  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
+                   | "SQUISH" | "RIP" | primtype | "THINGIS"
+                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART"
+                   | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
-  numlit           =  digit+ ("." digit+)?
+  intlit           =  digit+ ("." digit+)?
   strlit           =  "\"" (~"\\" ~"\"" ~"\n" any)* "\""
   nothing          =  "WHAT"
   id               =  ~keyword letter idrest*
@@ -75,15 +80,13 @@ StoneScript {
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
-  incop            =  "LITTLE SQUISH" | "LITTLE RIP"
-  primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
-  indent           =  "⇨"
-  dedent           =  "⇦"
+  primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
   newline          =  "\n"+
   comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
                    | multiLineComment
   multiLineComment = "🦕" (~"🦕" any)* "🦕"
 }
+
 ```
 # List of Features
 
