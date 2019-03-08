@@ -67,7 +67,7 @@ StoneScript {
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
-  primtype         =  "YESNOS" | "COUNTERS" | "WONDERS" | "WHAT"
+  primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
   newline          =  "\n"+
   comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
                    | multiLineComment
