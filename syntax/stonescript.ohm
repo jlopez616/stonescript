@@ -1,7 +1,7 @@
 StoneScript {
   Program          =  (Statement)*
   Statement        =  Loop "!"
-  				         |  Conditional "!"
+  				   |  Conditional "!"
                    |  Declaration "!"
                    |  Assignment "!"
                    |  Call "!"
@@ -28,6 +28,7 @@ StoneScript {
   Exp4             = Func
   				         | Exp5
   Exp5             =  Array                                  -- list
+                   |  Object
                    |  Call
                    |  boollit
                    |  numlit
@@ -38,17 +39,21 @@ StoneScript {
   ExpList          =  Exp ("," Exp)*
   Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
+  Object           =  "PART" Field* "NOT" "PART"
+  Field            =  id "THINGIS" Exp "!"
   For              =  "FOR" LoopContainer "PART" Body "NOT PART"
-  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART" 
+  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
-  LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"	
+  LoopContainer    =  "(" Setup ";" Exp ";" Assignment ")"
   Setup            =  Declaration | Assignment
   While            =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Program
-  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE" | "SQUISH" | "RIP" | primtype
-                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART" | "NOT PART") ~idrest
+  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
+                   | "SQUISH" | "RIP" | primtype | "THINGIS"
+                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART"
+                   | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
