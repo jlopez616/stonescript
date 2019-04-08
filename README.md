@@ -1,5 +1,5 @@
 # StoneScript
-The 2.5 Million Year Old Caveman coding Language
+The 10,000 Year Old Caveman Coding Language
 
 ![StoneScrippt Logo](https://i.imgur.com/dvywB1b.png)
 
