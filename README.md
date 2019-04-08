@@ -5,7 +5,21 @@ The 2.5 Million Year Old Caveman coding Language
 
 
 # Introduction
-StoneScript is the oldest known coding language in the world. It is believed to have originated over 2.5 million years ago and is coloquially know as the "Caveman Coding Language". Archaeologists believe if this language were developed today, it would have drawn inspiration from JavaScript, Haskell, and Python. The Stone Age engineers that created this language may not have had the greatest understanding of types, only weakly supporting the simplest of types, but included currying and list comprehension having only recently discovered it, and thinking it was the coolest thing since fire. StoneScript is not a visually pleasing language being particularly hard to read and write in, but it is the best language to yell at anything. 
+The story of StoneScript, coloquially known as the "Caveman Coding Language", began 
+approximately 10,000 years ago, as human ancestors began
+writing programs on stone tablets. The purpose for creating these tablets and implementing
+them remains a mystery that the StoneScript Project aims to solve through recreating the 
+language with Ohm (link) and Javascript technologies. 
+
+
+Our department belives if this language were developed today, it would have drawn 
+inspiration from JavaScript, Haskell, and Python. 
+The human ancestors that created this language may not have had the greatest 
+understanding of types, only weakly supporting the simplest of types, but included 
+currying and list comprehension having only recently discovered it, and thinking it 
+was the coolest thing since fire. StoneScript is not a visually pleasing language, 
+being particularly hard to read and write in, but we assert that it is the best 
+language to yell at anything.
 
 # Grammar
 
