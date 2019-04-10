@@ -148,7 +148,7 @@ class WhileLoop {
 };
 
 module.exports = {
-  Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral, BreakStatement,
+  Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop, Func,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, Return,
   RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
