@@ -25,83 +25,6 @@ language to yell at anything.
 
 Full grammar may be found [here!](https://github.com/johnllopez616/stonescript/blob/master/syntax/stonescript.ohm)
 
-```
-StoneScript {
-  Program          =  (Statement)*
-  Statement        =  ForLoop "!"
-                   |  WhileLoop "!"
-                   |  Conditional "!"
-                   |  Declaration "!"
-                   |  Assignment "!"
-                   |  Call "!"
-                   |  Return "!"
-                   |  Exp "!"
-                   |  comment ""
-  Primary          =  Func | Exp | intlit | strlit | boollit | Call | Array | id
-  Func             =  "YABBADABBADOO" "(" listOf<id, ", "> ")" "PART" Statement* "NOT PART"
-  Exp              =  Exp "OR" Exp1                          -- or
-                   |  Exp "AND" Exp1                         -- and
-                   |  Exp1
-  Exp1             =  Exp1 mulop Exp2                        -- binary
-                   |  Exp2
-  Exp2             =  Exp2 addop Exp3                        -- binary
-                   |  Exp3
-  Exp3             =  Exp3 relop Exp4                        -- binary
-                   |  Exp4
-  Exp4             =  "NOT" Exp4                                -- unary
-                   |  Exp5
-  Exp5             =  Func
-                   |  Exp6
-  Exp6             =  Array                                  -- list
-                   |  Exp7
-  Exp7             =  Obj                                    -- list
-                   |  Call
-                   |  boollit
-                   |  intlit
-                   |  strlit
-                   |  Paren
-                   |  id
-  Paren            = "(" Exp ")"
-  ExpList          =  Exp ("," Exp)*
-  Return           =  "GIVE" Primary
-  Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
-  Declaration      =  ("ROCK" | "BEDROCK") id "IS" Exp
-  Assignment       = id "IS" Exp
-  Call             =  ("SPEAK" | id) "(" listOf<Primary, ","> ")"
-
-  Obj              =  "PART" Field* "NOT" "PART"
-  Field            =  id "THINGIS" Exp "!"
-  Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
-                      ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
-                      ("OOFF" "PART" Body "NOT PART" )?
-  Setup            =  Declaration | Assignment
-  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"	 "PART" Body "NOT PART"
-  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
-  RelExp           =  id relop Primary
-  Body             =  Program
-  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
-                   | "SQUISH" | "RIP" | primtype | "THINGIS"
-                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART"
-                   | "NOT PART") ~idrest
-  funckeyword      =  "SPEAK"
-  boollit          =  "OOGA"
-                   |  "NOOGA"
-  intlit           =  digit+ ("." digit+)?
-  strlit           =  "\"" (~"\\" ~"\"" ~"\n" any)* "\""
-  nothing          =  "WHAT"
-  id               =  ~keyword letter idrest*
-  idrest           =  "_" | alnum
-  addop            =  "SQUISH" | "RIP"
-  relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
-  mulop            =  "MANY" | "BREAK" | "LEFT"
-  primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
-  newline          =  "\n"+
-  comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
-                   | multiLineComment
-  multiLineComment = "🦕" (~"🦕" any)* "🦕"
-}
-
-```
 # List of Features
 
 ## Comments
@@ -112,8 +35,6 @@ StoneScript {
 LINE COMMENT 🦕
 
 ## Types
-
-WEAKLY TYPED, WILL BE TYPE INFERENCE
 
 Primitive Types:
 * Number = COUNTERS
