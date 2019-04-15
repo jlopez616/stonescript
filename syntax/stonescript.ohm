@@ -1,4 +1,4 @@
-StoneScript {
+Stonescript {
   Program          =  (Statement)*
   Statement        =  ForLoop "!"
                    |  WhileLoop "!"
@@ -10,7 +10,7 @@ StoneScript {
                    |  Exp "!"
                    |  comment ""
   Primary          =  Func | Exp | intlit | strlit | boollit | Call | Array | id
-  Func             =  "YABBADABBADOO" "(" listOf<id, ", "> ")" "PART" Statement* "NOT PART"
+  Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" ("GIVES" type)? "PART" Statement* "NOT PART"
   Exp              =  Exp "OR" Exp1                          -- or
                    |  Exp "AND" Exp1                         -- and
                    |  Exp1
@@ -20,7 +20,7 @@ StoneScript {
                    |  Exp3
   Exp3             =  Exp3 relop Exp4                        -- binary
                    |  Exp4
-  Exp4             =  "NOT" Exp4                                -- unary
+  Exp4             =  "NOT" Exp4                             -- unary
                    |  Exp5
   Exp5             =  Func
                    |  Exp6
@@ -35,9 +35,10 @@ StoneScript {
                    |  id
   Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
+  Arg              =  type id
   Return           =  "GIVE" Primary
   Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
-  Declaration      =  ("ROCK" | "BEDROCK") id "IS" Exp
+  Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       = id "IS" Exp
   Call             =  ("SPEAK" | id) "(" listOf<Primary, ","> ")"
 
@@ -47,7 +48,7 @@ StoneScript {
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"	 "PART" Body "NOT PART"
+  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"    "PART" Body "NOT PART"
   WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  id relop Primary
   Body             =  Program
@@ -63,6 +64,8 @@ StoneScript {
   nothing          =  "WHAT"
   id               =  ~keyword letter idrest*
   idrest           =  "_" | alnum
+  type             =  "COUNTERS" | "WORDERS" | "YESNOS" | "WHUT" | "DOERS"
+  array            =  "CAVE"
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
