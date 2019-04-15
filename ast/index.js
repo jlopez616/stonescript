@@ -96,6 +96,11 @@ class Program {
     this.statements = statements;
   }
 };
+class PrimitiveType {
+  constructor(name) {
+    Object.assign(this, { name });
+  }
+}
 class Literal {
   constructor(value) {
     Object.assign(this, { value });
@@ -150,7 +155,7 @@ class WhileLoop {
 module.exports = {
   Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop, Func,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, Return,
+  IfStatement, NumericLiteral, Parameter, Postfix, Program, PrimitiveType, Return,
   RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
   VariableDeclaration, WhileLoop, Literal, Obj, RelExp, Exp_or
 }
