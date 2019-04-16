@@ -1,4 +1,4 @@
-const { Func, /*Param*,*/ PrimitiveType } = require('../ast');
+const { Func, /*Param,*/ PrimitiveType } = require('../ast');
 
 const CounterType = new PrimitiveType('counter'); // number
 const WorderType = new PrimitiveType('worder'); //string
