@@ -8,7 +8,7 @@ function doCheck(condition, message) {
   }
 }
 
-model.exports = {
+module.exports = {
   //add ALL the type checking functions!
   
 }
