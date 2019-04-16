@@ -4,8 +4,11 @@ const CounterType = new PrimitiveType('counter'); // number
 const WorderType = new PrimitiveType('worder'); //string
 const YesnosType = new PrimitiveType('yesno'); //Boolean
 const WhatType = new PrimitiveType('what'); //undefined
+const TabletType = new PrimitiveType('tablet'); //object
 
 const standardFunctions = [
+  //we need to decide what standard functions we want to include
+  
   /* new Func('print', [new Param('s', StringType)]),
   new Func('flush', []),
   new Func('getchar', [], StringType),
