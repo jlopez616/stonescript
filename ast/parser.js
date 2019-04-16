@@ -45,11 +45,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Return(_1, value) {
     return new Return(value.ast());
   },
-  Declaration(_1, target, _2, source) {
-    return new Declaration(target.ast(), source.ast());
+  Declaration(_1, type, array, target, _2, source) {
+    return new Declaration(target.ast(), source.ast(), type.ast(), arrayToNullable(array.ast()));
   },
-  Func(_1, _2, ids, _3, _4, statements, _5) {
-    return new Func(ids.ast(), statements.ast());
+  Func(_1, _2, params, _3, _4, _5, return_type, statements, _6) {
+    return new Func(params.ast(), arrayToNullable(return_type.ast()), statements.ast());
   },
   Exp_or(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());

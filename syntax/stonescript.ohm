@@ -1,5 +1,5 @@
 Stonescript {
-  Program          =  (Statement)*
+  Program          =  Statement*
   Statement        =  ForLoop "!"
                    |  WhileLoop "!"
                    |  Conditional "!"
@@ -9,7 +9,6 @@ Stonescript {
                    |  Return "!"
                    |  Exp "!"
                    |  comment ""
-  Primary          =  Func | Exp | intlit | strlit | boollit | Call | Array | id
   Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" ("GIVES" type)? "PART" Statement* "NOT PART"
   Exp              =  Exp "OR" Exp1                          -- or
                    |  Exp "AND" Exp1                         -- and
@@ -18,15 +17,13 @@ Stonescript {
                    |  Exp2
   Exp2             =  Exp2 addop Exp3                        -- binary
                    |  Exp3
-  Exp3             =  Exp3 relop Exp4                        -- binary
+  Exp3             =  Exp4 relop Exp4                        -- binary
                    |  Exp4
   Exp4             =  "NOT" Exp4                             -- unary
                    |  Exp5
   Exp5             =  Func
-                   |  Exp6
-  Exp6             =  Array                                  -- list
-                   |  Exp7
-  Exp7             =  Obj                                    -- list
+                   |  Array                                  -- arr
+                   |  Obj                                    -- obj
                    |  Call
                    |  boollit
                    |  intlit
@@ -36,11 +33,11 @@ Stonescript {
   Paren            = "(" Exp ")"
   ExpList          =  Exp ("," Exp)*
   Arg              =  type id
-  Return           =  "GIVE" Primary
-  Array            =  "CAVEIN" ListOf<Primary, ","> "CAVEOUT"
+  Return           =  "GIVE" Exp
+  Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       = id "IS" Exp
-  Call             =  ("SPEAK" | id) "(" listOf<Primary, ","> ")"
+  Call             =  ("SPEAK" | id) "(" listOf<Exp, ","> ")"
 
   Obj              =  "PART" Field* "NOT" "PART"
   Field            =  id "THINGIS" Exp "!"
@@ -50,10 +47,10 @@ Stonescript {
   Setup            =  Declaration | Assignment
   ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"    "PART" Body "NOT PART"
   WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
-  RelExp           =  id relop Primary
-  Body             =  Program
+  RelExp           =  Exp4 relop Exp4
+  Body             =  Statement*
   keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
-                   | "SQUISH" | "RIP" | primtype | "THINGIS"
+                   | "SQUISH" | "RIP" | primtype | "THINGIS" | "IS" | "LEFT" | "BREAK"
                    | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART"
                    | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"

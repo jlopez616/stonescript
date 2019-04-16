@@ -51,8 +51,8 @@ class Call {
 };
 
 class Declaration {
-  constructor(target, source) {
-    Object.assign(this, { target, source });
+  constructor(target, source, type, array) {
+    Object.assign(this, { target, source, type, array });
   }
 };
 class ForLoop {
@@ -62,8 +62,8 @@ class ForLoop {
 };
 
 class Func {
-  constructor(id, params, body) {
-      Object.assign(this, { id, params, body });
+  constructor(params, return_type, statements) {
+      Object.assign(this, { params, return_type, statements });
   }
 };
 class IfStatement {
