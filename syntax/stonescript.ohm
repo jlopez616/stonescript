@@ -32,6 +32,7 @@ Stonescript {
                    |  Paren
                    |  id
   Paren            = "(" Exp ")"
+
   ExpList          =  Exp ("," Exp)*
   Arg              =  type id
   TabletDec        =  "PART" ListOf<Arg, ","> "NOT PART"
@@ -39,22 +40,22 @@ Stonescript {
   Return           =  "GIVE" Exp
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
-  Assignment       = id "IS" Exp
+  Assignment       =  id "IS" Exp
   Call             =  ("SPEAK" | id) "(" listOf<Exp, ","> ")"
-
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")"    "PART" Body "NOT PART"
+  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")" "PART" Body "NOT PART"
   WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  Exp4 relop Exp4
   Body             =  Statement*
-  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" |  "FOR"  | "GIVE" |  "WHAT" | "WHILE"
-                   | "SQUISH" | "RIP" | primtype | "THINGIS" | "IS" | "LEFT" | "BREAK"
-                   | "OOGA" | "WORDERS" |  "YABBADABBADO" |  "NOOGA" | "SPEAK" | "PART"
-                   | "NOT PART") ~idrest
+
+  keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" | "FOR" | "GIVE" | "WHAT" | "WHILE"
+                   |  "SQUISH" | "RIP" | "PART" | "THINGIS" | "IS" | "LEFT" | "BREAK"
+                   |  "OOGA" | "WORDERS" | "YABBADABBADO" | "NOOGA" | "SPEAK" | primtype
+                   |  "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
@@ -69,6 +70,7 @@ Stonescript {
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "BREAK" | "LEFT"
   primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
+
   newline          =  "\n"+
   comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
                    | multiLineComment
