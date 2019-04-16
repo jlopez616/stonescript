@@ -22,7 +22,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
        return new Program(arrayToNullable(statements.ast()));
   },
   Statement(value, _1) {
-    return new Program(value.ast());
+    return new Statement(value.ast());
   },
   ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, _7) { // Will likely need to be changed
     return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast());
