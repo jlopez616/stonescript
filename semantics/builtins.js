@@ -1,10 +1,10 @@
 const { Func, /*Param,*/ PrimitiveType } = require('../ast');
 
 const CounterType = new PrimitiveType('counter'); // number
-const WorderType = new PrimitiveType('worder'); //string
-const YesnosType = new PrimitiveType('yesno'); //Boolean
-const WhatType = new PrimitiveType('what'); //undefined
-const TabletType = new PrimitiveType('tablet'); //object
+const WorderType = new PrimitiveType('worder');   // string
+const YesnosType = new PrimitiveType('yesno');    // boolean
+const WhatType = new PrimitiveType('what');       // undefined
+const TabletType = new PrimitiveType('tablet');   // object
 
 const standardFunctions = [
   //we need to decide what standard functions we want to include
@@ -28,4 +28,4 @@ const standardFunctions = [
   new Func('exit', [new Param('code', IntType)]), */
 ];
 
-module.exports = { /* IntType, StringType, NilType,*/ standardFunctions };
+module.exports = { CounterType, WorderType, YesnosType, WhatType, TabletType, standardFunctions };
