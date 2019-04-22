@@ -167,7 +167,6 @@ let cylinder = function(radius, height) {
    surfaceArea: surface_area
    }
 }
-
 ```
 <hr>
 
