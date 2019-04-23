@@ -29,6 +29,14 @@ module.exports = {
     );
   },
 
+  isBoolean(expression) {
+    doCheck(expression.type === YesnosType, 'Not a boolean');
+  },
+
+  isUndefined(expression) {
+    doCheck(expression.type === WhatType, 'Not undefined');
+  },
+
   isFunction(value) {
     doCheck(value.constructor === Func, 'Not a function');
   },
