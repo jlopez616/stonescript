@@ -1,3 +1,4 @@
 Program {
   statements:
-   Program { statements: Declaration { target: 'x', source: 'y' } } }
+    Statement {
+      val: Declaration { target: 'x', source: 'y', type: 'WORDERS', array: null } } }

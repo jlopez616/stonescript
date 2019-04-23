@@ -1,7 +1,9 @@
 Program {
   statements:
-   Program {
-     statements:
+    Statement {
+      val:
       Declaration {
         target: 'a',
-        source: Exp2_binary { op: 'a', left: 'SQUISH', right: 'b' } } } }
+        source: Exp2_binary { op: 'a', left: 'SQUISH', right: 'b' },
+        type: 'COUNTERS',
+        array: null } } }

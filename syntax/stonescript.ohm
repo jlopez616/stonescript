@@ -8,7 +8,6 @@ Stonescript {
                    |  Call "!"
                    |  Return "!"
                    |  Exp "!"
-                   |  comment ""
   Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" ("GIVES" type)? "PART" Statement* "NOT PART"
   Exp              =  Exp "OR" Exp1                          -- or
                    |  Exp "AND" Exp1                         -- and
@@ -70,7 +69,7 @@ Stonescript {
   mulop            =  "MANY" | "BREAK" | "LEFT"
   primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
   newline          =  "\n"+
-  comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"                      -- comment
-                   | multiLineComment
+  space            += comment | multiLineComment
+  comment          = "🦖" ~"🦖" (~newline ~"🦖" any)* ~"🦖"
   multiLineComment = "🦕" (~"🦕" any)* "🦕"
 }

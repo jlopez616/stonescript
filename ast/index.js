@@ -3,6 +3,12 @@ class Argument {
         Object.assign(this, { expression });
     }
 };
+class Arg {
+    constructor(type, id) {
+        Object.assign(this, { type, id });
+    }
+};
+
 class Array {
   constructor(args) {
     Object.assign(this, { args });
@@ -76,9 +82,9 @@ class NumericLiteral {
     this.value = value;
   }
 };
-class Obj {
-  constructor(field) {
-    this.field = field;
+class Tablet {
+  constructor(id, fields) {
+    Object.assign(this, { id, fields });
   }
 };
 class Parameter {
@@ -153,9 +159,9 @@ class WhileLoop {
 };
 
 module.exports = {
-  Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
+  Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop, Func,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, PrimitiveType, Return,
   RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, Obj, RelExp, Exp_or
+  VariableDeclaration, WhileLoop, Literal, Tablet, RelExp, Exp_or
 }

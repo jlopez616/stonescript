@@ -1,5 +1,9 @@
 Program {
   statements:
-   Program {
-     statements:
-      Declaration { target: 'COUNT', source: Literal { value: 1 } } } }
+    Statement {
+      val:
+      Declaration {
+        target: 'COUNT',
+        source: Literal { value: 1 },
+        type: 'COUNTERS',
+        array: null } } }

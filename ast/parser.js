@@ -2,11 +2,11 @@ const fs = require('fs');
 const ohm = require('ohm-js');
 
 const {
-  Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
+  Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp, ReturnStatement,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Exp_or} = require('../ast');
+  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or} = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
 
@@ -36,8 +36,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Assignment(target, _1, source) {
     return new Assignment(target.ast(), source.ast());
   },
-  Obj(_1, field, _2, _3) {
-    return new Object(field.ast());
+  Tablet(id, _1, fields, _2, _3) {
+    return new Object(id.ast(), fields.ast());
   },
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
@@ -49,7 +49,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Declaration(target.ast(), source.ast(), type.ast(), arrayToNullable(array.ast()));
   },
   Func(_1, _2, params, _3, _4, _5, return_type, statements, _6) {
-    return new Func(params.ast(), arrayToNullable(return_type.ast()), statements.ast());
+    return new Func([params.ast()], arrayToNullable(return_type.ast()), statements.ast());
   },
   Exp_or(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());
@@ -75,8 +75,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Paren(_1, exp, _2) {
     return new Paren(exp.ast());
   },
+  Arg(type, id) {
+    return new Arg(type.ast(), id.ast());
+  },
   NonemptyListOf(first, _, rest) {
-  return [first.ast(), ...rest.ast()];
+    return [first.ast(), ...rest.ast()];
   },
   nonemptyListOf(first, _, rest) {
   return [first.ast(), ...rest.ast()];

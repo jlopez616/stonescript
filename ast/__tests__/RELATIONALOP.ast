@@ -1,4 +1,4 @@
 Program {
   statements:
-   Program {
-     statements: Declaration { target: 'mylove', source: 'NOOGA' } } }
+    Statement {
+      val: Declaration { target: 'mylove', source: 'NOOGA', type: 'YESNOS', array: null } } }

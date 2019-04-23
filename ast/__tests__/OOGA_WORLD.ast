@@ -1,4 +1,4 @@
 Program {
   statements:
-   Program {
-     statements: Call { id: 'SPEAK', args: [ Literal { value: 'OOOGA' } ] } } }
+    Statement {
+      val: Call { id: 'SPEAK', args: [ Literal { value: 'OOOGA' } ] } } }
