@@ -58,7 +58,7 @@ Stonescript {
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
-  intlit           =  digit+ ("." digit+)?
+  intlit           =  digit+ 
   strlit           =  "\"" (~"\\" ~"\"" ~"\n" any)* "\""
   nothing          =  "WHAT"
   id               =  ~keyword letter idrest*
