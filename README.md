@@ -53,9 +53,9 @@ Reference Types:
 
 ## Variables 
 
-CONST = BEDROCK <br/>
-LET = ROCK <br/>
-There will be variables you can change 
+* const = BEDROCK <br/>
+* let = ROCK <br/>
+* There will be variables you can change 
 
 ## Operators
 ### Arithmetic Operators
@@ -80,7 +80,7 @@ There will be variables you can change
 
 ## Control Flow
 
-* Chainable if, else if, else statements = OOF, OTHER OOF, AND LAST OOF
+* Chainable if, else if, else statements = OOF, OOOF, OOFF
 
 ## Loops
 * While Loops = WHILE
@@ -91,29 +91,31 @@ There will be variables you can change
 
 * function = YABBADABBADOO
 * return = GIVE
-* Accept parameters
-* Support Currying
-* HUNTDOWN = replace
-
-* Arrays (STUFFS) will have comprehensions
+* replace = HUNTDOWN
 * \[ = CAVEIN
 * ] = CAVEOUT
+
+* Arrays = STUFFS (will have comprehensions)
+* Accept parameters
+* Support Currying
 * Lazy Evaluation
 * Support Pattern matching via Regular Expressions
 
 # Example Programs
+
+### Hello world
 
 ```
 SPEAK ("OOOGA")!
 ```
 
 ```
-// Hello World
-
 console.log("Hello, World!")
 ```
 
 <hr>
+
+### Big spiral math problem
 
 ```
 ROCK FIB IS YABBADABBADOO (N) PART
@@ -127,13 +129,9 @@ ROCK FIB IS YABBADABBADOO (N) PART
    NOT PART!
   GIVE F!
 NOT PART!
-
-
 ```
 
 ```
-// Big spiral math problem
-
 var fib = function(n) {
     var a = 0, b = 1, f = 1;
     for(var i = 2; i <= n; i++) {
@@ -146,6 +144,7 @@ var fib = function(n) {
 ```
 <hr>
 
+### Cylinder Object
 
 ``` 
 ROCK CYLINDER IS YABBADABBADOO(radius, height) PART
@@ -159,8 +158,6 @@ NOT PART!
 ```
 
 ```
-// Cylinder Object
-
 let cylinder = function(radius, height) {
   const surface_area = radius * height
   
@@ -170,9 +167,10 @@ let cylinder = function(radius, height) {
    surfaceArea: surface_area
    }
 }
-
 ```
 <hr>
+
+### Little Array Declaration
 
 ```
 ROCK CAVERN IS CAVEIN 1, 2, 4, 8, 16, 32 CAVEOUT!
@@ -180,14 +178,14 @@ SPEAK (CAVERN)!
 ```
 
 ```
-// Little Array Declaration
-
 let cavern = [1, 2, 4, 8 16, 32]
 console.log (cavern)
 
-// will say "[1, 2, 4, 8, 16, 32]"
+//output: "[1, 2, 4, 8, 16, 32]"
 ```
 <hr>
+
+### Simple yes no conditional
 
 ```
 ROCK a IS OOGA!
@@ -197,13 +195,9 @@ NOT PART
 OOFF PART
   GIVE SPEAK ("ROCK IS YESNO")!
 NOT PART!
- 
 ```
 
 ```
-
-// Simple yes no conditional
-
 let a = true
 if(a == "WORDER") {
   return console.log("ROCK IS WORDER NOT YESNOS")

@@ -4,7 +4,7 @@ const ohm = require('ohm-js');
 const {
   Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp, ReturnStatement,
+  IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
   VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or} = require('../ast');
 
@@ -19,7 +19,7 @@ function arrayToNullable(a) {
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
   Program(statements) {
-       return new Program(arrayToNullable(statements.ast()));
+    return new Program(arrayToNullable(statements.ast()));
   },
   Statement(value, _1) {
     return new Statement(value.ast());
@@ -82,7 +82,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return [first.ast(), ...rest.ast()];
   },
   nonemptyListOf(first, _, rest) {
-  return [first.ast(), ...rest.ast()];
+    return [first.ast(), ...rest.ast()];
   },
   EmptyListOf() {
     return [];
@@ -94,7 +94,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return this.sourceString;
   },
   _terminal() {
-     return this.sourceString;
+    return this.sourceString;
    },
    intlit(digits, _1, digit) {
     return new Literal(+this.sourceString);
