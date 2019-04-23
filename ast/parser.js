@@ -96,7 +96,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   _terminal() {
     return this.sourceString;
    },
-   intlit(digits, _1, digit) {
+   intlit(digits) {
     return new Literal(+this.sourceString);
   },
 });
