@@ -7,7 +7,10 @@ const WhatType = new PrimitiveType('what');       // undefined
 const TabletType = new PrimitiveType('tablet');   // object
 
 const standardFunctions = [
-  //we need to decide what standard functions we want to include
+  
+  new Func('HUNTDOWN', WorderType),
+  new Func('SPEAK', WorderType),
+  //new Func('WHATIS', )
   
   /* new Func('print', [new Param('s', StringType)]),
   new Func('flush', []),
