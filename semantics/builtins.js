@@ -10,8 +10,28 @@ const standardFunctions = [
   
   new Func('HUNTDOWN', WorderType),
   new Func('SPEAK', WorderType),
-  //new Func('WHATIS', )
-  
+  //new Func('WHATIS', )     // what was that supposed to be?  -Anthony
+  new Func('TYPE', [new Param('x', PrimitiveType)], WorderType), // gives type of param; does that work?????
+  new Func('DATE', [
+    new Param('month', CounterType),
+    new Param('day', CounterType),
+    new Param('year', CounterType),
+  ], WorderType),
+  new Func('SIZE', [new Param('s', WorderType)], CounterType),
+  new Func('DACHAR', [new Param('n', CounterType)], WorderType),   // gets character at position 'n'; check charAt
+  new Func('GOAWAY', [                                             // replace 'current' string to 'new' string; check 'replace'
+    new Param('current', WorderType), 
+    new Param('new', WorderType),
+  ], WorderType),
+  new Func('GOHIGH', [], WorderType),                              // uppercase; perfect for our language don't you think ;)
+  new Func('DALENGTH', [], CounterType),                           // gives length of string
+  new Func('BIGHUG', [                                             // concat two strings
+    new Param('s', WorderType),
+    new Param('t', WorderType),
+  ], WorderType),
+
+
+
   /* new Func('print', [new Param('s', StringType)]),
   new Func('flush', []),
   new Func('getchar', [], StringType),
