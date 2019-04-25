@@ -1,4 +1,4 @@
-const { Func, /*Param,*/ PrimitiveType } = require('../ast');
+const { Func, Parameter, PrimitiveType } = require('../ast');
 
 const CounterType = new PrimitiveType('counter'); // number
 const WorderType = new PrimitiveType('worder');   // string
@@ -11,44 +11,44 @@ const standardFunctions = [
   new Func('HUNTDOWN', WorderType),
   new Func('SPEAK', WorderType),
   //new Func('WHATIS', )     // what was that supposed to be?  -Anthony
-  new Func('TYPE', [new Param('x', PrimitiveType)], WorderType), // gives type of param; does that work?????
+  new Func('TYPE', [new Parameter('x', PrimitiveType)], WorderType), // gives type of Parameter; does that work?????
   new Func('DATE', [
-    new Param('month', CounterType),
-    new Param('day', CounterType),
-    new Param('year', CounterType),
+    new Parameter('month', CounterType),
+    new Parameter('day', CounterType),
+    new Parameter('year', CounterType),
   ], WorderType),
-  new Func('SIZE', [new Param('s', WorderType)], CounterType),
-  new Func('DACHAR', [new Param('n', CounterType)], WorderType),   // gets character at position 'n'; check charAt
+  new Func('SIZE', [new Parameter('s', WorderType)], CounterType),
+  new Func('DACHAR', [new Parameter('n', CounterType)], WorderType),   // gets character at position 'n'; check charAt
   new Func('GOAWAY', [                                             // replace 'current' string to 'new' string; check 'replace'
-    new Param('current', WorderType), 
-    new Param('new', WorderType),
+    new Parameter('current', WorderType), 
+    new Parameter('new', WorderType),
   ], WorderType),
   new Func('GOHIGH', [], WorderType),                              // uppercase; perfect for our language don't you think ;)
   new Func('DALENGTH', [], CounterType),                           // gives length of string
   new Func('BIGHUG', [                                             // concat two strings
-    new Param('s', WorderType),
-    new Param('t', WorderType),
+    new Parameter('s', WorderType),
+    new Parameter('t', WorderType),
   ], WorderType),
 
 
 
-  /* new Func('print', [new Param('s', StringType)]),
+  /* new Func('print', [new Parameter('s', StringType)]),
   new Func('flush', []),
   new Func('getchar', [], StringType),
-  new Func('ord', [new Param('s', StringType)], IntType),
-  new Func('chr', [new Param('x', IntType)], StringType),
-  new Func('size', [new Param('s', StringType)], IntType),
+  new Func('ord', [new Parameter('s', StringType)], IntType),
+  new Func('chr', [new Parameter('x', IntType)], StringType),
+  new Func('size', [new Parameter('s', StringType)], IntType),
   new Func('substring', [
-    new Param('s', StringType),
-    new Param('first', IntType),
-    new Param('n', IntType),
+    new Parameter('s', StringType),
+    new Parameter('first', IntType),
+    new Parameter('n', IntType),
   ], StringType),
   new Func('concat', [
-    new Param('s', StringType),
-    new Param('t', StringType),
+    new Parameter('s', StringType),
+    new Parameter('t', StringType),
   ], StringType),
-  new Func('not', [new Param('x', IntType)], IntType),
-  new Func('exit', [new Param('code', IntType)]), */
+  new Func('not', [new Parameter('x', IntType)], IntType),
+  new Func('exit', [new Parameter('code', IntType)]), */
 ];
 
 module.exports = { CounterType, WorderType, YesnosType, WhatType, TabletType, standardFunctions };
