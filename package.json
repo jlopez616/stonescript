@@ -5,7 +5,7 @@
   "main": "stonescript.js",
   "scripts": {
     "lint": "eslint ./syntax",
-    "test": "jest"
+    "test": "jest --collect-coverage"
   },
   "repository": {
     "type": "git",
