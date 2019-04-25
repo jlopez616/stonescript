@@ -1,13 +1,13 @@
 Stonescript {
-  Program          =  (Statement "!")*
-  Statement        =  ForLoop
-                   |  WhileLoop
-                   |  Conditional
-                   |  Declaration
-                   |  Assignment
-                   |  Call
-                   |  Return 
-                   |  Exp
+  Program          =  Statement*
+  Statement        =  ForLoop "!"
+                   |  WhileLoop "!"
+                   |  Conditional "!"
+                   |  Declaration "!"
+                   |  Assignment "!"
+                   |  Call "!"
+                   |  Return "!"
+                   |  Exp "!"
   Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" ("GIVES" type)? "PART" Statement* "NOT PART"
   Exp              =  Exp "OR" Exp1                          -- or
                    |  Exp "AND" Exp1                         -- and

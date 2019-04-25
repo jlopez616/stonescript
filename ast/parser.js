@@ -19,10 +19,10 @@ function arrayToNullable(a) {
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
   Program(statements) {
-    return new Program(arrayToNullable(statements.ast()));
+    return new Program(statements.ast());
   },
   Statement(value, _1) {
-    return new Statement(value.ast());
+    return value.ast();
   },
   ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, _7) { // Will likely need to be changed
     return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast());
