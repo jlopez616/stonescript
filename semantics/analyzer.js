@@ -8,3 +8,10 @@ const {
 const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
 
 const check = require('./check');
+
+Array.prototype.analyze = (context) => {
+  constructor(args) {
+    this.args = context.lookupType(this.args); //tells us the type of the array
+  }
+  
+}

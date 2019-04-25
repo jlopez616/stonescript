@@ -1,4 +1,5 @@
-ROCK COUNTERS a IS a SQUISH b!
+🦖 This should syntactically pass but semantically fail.
+ROCK COUNTERS rokz IS a SQUISH b!
 BEDROCK COUNTERS b IS b RIP c!
 c MANY d!
 ROCK COUNTERS d IS 100 LEFT d!
