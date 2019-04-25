@@ -37,6 +37,27 @@ module.exports = {
     doCheck(expression.type === WhatType, 'Not undefined');
   },
 
+  // array out of bounds
+  isOutOfBounds(params){
+    doCheck(params.length < 100, 'Array out of bounds');
+  },
+
+  // invalid date (may be subject for revision    -Anthony)
+  isDateInvalid(month, day, year){
+    doCheck(month <= 12 && month.type === day.type && day.type === year.type, 
+      'Invalid month, and types must be integers');
+  },
+
+  //TODO: invalid assignment left-hand side (may or may not be needed)
+  isInvalidAssignment(){
+    doCheck();
+  },
+
+  //TODO: "x" is not iterable
+  isNotIterable(){
+    doCheck();
+  },
+
   isFunction(value) {
     doCheck(value.constructor === Func, 'Not a function');
   },
