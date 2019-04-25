@@ -8,7 +8,6 @@ class Arg {
         Object.assign(this, { type, id });
     }
 };
-
 class Array {
   constructor(args) {
     Object.assign(this, { args });

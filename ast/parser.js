@@ -1,4 +1,5 @@
 const fs = require('fs');
+const util = require('util'); 
 const ohm = require('ohm-js');
 
 const {
@@ -49,7 +50,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Declaration(target.ast(), source.ast(), type.ast(), arrayToNullable(array.ast()));
   },
   Func(_1, _2, params, _3, _4, _5, return_type, statements, _6) {
-    return new Func([params.ast()], arrayToNullable(return_type.ast()), statements.ast());
+    return new Func(params.ast(), return_type.ast(), statements.ast());
   },
   Exp_or(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());
@@ -108,6 +109,6 @@ module.exports = (text) => {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  console.log(astGenerator(match).ast());
+  console.log(util.inspect(astGenerator(match).ast(), {depth: null}));
   return astGenerator(match).ast();
 };
