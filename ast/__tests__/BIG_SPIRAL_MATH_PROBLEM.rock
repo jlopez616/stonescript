@@ -9,3 +9,8 @@ ROCK DOERS FIB IS YABBADABBADOO (COUNTERS N) PART
    NOT PART!
   GIVE F!
 NOT PART!
+
+🦖 FIB(10, 30) should fail
+🦖 FIB(10) should succeed
+🦖 FIB("dog") should fail
+🦖 FIB(FIB(3)) should succeed
