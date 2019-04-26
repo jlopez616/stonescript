@@ -1,9 +1,10 @@
 const {
-  Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, Exp_and, Exp_or, BooleanLiteral,
+  Arg, Array, Assignment, BinaryExp,
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, RelExp, ReturnStatement,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Exp_or, Break} = require('../ast');
+  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Break
+} = require('../ast');
 
 const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
 
@@ -24,37 +25,22 @@ Assignment.prototype.analyze = (context) => {
   this.target.analyze(context);
 };
 
-Exp_and {
-  this.type = context.lookupType(this.type);
-  check.isLogicalValue(this.type);
-  this.left.analyze(context);
-  this.right.analyze(context);
-};
-
-Exp_or {
-  this.type = context.lookupType(this.type);
-  check.isLogicalValue(this.type);
-  this.left.analyze(context);
-  this.right.analyze(context);
-}
-
-Exp1_binary.prototype.analyze = (context) => {
+BinaryExp.prototype.analyze = (context) => {
   this.left.analyze(context);
   this.right.analyze(context);
   check.isInteger(this.left);
   check.isInteger(this.right);
   this.type = CounterType;
-  
 };
 
 Exp2_binary.prototype.analyze = (context) => {
   this.left.analyze(context);
   this.right.analyze(context);
   check.expressionHaveTheSameType(this.left, this.right);
-  if (/SQUISH/).test(this.op)) {
+  if (/SQUISH/.test(this.op)) {
     check.isInteger(this.left);
     check.isInteger(this.right);
-  } else if (/RIP/).test(this.op)) {
+  } else if (/RIP/.test(this.op)) {
     check.isInteger(this.left);
     check.isInteger(this.right);
   }
@@ -65,10 +51,6 @@ Exp3_binary.prototype.analyze = (context) => {
   this.left.analyze(context);
   this.right.analyze(context);
   check.expressionHaveTheSameType(this.left, this.right);
-  this.type = YesnosType;
-};
-
-BooleanLiteral.prototype.analyze = (context) => {
   this.type = YesnosType;
 };
 
@@ -116,6 +98,8 @@ FunctionObject.prototype.analyze = (context) => {
 Literal.prototype.analyze = (context) => {
   if (typeof this.value === 'number') {
     this.type = CounterType;
+  } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
+    this.type = YesNosType;
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
   }
@@ -127,7 +111,7 @@ NumericLiteral.prototype.analyze = (context) => {
 
 Parameter.prototype.analyze = (context) => {
   this.id = context.lookupValue(this.id);
-  
+
 };
 
 Postfix.prototype.analyze = (context) => {
@@ -158,10 +142,6 @@ SquishAssignment.prototype.analyze = (context) => {
 
 Statement.prototype.analyze = (context) => {
   // TODO
-};
-
-StringLiteral.prototype.analyze = (context) => {
-  //Is this needed?
 };
 
 UnaryExpression.prototype.analyze = (context) => {

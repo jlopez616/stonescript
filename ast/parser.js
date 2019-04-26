@@ -3,11 +3,11 @@ const util = require('util');
 const ohm = require('ohm-js');
 
 const {
-  Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral, ForIncrement,
+  Argument, Arg, Array, Assignment, BinaryExp, ForIncrement,
   Conditional, Call, Declaration, ForLoop,
-  IfStatement, Postfix, Program, RelExp,
-  Func, Return, StringLiteral, WhileLoop, Literal, Tablet, Exp_or, Break} = require('../ast');
-
+  IfStatement, Postfix, Program,
+  Func, Return, WhileLoop, Literal, Tablet, Break,
+} = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
 
@@ -56,22 +56,22 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Func(params.ast(), statements.ast(), returnType.ast());
   },
   Exp_or(op, left, right) {
-    return new Exp_or(op.ast(), left.ast(), right.ast());
+    return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
   Exp_and(op, left, right) {
-    return new Exp_or(op.ast(), left.ast(), right.ast());
+    return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
   Exp1_binary(op, left, right) {
-    return new Exp1_binary(op.ast(), left.ast(), right.ast());
+    return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
   Exp2_binary(op, left, right) {
-    return new Exp2_binary(op.ast(), left.ast(), right.ast());
+    return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
   Exp3_binary(op, left, right) {
-    return new Exp3_binary(op.ast(), left.ast(), right.ast());
+    return new BinaryExp(op.ast(), left.ast(), right.ast());
   },
   RelExp(id, relop, primary) {
-    return new RelExp(id.ast(), relop.ast(), primary.ast());
+    return new BinaryExp(relop.ast(), id.ast(), primary.ast());
   },
   Exp4_unary(_1, right) {
     return new Postfix(right.ast());

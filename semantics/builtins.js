@@ -7,7 +7,6 @@ const WhatType = new PrimitiveType('what');       // undefined
 const TabletType = new PrimitiveType('tablet');   // object
 
 const standardFunctions = [
-  
   new Func('HUNTDOWN', WorderType),
   new Func('SPEAK', WorderType),
   new Func('TYPE', [new Parameter('x', PrimitiveType)], WorderType), // gives type of Parameter; does that work?????
@@ -19,7 +18,7 @@ const standardFunctions = [
   new Func('SIZE', [new Parameter('s', WorderType)], CounterType),
   new Func('DACHAR', [new Parameter('n', CounterType)], WorderType),  // gets character at position 'n'; check charAt
   new Func('GOAWAY', [                                                // replace 'current' string to 'new' string; check 'replace'
-    new Parameter('current', WorderType), 
+    new Parameter('current', WorderType),
     new Parameter('new', WorderType),
   ], WorderType),
   new Func('GOHIGH', [], WorderType),                                 // uppercase; perfect for our language don't you think ;)
@@ -28,7 +27,13 @@ const standardFunctions = [
     new Parameter('s', WorderType),
     new Parameter('t', WorderType),
   ], WorderType),
-
 ];
 
-module.exports = { CounterType, WorderType, YesnosType, WhatType, TabletType, standardFunctions };
+module.exports = {
+  CounterType,
+  WorderType,
+  YesnosType,
+  WhatType,
+  TabletType,
+  standardFunctions,
+};

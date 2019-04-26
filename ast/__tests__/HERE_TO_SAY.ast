@@ -18,7 +18,7 @@ Program {
                     left: 'AND',
                     right: Literal { value: 'THANKS FOR LISTENING!' } } ] } ],
           returnType: [] },
-        type: 'WORDERS',
+        type: 'DOERS',
         array: null },
       Call {
         id: 'speak',

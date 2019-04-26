@@ -18,35 +18,9 @@ class Assignment {
     Object.assign(this, { target, source });
   }
 }
-class Exp_and {
+class BinaryExp {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
-  }
-}
-
-class Exp_or {
-  constructor(op, left, right) {
-    Object.assign(this, { op, left, right });
-  }
-}
-class Exp1_binary {
-  constructor(op, left, right) {
-    Object.assign(this, { op, left, right });
-  }
-}
-class Exp2_binary {
-  constructor(op, left, right) {
-    Object.assign(this, { op, left, right });
-  }
-}
-class Exp3_binary {
-  constructor(op, left, right) {
-    Object.assign(this, { op, left, right });
-  }
-}
-class BooleanLiteral {
-  constructor(value) {
-    this.value = value;
   }
 }
 class Conditional {
@@ -124,11 +98,6 @@ class Return {
     this.value = value;
   }
 }
-class RelExp {
-  constructor(id, relop, primary) {
-    Object.assign(this, { id, relop, primary });
-  }
-}
 class Break {
 }
 class RipAssignment {
@@ -144,11 +113,6 @@ class Statement {
 class SquishAssignment {
   constructor(id) {
     this.id = id;
-  }
-}
-class StringLiteral {
-  constructor(value) {
-    this.value = value;
   }
 }
 class UnaryExpression {
@@ -172,10 +136,7 @@ module.exports = {
   Arg,
   Array,
   Assignment,
-  Exp1_binary,
-  Exp2_binary,
-  Exp3_binary,
-  BooleanLiteral,
+  BinaryExp,
   Conditional,
   Call,
   Declaration,
@@ -193,13 +154,9 @@ module.exports = {
   RipAssignment,
   Statement,
   SquishAssignment,
-  StringLiteral,
   UnaryExpression,
   VariableDeclaration,
   WhileLoop,
   Literal,
   Tablet,
-  RelExp,
-  Exp_or,
-  Exp_and,
 };
