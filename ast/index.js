@@ -1,12 +1,12 @@
 class Argument {
-    constructor(expression) {
-        Object.assign(this, { expression });
-    }
+  constructor(expression) {
+    Object.assign(this, { expression });
+  }
 }
 class Arg {
-    constructor(type, id) {
-        Object.assign(this, { type, id });
-    }
+  constructor(type, id) {
+    Object.assign(this, { type, id });
+  }
 }
 class Array {
   constructor(args) {
@@ -18,6 +18,12 @@ class Assignment {
     Object.assign(this, { target, source });
   }
 }
+class Exp_and {
+  constructor(op, left, right) {
+    Object.assign(this, { op, left, right });
+  }
+}
+
 class Exp_or {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
@@ -40,12 +46,12 @@ class Exp3_binary {
 }
 class BooleanLiteral {
   constructor(value) {
-      this.value = value;
+    this.value = value;
   }
 }
 class Conditional {
-  constructor(testExp, consequent, alternate, final){
-    Object.assign(this, {testExp, consequent, alternate, final})
+  constructor(testExp, consequent, alternate, final) {
+    Object.assign(this, { testExp, consequent, alternate, final });
   }
 }
 class Call {
@@ -65,7 +71,7 @@ class ForLoop {
 }
 class Func {
   constructor(params, return_type, statements) {
-      Object.assign(this, { params, return_type, statements });
+    Object.assign(this, { params, return_type, statements });
   }
 }
 class IfStatement {
@@ -85,7 +91,7 @@ class Tablet {
 }
 class Parameter {
   constructor(id, defaultExpression) {
-      Object.assign(this, { id, defaultExpression });
+    Object.assign(this, { id, defaultExpression });
   }
 }
 class Postfix {
@@ -115,7 +121,7 @@ class Return {
 }
 class RelExp {
   constructor(id, relop, primary) {
-    Object.assign(this, { id, relop, primary })
+    Object.assign(this, { id, relop, primary });
   }
 }
 class Break {
@@ -142,7 +148,7 @@ class StringLiteral {
 }
 class UnaryExpression {
   constructor(op, operand) {
-      Object.assign(this, { op, operand });
+    Object.assign(this, { op, operand });
   }
 }
 class VariableDeclaration {
@@ -157,9 +163,37 @@ class WhileLoop {
 }
 
 module.exports = {
-  Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
-  Conditional, Call, Declaration, ForLoop, Func, Break,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, PrimitiveType, Return,
-  RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, Tablet, RelExp, Exp_or
-}
+  Argument,
+  Arg,
+  Array,
+  Assignment,
+  Exp1_binary,
+  Exp2_binary,
+  Exp3_binary,
+  BooleanLiteral,
+  Conditional,
+  Call,
+  Declaration,
+  ForLoop,
+  Func,
+  Break,
+  IfStatement,
+  NumericLiteral,
+  Parameter,
+  Postfix,
+  Program,
+  PrimitiveType,
+  Return,
+  RipAssignment,
+  Statement,
+  SquishAssignment,
+  StringLiteral,
+  UnaryExpression,
+  VariableDeclaration,
+  WhileLoop,
+  Literal,
+  Tablet,
+  RelExp,
+  Exp_or,
+  Exp_and,
+};
