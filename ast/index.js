@@ -1,3 +1,4 @@
+// fix formating
 class Argument {
     constructor(expression) {
         Object.assign(this, { expression });
@@ -121,6 +122,9 @@ class RelExp {
     Object.assign(this, { id, relop, primary })
   }
 }
+class Break {
+
+};
 class RipAssignment {
   constructor(id) {
     this.id = id;
@@ -159,7 +163,7 @@ class WhileLoop {
 
 module.exports = {
   Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
-  Conditional, Call, Declaration, ForLoop, Func,
+  Conditional, Call, Declaration, ForLoop, Func, Break,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, PrimitiveType, Return,
   RipAssignment, Statement, SquishAssignment, StringLiteral, UnaryExpression,
   VariableDeclaration, WhileLoop, Literal, Tablet, RelExp, Exp_or
