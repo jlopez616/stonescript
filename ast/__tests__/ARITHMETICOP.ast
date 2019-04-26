@@ -2,19 +2,19 @@ Program {
   statements:
     [ Declaration {
         target: 'a',
-        source: Exp2_binary { op: 'a', left: 'SQUISH', right: 'b' },
+        source: BinaryExp { op: 'a', left: 'SQUISH', right: 'b' },
         type: 'COUNTERS',
         array: null },
       Declaration {
         target: 'b',
-        source: Exp2_binary { op: 'b', left: 'RIP', right: 'c' },
+        source: BinaryExp { op: 'b', left: 'RIP', right: 'c' },
         type: 'COUNTERS',
         array: null },
-      Exp1_binary { op: 'c', left: 'MANY', right: 'd' },
+      BinaryExp { op: 'c', left: 'MANY', right: 'd' },
       Declaration {
         target: 'd',
         source:
-        Exp1_binary { op: Literal { value: 100 }, left: 'LEFT', right: 'd' },
+        BinaryExp { op: Literal { value: 100 }, left: 'LEFT', right: 'd' },
         type: 'COUNTERS',
         array: null },
       Declaration { target: 'yah', source: 'OOGA', type: 'YESNOS', array: null },

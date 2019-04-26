@@ -9,9 +9,9 @@ Program {
             [ Call {
                 id: 'SPEAK',
                 args:
-                [ Exp_or {
+                [ BinaryExp {
                     op:
-                      Exp_or {
+                      BinaryExp {
                         op: Literal { value: 'I AM HERE TO SAY ' },
                         left: 'AND',
                         right: 'word' },

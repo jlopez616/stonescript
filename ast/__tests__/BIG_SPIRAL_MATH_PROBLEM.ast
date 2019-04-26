@@ -28,10 +28,19 @@ Program {
                   source: Literal { value: 2 },
                   type: 'COUNTERS',
                   array: null },
-                textExp: Exp3_binary { op: 'I', left: 'NOT SMASH OR IS', right: 'N' },
-                increment: 'I',
-                body: 'I' },
-              Return { value: 'F' } ],
-          returnType: [] },
+                testExp: BinaryExp { op: 'I', left: 'NOT SMASH OR IS', right: 'N' },
+                increment:
+                ForIncrement {
+                  id1: 'I',
+                  id2: 'I',
+                  addop: 'SQUISH',
+                  intlit: Literal { value: 1 } },
+                body:
+                [ [ Assignment {
+                      target: 'F',
+                      source: BinaryExp { op: 'A', left: 'SQUISH', right: 'B' } },
+                    Assignment { target: 'A', source: 'B' },
+                    Assignment { target: 'B', source: 'F' } ] ] } ],
+          returnType: [ Return { value: 'F' } ] },
         type: 'DOERS',
         array: null } ] }

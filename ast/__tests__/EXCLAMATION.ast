@@ -16,12 +16,12 @@ Program {
         type: 'COUNTERS',
         array: null },
       WhileLoop {
-        testExp: RelExp { id: 'END', relop: 'SMASH', primary: 'COUNT' },
+        testExp: BinaryExp { op: 'SMASH', left: 'END', right: 'COUNT' },
         body:
         [ [ Assignment {
               target: 'RESULT',
-              source: Exp1_binary { op: 'RESULT', left: 'MANY', right: 'COUNT' } },
+              source: BinaryExp { op: 'RESULT', left: 'MANY', right: 'COUNT' } },
             Assignment {
               target: 'COUNT',
               source:
-                Exp2_binary { op: 'COUNT', left: 'SQUISH', right: Literal { value: 1 } } } ] ] } ] }
+                BinaryExp { op: 'COUNT', left: 'SQUISH', right: Literal { value: 1 } } } ] ] } ] }

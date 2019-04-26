@@ -3,13 +3,13 @@ Program {
     [ Declaration {
         target: 'total',
         source:
-        Exp_or {
+        BinaryExp {
           op:
-            Exp2_binary {
+            BinaryExp {
               op:
-              Exp2_binary {
+              BinaryExp {
                 op:
-                  Exp2_binary {
+                  BinaryExp {
                     op: Literal { value: 5 },
                     left: 'SQUISH',
                     right: Literal { value: 4 } },
@@ -19,7 +19,7 @@ Program {
               right: Literal { value: 2 } },
           left: 'AND',
           right:
-            Exp2_binary {
+            BinaryExp {
               op: Literal { value: 1 },
               left: 'RIP',
               right: Literal { value: 7 } } },
