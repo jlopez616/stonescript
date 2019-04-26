@@ -65,13 +65,18 @@ class Declaration {
   }
 }
 class ForLoop {
-  constructor(setup, textExp, increment, body) {
-    Object.assign(this, { setup, textExp, increment, body });
+  constructor(setup, testExp, increment, body) {
+    Object.assign(this, { setup, testExp, increment, body });
+  }
+}
+class ForIncrement {
+  constructor(id1, id2, addop, intlit) {
+    Object.assign(this, { id1, id2, addop, intlit });
   }
 }
 class Func {
-  constructor(params, statements, return_type) {
-    Object.assign(this, { params, statements, return_type});
+  constructor(params, statements, returnType) {
+    Object.assign(this, { params, statements, returnType});
   }
 }
 class IfStatement {
@@ -175,6 +180,7 @@ module.exports = {
   Call,
   Declaration,
   ForLoop,
+  ForIncrement,
   Func,
   Break,
   IfStatement,

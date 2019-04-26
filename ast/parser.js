@@ -3,7 +3,7 @@ const util = require('util');
 const ohm = require('ohm-js');
 
 const {
-  Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
+  Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral, ForIncrement,
   Conditional, Call, Declaration, ForLoop,
   IfStatement, Postfix, Program, RelExp,
   Func, Return, StringLiteral, WhileLoop, Literal, Tablet, Exp_or, Break} = require('../ast');
@@ -25,10 +25,13 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Statement(value, _1) {
     return value.ast();
   },
-  ForLoop(_1, _2, setup, _3, textExp, _4, id1, _5, id2, addop, intlit, _6, _7, body, _8) { // Will likely need to be changed
-    return new ForLoop(setup.ast(), textExp.ast(), id1.ast(), id2.ast(), addop.ast(), intlit.ast(), body.ast());
+  ForLoop(_kw, _lp, setup, _em1, testExp, _em2, increment, _rp, _p, body, _np) {
+    return new ForLoop(setup.ast(), testExp.ast(), increment.ast(), body.ast());
   },
-  WhileLoop(_1, _2, testExp, _3, _4, body, _5) {
+  ForIncrement(id1, _is, id2, addop, intlit) {
+    return new ForIncrement(id1.ast(), id2.ast(), addop.ast(), intlit.ast());
+  },
+  WhileLoop(_kw, _lp, testExp, _rp, _p, body, _np) {
     return new WhileLoop(testExp.ast(), body.ast());
   },
   Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9, alternate, _10, _11, _12, final, _13) { // arrayToNullable alternate?
