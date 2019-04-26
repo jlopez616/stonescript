@@ -23,15 +23,15 @@ Stonescript {
                    |  Exp5
   Exp5             =  Func
                    |  Array                                  -- arr
+                   |  EmptyArray
                    |  Tablet                                 -- obj
                    |  TabletDec
                    |  Call
                    |  boollit
                    |  intlit
                    |  strlit
-                   |  Paren
+                   |  "(" Exp ")"                           -- parens
                    |  id
-  Paren            = "(" Exp ")"
 
   ExpList          =  Exp ("," Exp)*
   Arg              =  type id
@@ -39,7 +39,8 @@ Stonescript {
   Tablet           =  id "PART" (Assignment "!")* "NOT PART"
   Return           =  "GIVE" Exp
   Break            =  "RAGEQUIT" "!"
-  Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
+  Array            =  "CAVEIN" ListOf<Exp, ",">? "CAVEOUT"               
+  EmptyArray			 =  "CAVEIN" "CAVEOUT"		                             
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       =  id "IS" Exp
   Call             =  ("SPEAK" | id) "(" listOf<Exp, ","> ")"
@@ -67,7 +68,7 @@ Stonescript {
   idrest           =  "_" | alnum
   type             =  "COUNTERS" | "WORDERS" | "YESNOS" | "WHUT" | "DOERS" | "TABLET"
   array            =  "CAVE"
-  addop            =  "SQUISH" | "RIP"
+  addop            =  "SQUISH" | "RIP" 
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
   mulop            =  "MANY" | "CUT" | "LEFT"
   primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
