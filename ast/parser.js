@@ -6,7 +6,7 @@ const {
   Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop,
   IfStatement, Postfix, Program, RelExp,
-  Func, Return, StringLiteral, WhileLoop, Literal, Tablet, Exp_or, Break, Itteration} = require('../ast');
+  Func, Return, StringLiteral, WhileLoop, Literal, Tablet, Exp_or, Break} = require('../ast');
 
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
@@ -75,9 +75,6 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   Array(_1, args, _2) {
     return new Array(args.ast());
-  },
-  Paren(_1, exp, _2) {
-    return new Paren(exp.ast());
   },
   Arg(type, id) {
     return new Arg(type.ast(), id.ast());
