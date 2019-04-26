@@ -46,7 +46,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
   },
-  Return(_1, value) {
+  Return(_1, value, _2) {
     return new Return(value.ast());
   },
   Declaration(_1, type, array, target, _2, source) {
@@ -103,7 +103,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   intlit(digits) {
     return new Literal(+this.sourceString);
   },
-  Break(_1, _2) {
+  Break(_1) {
     return new Break();
   },
 });

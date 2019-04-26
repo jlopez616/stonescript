@@ -32,6 +32,6 @@ Program {
                 increment: 'I',
                 body: 'I' },
               Return { value: 'F' } ],
-          return_type: [] },
+          returnType: [] },
         type: 'DOERS',
         array: null } ] }

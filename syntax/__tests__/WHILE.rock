@@ -1,4 +1,4 @@
 ROCK YESNOS nothing IS NOOGA!
 WHILE (x NOT SMASH 123) PART
-	GIVE nothing!
+	SPEAK(nothing)!
 NOT PART!

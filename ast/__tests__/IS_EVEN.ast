@@ -18,6 +18,6 @@ Program {
                 consequent: [],
                 alternate: null,
                 final: [ Return { value: 'FALSE' } ] } ],
-          return_type: [] },
+          returnType: [] },
         type: 'DOERS',
         array: null } ] }
