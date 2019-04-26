@@ -61,7 +61,7 @@ Reference Types:
 ### Arithmetic Operators
 * \+ SQUISH
 * \- RIP 
-* \/ BREAK 
+* \/ CUT 
 * \* MANY
 * % LEFT
 
@@ -91,6 +91,7 @@ Reference Types:
 
 * function = YABBADABBADOO
 * return = GIVE
+* break = RAGEQUIT
 * replace = HUNTDOWN
 * \[ = CAVEIN
 * ] = CAVEOUT
