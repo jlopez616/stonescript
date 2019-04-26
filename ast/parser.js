@@ -100,7 +100,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   _terminal() {
     return this.sourceString;
   },
-  intlit(digits) {
+  intlit(_1) {
     return new Literal(+this.sourceString);
   },
   Break(_1) {
