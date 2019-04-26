@@ -4,11 +4,9 @@ const ohm = require('ohm-js');
 
 const {
   Argument, Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
-  Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp,
-  RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-
-  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Break, Itteration} = require('../ast');
+  Conditional, Call, Declaration, ForLoop,
+  IfStatement, Postfix, Program, RelExp,
+  Func, Return, StringLiteral, WhileLoop, Literal, Tablet, Exp_or, Break, Itteration} = require('../ast');
 
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
@@ -27,8 +25,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Statement(value, _1) {
     return value.ast();
   },
-  ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, stop, _7) { // Will likely need to be changed
-    return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast(), stop.ast());
+  ForLoop(_1, _2, setup, _3, textExp, _4, id1, _5, id2, addop, intlit, _6, _7, body, stop, _8) { // Will likely need to be changed
+    return new ForLoop(setup.ast(), textExp.ast(), id1.ast(), id2.ast(), addop.ast(), intlit.ast(), body.ast(), stop.ast());
   },
   WhileLoop(_1, _2, testExp, _3, _4, body, stop, _5) {
     return new WhileLoop(testExp.ast(), body.ast(), stop.ast());
@@ -51,8 +49,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Declaration(_1, type, array, target, _2, source) {
     return new Declaration(target.ast(), source.ast(), type.ast(), arrayToNullable(array.ast()));
   },
-  Func(_1, _2, params, _3, _4, _5, return_type, statements, _6) {
-    return new Func(params.ast(), return_type.ast(), statements.ast());
+  Func(_1, _2, params, _3, _4, statements, return_type, _5) {
+    return new Func(params.ast(), statements.ast(), return_type.ast(),);
   },
   Exp_or(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());

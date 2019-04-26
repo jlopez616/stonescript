@@ -70,8 +70,8 @@ class ForLoop {
   }
 }
 class Func {
-  constructor(params, return_type, statements) {
-    Object.assign(this, { params, return_type, statements });
+  constructor(params, statements, return_type) {
+    Object.assign(this, { params, statements, return_type});
   }
 }
 class IfStatement {
