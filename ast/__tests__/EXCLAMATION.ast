@@ -1,9 +1,27 @@
 Program {
   statements:
-    Statement {
-      val:
-      Declaration {
+    [ Declaration {
         target: 'COUNT',
         source: Literal { value: 1 },
         type: 'COUNTERS',
-        array: null } } }
+        array: null },
+      Declaration {
+        target: 'END',
+        source: Literal { value: 10 },
+        type: 'COUNTERS',
+        array: null },
+      Declaration {
+        target: 'RESULT',
+        source: Literal { value: 1 },
+        type: 'COUNTERS',
+        array: null },
+      WhileLoop {
+        testExp: RelExp { id: 'END', relop: 'SMASH', primary: 'COUNT' },
+        body:
+        [ [ Assignment {
+              target: 'RESULT',
+              source: Exp1_binary { op: 'RESULT', left: 'MANY', right: 'COUNT' } },
+            Assignment {
+              target: 'COUNT',
+              source:
+                Exp2_binary { op: 'COUNT', left: 'SQUISH', right: Literal { value: 1 } } } ] ] } ] }

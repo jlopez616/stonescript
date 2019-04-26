@@ -1,4 +1,12 @@
 Program {
   statements:
-    Statement {
-      val: Declaration { target: 'mylove', source: 'NOOGA', type: 'YESNOS', array: null } } }
+    [ Declaration { target: 'mylove', source: 'NOOGA', type: 'YESNOS', array: null },
+      Conditional {
+        testExp:
+        Exp_or {
+          op: Exp3_binary { op: 'x', left: 'IS IS', right: 'y' },
+          left: 'OR',
+          right: Exp3_binary { op: 'a', left: 'NOT SMASH', right: 'b' } },
+        consequent: [],
+        alternate: null,
+        final: null } ] }

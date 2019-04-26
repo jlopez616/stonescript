@@ -1,0 +1,27 @@
+Program {
+  statements:
+    [ Declaration {
+        target: 'total',
+        source:
+        Exp_or {
+          op:
+            Exp2_binary {
+              op:
+              Exp2_binary {
+                op:
+                  Exp2_binary {
+                    op: Literal { value: 5 },
+                    left: 'SQUISH',
+                    right: Literal { value: 4 } },
+                left: 'SQUISH',
+                right: Literal { value: 3 } },
+              left: 'SQUISH',
+              right: Literal { value: 2 } },
+          left: 'AND',
+          right:
+            Exp2_binary {
+              op: Literal { value: 1 },
+              left: 'RIP',
+              right: Literal { value: 7 } } },
+        type: 'COUNTERS',
+        array: null } ] }

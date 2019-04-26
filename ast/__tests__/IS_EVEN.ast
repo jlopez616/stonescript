@@ -1,27 +1,23 @@
 Program {
   statements:
-    Statement {
-      val:
-      Declaration {
+    [ Declaration {
         target: 'is_even',
         source:
-          Func {
-            params: [ [ Arg { type: 'COUNTERS', id: 'x' } ] ],
-            return_type: 'P',
-            statements:
-            [ Statement {
-                val:
-                  Declaration {
-                    target: 'is_even',
-                    source: Exp1_binary { op: 'x', left: 'LEFT', right: Literal { value: 2 } },
-                    type: 'COUNTERS',
-                    array: null } },
-              Statement {
-                val:
-                  Conditional {
-                    testExp: Exp3_binary { op: 'is_even', left: 'IS IS', right: Literal { value: 0 } },
-                    consequent: [],
-                    alternate: null,
-                    final: [ Statement { val: Return { value: 'FALSE' } } ] } } ] },
+        Func {
+          params: [ Arg { type: 'COUNTERS', id: 'x' } ],
+          statements:
+            [ Declaration {
+                target: 'is_even',
+                source:
+                Exp1_binary { op: 'x', left: 'LEFT', right: Literal { value: 2 } },
+                type: 'COUNTERS',
+                array: null },
+              Conditional {
+                testExp:
+                Exp3_binary { op: 'is_even', left: 'IS IS', right: Literal { value: 0 } },
+                consequent: [],
+                alternate: null,
+                final: [ Return { value: 'FALSE' } ] } ],
+          return_type: [] },
         type: 'DOERS',
-        array: null } } }
+        array: null } ] }

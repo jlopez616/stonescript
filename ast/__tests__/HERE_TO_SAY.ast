@@ -1,0 +1,25 @@
+Program {
+  statements:
+    [ Declaration {
+        target: 'speak',
+        source:
+        Func {
+          params: [ Arg { type: 'WORDERS', id: 'word' } ],
+          statements:
+            [ Call {
+                id: 'SPEAK',
+                args:
+                [ Exp_or {
+                    op:
+                      Exp_or {
+                        op: Literal { value: 'I AM HERE TO SAY ' },
+                        left: 'AND',
+                        right: 'word' },
+                    left: 'AND',
+                    right: Literal { value: 'THANKS FOR LISTENING!' } } ] } ],
+          return_type: [] },
+        type: 'WORDERS',
+        array: null },
+      Call {
+        id: 'speak',
+        args: [ Literal { value: 'I wish my homework was done!' } ] } ] }

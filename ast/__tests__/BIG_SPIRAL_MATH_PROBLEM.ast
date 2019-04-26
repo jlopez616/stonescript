@@ -1,57 +1,37 @@
 Program {
   statements:
-    Statement {
-      val:
-      Declaration {
+    [ Declaration {
         target: 'FIB',
         source:
-          Func {
-            params: [ [ Arg { type: 'COUNTERS', id: 'N' } ] ],
-            return_type: 'P',
-            statements:
-            [ Statement {
-                val:
-                  Declaration {
-                    target: 'A',
-                    source: Literal { value: 0 },
-                    type: 'COUNTERS',
-                    array: null } },
-              Statement {
-                val:
-                  Declaration {
-                    target: 'B',
-                    source: Literal { value: 1 },
-                    type: 'COUNTERS',
-                    array: null } },
-              Statement {
-                val:
-                  Declaration {
-                    target: 'F',
-                    source: Literal { value: 1 },
-                    type: 'COUNTERS',
-                    array: null } },
-              Statement {
-                val:
-                  ForLoop {
-                    setup:
-                    Declaration {
-                      target: 'I',
-                      source: Literal { value: 2 },
-                      type: 'COUNTERS',
-                      array: null },
-                    textExp: Exp3_binary { op: 'I', left: 'NOT SMASH OR IS', right: 'N' },
-                    increment:
-                    Assignment {
-                      target: 'I',
-                      source: Exp2_binary { op: 'I', left: 'SQUISH', right: Literal { value: 1 } } },
-                    body:
-                    [ Statement {
-                        val:
-                          Assignment {
-                            target: 'F',
-                            source: Exp2_binary { op: 'A', left: 'SQUISH', right: 'B' } } },
-                      Statement { val: Assignment { target: 'A', source: 'B' } },
-                      Statement { val: Assignment { target: 'B', source: 'F' } } ] } },
-              Statement { val: Return { value: 'F' } } ] },
+        Func {
+          params: [ Arg { type: 'COUNTERS', id: 'N' } ],
+          statements:
+            [ Declaration {
+                target: 'A',
+                source: Literal { value: 0 },
+                type: 'COUNTERS',
+                array: null },
+              Declaration {
+                target: 'B',
+                source: Literal { value: 1 },
+                type: 'COUNTERS',
+                array: null },
+              Declaration {
+                target: 'F',
+                source: Literal { value: 1 },
+                type: 'COUNTERS',
+                array: null },
+              ForLoop {
+                setup:
+                Declaration {
+                  target: 'I',
+                  source: Literal { value: 2 },
+                  type: 'COUNTERS',
+                  array: null },
+                textExp: Exp3_binary { op: 'I', left: 'NOT SMASH OR IS', right: 'N' },
+                increment: 'I',
+                body: 'I' },
+              Return { value: 'F' } ],
+          return_type: [] },
         type: 'DOERS',
-        array: null } } }
+        array: null } ] }

@@ -1,4 +1,8 @@
 Program {
   statements:
-    Statement {
-      val: Declaration { target: 'x', source: 'y', type: 'WORDERS', array: null } } }
+    [ Declaration { target: 'x', source: 'y', type: 'WORDERS', array: null },
+      Declaration {
+        target: 'mybeautifulvariable',
+        source: Postfix { op: Literal { value: 3 }, left: undefined },
+        type: 'COUNTERS',
+        array: null } ] }
