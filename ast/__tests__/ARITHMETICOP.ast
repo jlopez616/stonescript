@@ -16,4 +16,15 @@ Program {
         source:
         Exp1_binary { op: Literal { value: 100 }, left: 'LEFT', right: 'd' },
         type: 'COUNTERS',
+        array: null },
+      Declaration { target: 'yah', source: 'OOGA', type: 'YESNOS', array: null },
+      Declaration {
+        target: 'dah',
+        source: Literal { value: 'Bepis' },
+        type: 'WORDERS',
+        array: null },
+      Declaration {
+        target: 'nah',
+        source: Postfix { op: 'OOGA', left: undefined },
+        type: 'YESNOS',
         array: null } ] }
