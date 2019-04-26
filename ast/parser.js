@@ -1,5 +1,5 @@
 const fs = require('fs');
-const util = require('util'); 
+const util = require('util');
 const ohm = require('ohm-js');
 
 const {
@@ -7,7 +7,9 @@ const {
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Break} = require('../ast');
+
+  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Break, Itteration} = require('../ast');
+
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
 
@@ -25,11 +27,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Statement(value, _1) {
     return value.ast();
   },
-  ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, _7) { // Will likely need to be changed
-    return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast());
+  ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, stop, _7) { // Will likely need to be changed
+    return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast(), stop.ast());
   },
-  WhileLoop(_1, _2, testExp, _3, _4, body, _5) {
-    return new WhileLoop(testExp.ast(), body.ast());
+  WhileLoop(_1, _2, testExp, _3, _4, body, stop, _5) {
+    return new WhileLoop(testExp.ast(), body.ast(), stop.ast());
   },
   Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9, alternate, _10, _11, _12, final, _13) { // arrayToNullable alternate?
     return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast()), arrayToNullable(final.ast()));
@@ -53,6 +55,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Func(params.ast(), return_type.ast(), statements.ast());
   },
   Exp_or(op, left, right) {
+    return new Exp_or(op.ast(), left.ast(), right.ast());
+  },
+  Exp_and(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());
   },
   Exp1_binary(op, left, right) {
@@ -96,11 +101,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   _terminal() {
     return this.sourceString;
-   },
+  },
   intlit(digits) {
     return new Literal(+this.sourceString);
   },
-  Break(_1) {
+  Break(_1, _2) {
     return new Break();
   },
 });
@@ -112,6 +117,6 @@ module.exports = (text) => {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  console.log(util.inspect(astGenerator(match).ast(), {depth: null}));
+  console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
   return astGenerator(match).ast();
 };

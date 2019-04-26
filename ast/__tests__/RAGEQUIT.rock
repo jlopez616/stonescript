@@ -1,3 +1,7 @@
 FOR (x IS 5; x SMASH 4; x IS x RIP 5) PART
 RAGEQUIT!
+<<<<<<< HEAD
 NOT PART!
+=======
+NOT PART!
+>>>>>>> a0a7c6c0d7c76827f0f01dee5c244c72c6f1d752
