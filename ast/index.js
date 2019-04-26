@@ -3,7 +3,7 @@ class Argument {
     Object.assign(this, { expression });
   }
 }
-class Arg {
+class Arg { //what is this????
   constructor(type, id) {
     Object.assign(this, { type, id });
   }

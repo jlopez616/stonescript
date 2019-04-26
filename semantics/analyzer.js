@@ -1,7 +1,7 @@
 const {
-  Argument, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, BooleanLiteral,
+  Arg, Array, Assignment, Exp1_binary, Exp2_binary, Exp3_binary, Exp_and, Exp_or, BooleanLiteral,
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp, ReturnStatement,
+  IfStatement, NumericLiteral, Parameter, Postfix, RelExp, ReturnStatement,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
   VariableDeclaration, WhileLoop, Literal, intlit, Obj, Exp_or, Break} = require('../ast');
 
@@ -10,43 +10,81 @@ const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('.
 const check = require('./check');
 
 Argument.prototype.analyze = (context) => {
+  this.type = context.lookupType(this.type);
+  this.id = context.lookupValue(this.id); // I think this is right?
 
 };
 
 Array.prototype.analyze = (context) => {
-    this.args = context.lookupType(this.args); //tells us the type of the array
+    this.args = context.lookupType(this.args); //tells us the type of the array - idk if this is right :(
 };
 
 Assignment.prototype.analyze = (context) => {
-  // TODO
+  this.source.analyze(context);
+  this.target.analyze(context);
 };
 
+Exp_and {
+  this.type = context.lookupType(this.type);
+  check.isLogicalValue(this.type);
+  this.left.analyze(context);
+  this.right.analyze(context);
+};
+
+Exp_or {
+  this.type = context.lookupType(this.type);
+  check.isLogicalValue(this.type);
+  this.left.analyze(context);
+  this.right.analyze(context);
+}
+
 Exp1_binary.prototype.analyze = (context) => {
-  // TODO
+  this.left.analyze(context);
+  this.right.analyze(context);
+  check.isInteger(this.left);
+  check.isInteger(this.right);
+  this.type = CounterType;
+  
 };
 
 Exp2_binary.prototype.analyze = (context) => {
-  // TODO
+  this.left.analyze(context);
+  this.right.analyze(context);
+  check.expressionHaveTheSameType(this.left, this.right);
+  if (/SQUISH/).test(this.op)) {
+    check.isInteger(this.left);
+    check.isInteger(this.right);
+  } else if (/RIP/).test(this.op)) {
+    check.isInteger(this.left);
+    check.isInteger(this.right);
+  }
+  this.type = CounterType;
 };
 
 Exp3_binary.prototype.analyze = (context) => {
-  // TODO
+  this.left.analyze(context);
+  this.right.analyze(context);
+  check.expressionHaveTheSameType(this.left, this.right);
+  this.type = YesnosType;
 };
 
 BooleanLiteral.prototype.analyze = (context) => {
-  // TODO
+  this.type = YesnosType;
 };
 
 Conditional.prototype.analyze = (context) => {
-  // TODO
-};
-
-BooleanLiteral.prototype.analyze = (context) => {
-  // TODO
+  this.testExp.analyze(context);
+  this.consequent.analyze(context);
+  if (this.alternate) {
+    this.alternate.analyze(context);
+  }
+  if (this.final) {
+    this.final.analyze(context);
+  }
 };
 
 Call.prototype.analyze = (context) => {
-  // TODO
+  //is this even needed?
 };
 
 Declaration.prototype.analyze = (context) => {
@@ -54,59 +92,68 @@ Declaration.prototype.analyze = (context) => {
 };
 
 ForLoop.prototype.analyze = (context) => {
-  // TODO
+  // Unsure if correct but I'm trying >.<
+  this.testExp.analyze(context);
+};
+
+Func.prototype.analyze = (context) => {
+  // THIS is the ONE TRUE FUNCTION!
+  // Do Later
 };
 
 FunctionDeclaration.prototype.analyze = (context) => {
-  // TODO
+  // Is this needed?
 };
 
 FunctionObject.prototype.analyze = (context) => {
-  // TODO
+  // Is this needed?
 };
 
-IfStatement.prototype.analyze = (context) => {
-  // TODO
+/* IfStatement.prototype.analyze = (context) => {
+  // I have no idea if we actually need this :/
+}; */
+
+Literal.prototype.analyze = (context) => {
+  if (typeof this.value === 'number') {
+    this.type = CounterType;
+  } else if (typeof this.value === 'string') {
+    this.type = WorderType;
+  }
 };
 
 NumericLiteral.prototype.analyze = (context) => {
-  // TODO
+  // Do.. do we really need this? - we don't
 };
 
 Parameter.prototype.analyze = (context) => {
-  // TODO
+  this.id = context.lookupValue(this.id);
+  
 };
 
 Postfix.prototype.analyze = (context) => {
-  // TODO
+  // Broken alongside unary
 };
 
-Program.prototype.analyze = (context) => {
-  // TODO
-};
 
 RelExp.prototype.analyze = (context) => {
   // TODO
 };
 
 ReturnStatement.prototype.analyze = (context) => {
-  // TODO
+  // is this needed?
 };
 
 RipAssignment.prototype.analyze = (context) => {
-  // TODO
+  // Is this needed?
 };
 
-Func.prototype.analyze = (context) => {
-  // TODO
-};
 
 Return.prototype.analyze = (context) => {
   // TODO
 };
 
 SquishAssignment.prototype.analyze = (context) => {
-  // TODO
+  // Is this needed?
 };
 
 Statement.prototype.analyze = (context) => {
@@ -114,35 +161,31 @@ Statement.prototype.analyze = (context) => {
 };
 
 StringLiteral.prototype.analyze = (context) => {
-  // TODO
+  //Is this needed?
 };
 
 UnaryExpression.prototype.analyze = (context) => {
-  // TODO
+  //broken < is really postfix
+  this.type = context.lookupType(this.type);
 };
 
 VariableDeclaration.prototype.analyze = (context) => {
-  // TODO
+  // Not needed?
 };
 
 WhileLoop.prototype.analyze = (context) => {
-  // TODO
+  this.testExp.analyze(context);
+  const bodyContext = context.createChildContextForLoop();
+  this.body.forEach(line => line.analyze(bodyContext));
 };
 
-Literal.prototype.analyze = (context) => {
-  // TODO
-};
 
 intlit.prototype.analyze = (context) => {
-  // TODO
+  // Not needed?
 };
 
 Obj.prototype.analyze = (context) => {
-  // TODO
-};
-
-Exp_or.prototype.analyze = (context) => {
-  // TODO
+  // TODO : Next Patch
 };
 
 Break.prototype.analyze = (context) => {

@@ -28,6 +28,13 @@ module.exports = {
       'Not an integer or string',
     );
   },
+  
+  isLogicalValue(expression) {
+    doCheck( 
+      expression.type === CounterType || expression.type === YesnosType,
+      'Not a boolean or integer',
+    );
+  },
 
   isBoolean(expression) {
     doCheck(expression.type === YesnosType, 'Not a boolean');
