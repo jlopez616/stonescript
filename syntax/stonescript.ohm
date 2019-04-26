@@ -42,14 +42,13 @@ Stonescript {
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       =  id "IS" Exp
-  Itteration      = id "IS" id addop intlit
   Call             =  ("SPEAK" | id) "(" listOf<Exp, ","> ")"
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Itteration ")" "PART" Body? Break? "NOT PART"
+  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" (id "IS" id addop intlit) ")" "PART" Body? Break? "NOT PART"
   WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body? Break? "NOT PART"
   RelExp           =  Exp4 relop Exp4
   Body             =  Statement*
