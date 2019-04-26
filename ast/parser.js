@@ -25,11 +25,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Statement(value, _1) {
     return value.ast();
   },
-  ForLoop(_1, _2, setup, _3, textExp, _4, id1, _5, id2, addop, intlit, _6, _7, body, stop, _8) { // Will likely need to be changed
-    return new ForLoop(setup.ast(), textExp.ast(), id1.ast(), id2.ast(), addop.ast(), intlit.ast(), body.ast(), stop.ast());
+  ForLoop(_1, _2, setup, _3, textExp, _4, id1, _5, id2, addop, intlit, _6, _7, body, _8) { // Will likely need to be changed
+    return new ForLoop(setup.ast(), textExp.ast(), id1.ast(), id2.ast(), addop.ast(), intlit.ast(), body.ast());
   },
-  WhileLoop(_1, _2, testExp, _3, _4, body, stop, _5) {
-    return new WhileLoop(testExp.ast(), body.ast(), stop.ast());
+  WhileLoop(_1, _2, testExp, _3, _4, body, _5) {
+    return new WhileLoop(testExp.ast(), body.ast());
   },
   Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9, alternate, _10, _11, _12, final, _13) { // arrayToNullable alternate?
     return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast()), arrayToNullable(final.ast()));
@@ -38,7 +38,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Assignment(target.ast(), source.ast());
   },
   Tablet(id, _1, fields, _2, _3) {
-    return new Object(id.ast(), fields.ast());
+    return null; // TODO: new Tablet(id.ast(), fields.ast());
   },
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
@@ -49,8 +49,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Declaration(_1, type, array, target, _2, source) {
     return new Declaration(target.ast(), source.ast(), type.ast(), arrayToNullable(array.ast()));
   },
-  Func(_1, _2, params, _3, _4, statements, return_type, _5) {
-    return new Func(params.ast(), statements.ast(), return_type.ast(),);
+  Func(_1, _2, params, _3, _4, statements, returnType, _5) {
+    return new Func(params.ast(), statements.ast(), returnType.ast());
   },
   Exp_or(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());
