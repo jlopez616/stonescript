@@ -7,7 +7,7 @@ const {
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Break} = require('../ast');
+  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Break, Itteration} = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
 
@@ -25,11 +25,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Statement(value, _1) {
     return value.ast();
   },
-  ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, _7) { // Will likely need to be changed
-    return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast());
+  ForLoop(_1, _2, setup, _3, textExp, _4, increment, _5, _6, body, stop, _7) { // Will likely need to be changed
+    return new ForLoop(setup.ast(), textExp.ast(), increment.ast(), body.ast(), stop.ast());
   },
-  WhileLoop(_1, _2, testExp, _3, _4, body, _5) {
-    return new WhileLoop(testExp.ast(), body.ast());
+  WhileLoop(_1, _2, testExp, _3, _4, body, stop, _5) {
+    return new WhileLoop(testExp.ast(), body.ast(), stop.ast());
   },
   Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9, alternate, _10, _11, _12, final, _13) { // arrayToNullable alternate?
     return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast()), arrayToNullable(final.ast()));
@@ -100,7 +100,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   intlit(digits) {
     return new Literal(+this.sourceString);
   },
-  Break(_1) {
+  Break(_1, _2) {
     return new Break();
   },
 });

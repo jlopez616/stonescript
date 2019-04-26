@@ -38,18 +38,19 @@ Stonescript {
   TabletDec        =  "PART" ListOf<Arg, ","> "NOT PART"
   Tablet           =  id "PART" (Assignment "!")* "NOT PART"
   Return           =  "GIVE" Exp
-  Break            =  "RAGEQUIT"
+  Break            =  "RAGEQUIT" "!"
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       =  id "IS" Exp
+  Itteration      = id "IS" id addop intlit
   Call             =  ("SPEAK" | id) "(" listOf<Exp, ","> ")"
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
-  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Assignment ")" "PART" Body "NOT PART"
-  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
+  ForLoop          =  "FOR" "(" Setup ";" Exp3 ";" Itteration ")" "PART" Body? Break? "NOT PART"
+  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body? Break? "NOT PART"
   RelExp           =  Exp4 relop Exp4
   Body             =  Statement*
 
