@@ -28,30 +28,24 @@ Assignment.prototype.analyze = (context) => {
 BinaryExp.prototype.analyze = (context) => {
   this.left.analyze(context);
   this.right.analyze(context);
-  check.isInteger(this.left);
-  check.isInteger(this.right);
-  this.type = CounterType;
-};
-
-Exp2_binary.prototype.analyze = (context) => {
-  this.left.analyze(context);
-  this.right.analyze(context);
-  check.expressionHaveTheSameType(this.left, this.right);
   if (/SQUISH/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
     check.isInteger(this.right);
+    this.type = CounterType;
   } else if (/RIP/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
     check.isInteger(this.right);
+  } else if (/OOGA/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
+    this.type = YesnosType;
+  } else if (/NOOGA/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
+    this.type = YesnosType;
+  } else {
+    check.expressionsHaveTheSameType(this.left, this.right);
   }
-  this.type = CounterType;
-};
-
-Exp3_binary.prototype.analyze = (context) => {
-  this.left.analyze(context);
-  this.right.analyze(context);
-  check.expressionHaveTheSameType(this.left, this.right);
-  this.type = YesnosType;
 };
 
 Conditional.prototype.analyze = (context) => {
