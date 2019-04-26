@@ -9,7 +9,7 @@ Stonescript {
                    |  Break "!"           
                    |  Return "!"
                    |  Exp "!"
-  Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" ("GIVES" type)? "PART" Statement* "NOT PART"
+  Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" "PART" Statement* Return? "NOT PART"
   Exp              =  Exp "OR" Exp1                          -- or
                    |  Exp "AND" Exp1                         -- and
                    |  Exp1
