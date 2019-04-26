@@ -1,5 +1,5 @@
 const fs = require('fs');
-const util = require('util'); 
+const util = require('util');
 const ohm = require('ohm-js');
 
 const {
@@ -7,7 +7,7 @@ const {
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Break} = require('../ast');
+  VariableDeclaration, WhileLoop, Literal, intlit, Tablet, Exp_or, Exp_and, Break } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
 
@@ -55,6 +55,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Exp_or(op, left, right) {
     return new Exp_or(op.ast(), left.ast(), right.ast());
   },
+  Exp_and(op, left, right) {
+    return new Exp_or(op.ast(), left.ast(), right.ast());
+  },
   Exp1_binary(op, left, right) {
     return new Exp1_binary(op.ast(), left.ast(), right.ast());
   },
@@ -96,7 +99,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   _terminal() {
     return this.sourceString;
-   },
+  },
   intlit(digits) {
     return new Literal(+this.sourceString);
   },
@@ -112,6 +115,6 @@ module.exports = (text) => {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  console.log(util.inspect(astGenerator(match).ast(), {depth: null}));
+  console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
   return astGenerator(match).ast();
 };
