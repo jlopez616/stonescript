@@ -3,7 +3,7 @@ const {
   Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
   IfStatement, NumericLiteral, Parameter, Postfix, Program, RelExp, ReturnStatement,
   RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Exp_or} = require('../ast');
+  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Exp_or, Break} = require('../ast');
 
 const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
 
@@ -18,7 +18,7 @@ Array.prototype.analyze = (context) => {
 };
 
 Assignment.prototype.analyze = (context) => {
-// TODO
+  // TODO
 };
 
 Exp1_binary.prototype.analyze = (context) => {
@@ -142,5 +142,9 @@ Obj.prototype.analyze = (context) => {
 };
 
 Exp_or.prototype.analyze = (context) => {
+  // TODO
+};
+
+Break.prototype.analyze = (context) => {
   // TODO
 };
