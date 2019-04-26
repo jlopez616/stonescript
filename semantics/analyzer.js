@@ -1,9 +1,8 @@
 const {
-  Argument, Array, Assignment, BinaryExp,
-  Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  NumericLiteral, Parameter, Postfix, RelExp, ReturnStatement,
-  RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Break
+  Argument, Array, Assignment, BinaryExp, Conditional, Call, Declaration, 
+  ForLoop, Parameter, Postfix, RelExp, RipAssignment, Func, Return, 
+  SquishAssignment, Statement, UnaryExpression, VariableDeclaration, 
+  WhileLoop, Literal, intlit, Obj, Break
 } = require('../ast');
 
 const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
