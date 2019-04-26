@@ -6,6 +6,7 @@ Stonescript {
                    |  Declaration "!"
                    |  Assignment "!"
                    |  Call "!"
+                   |  Break "!"           
                    |  Return "!"
                    |  Exp "!"
   Func             =  "YABBADABBADOO" "(" listOf<Arg, ", "> ")" ("GIVES" type)? "PART" Statement* "NOT PART"
@@ -37,6 +38,7 @@ Stonescript {
   TabletDec        =  "PART" ListOf<Arg, ","> "NOT PART"
   Tablet           =  id "PART" (Assignment "!")* "NOT PART"
   Return           =  "GIVE" Exp
+  Break            =  "RAGEQUIT"
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       =  id "IS" Exp
@@ -52,8 +54,8 @@ Stonescript {
   Body             =  Statement*
 
   keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" | "FOR" | "GIVE" | "WHAT" | "WHILE"
-                   |  "SQUISH" | "RIP" | "PART" | "THINGIS" | "IS" | "LEFT" | "BREAK"
-                   |  "OOGA" | "WORDERS" | "YABBADABBADO" | "NOOGA" | "SPEAK" | primtype
+                   |  "SQUISH" | "RIP" | "PART" | "THINGIS" | "IS" | "LEFT" | "CUT"
+                   |  "OOGA" | "WORDERS" | "YABBADABBADO" | "NOOGA" | "SPEAK" | "RAGEQUIT" |primtype
                    |  "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
@@ -67,7 +69,7 @@ Stonescript {
   array            =  "CAVE"
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
-  mulop            =  "MANY" | "BREAK" | "LEFT"
+  mulop            =  "MANY" | "CUT" | "LEFT"
   primtype         =  "YESNOS" | "COUNTERS" | "WORDERS" | "WHAT"
 
   newline          =  "\n"+
