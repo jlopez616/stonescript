@@ -15,6 +15,11 @@ Program {
         source: Literal { value: 1 },
         type: 'COUNTERS',
         array: null },
+      Declaration { target: 'TEST', source: 'OOGA', type: 'YESNOS', array: null },
+      WhileLoop {
+        testExp:
+        BinaryExp { op: [ 'IS IS' ], left: 'TEST', right: [ 'OOGA' ] },
+        body: [ [] ] },
       WhileLoop {
         testExp:
         BinaryExp { op: [ 'SMASH' ], left: 'END', right: [ 'COUNT' ] },
