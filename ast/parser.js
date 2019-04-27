@@ -115,6 +115,6 @@ module.exports = (text) => {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  // console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
+   console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
   return astGenerator(match).ast();
 };
