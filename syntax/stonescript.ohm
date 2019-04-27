@@ -70,7 +70,7 @@ Stonescript {
   nothing          =  "WHAT"
   id               =  ~keyword letter idrest*
   idrest           =  "_" | alnum
-  type             =  "COUNTERS" | "WORDERS" | "YESNOS" | "WHUT" | "DOERS" | "TABLET"
+  type             =  "COUNTERS" | "WORDERS" | "YESNOS" | "WHAT" | "DOERS" | "TABLET"
   array            =  "CAVE"
   addop            =  "SQUISH" | "RIP"
   relop            =  "NOT SMASH OR IS" | "NOT SMASH" | "IS IS" | "NOT IS" | "SMASH OR IS" | "SMASH"
