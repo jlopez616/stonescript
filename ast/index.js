@@ -1,8 +1,8 @@
-class Argument {
+/*class Argument {
   constructor(expression) {
     Object.assign(this, { expression });
   }
-}
+}*/
 class Arg {
   constructor(type, id) {
     Object.assign(this, { type, id });
@@ -53,21 +53,21 @@ class Func {
     Object.assign(this, { params, statements, returnType});
   }
 }
-class IfStatement {
+/*class IfStatement {
   constructor(cases, alternate) {
     Object.assign(this, { cases, alternate });
   }
-}
-class NumericLiteral {
+}*/
+/* class NumericLiteral {
   constructor(value) {
     this.value = value;
   }
-}
-class Tablet {
+} */
+/* class Tablet {
   constructor(id, fields) {
-    Object.assign(this, { id, fields });
+    Object.assign(this, { id, fields }); //To Do by release
   }
-}
+} */
 class Parameter {
   constructor(id, defaultExpression) {
     Object.assign(this, { id, defaultExpression });
@@ -100,21 +100,21 @@ class Return {
 }
 class Break {
 }
-class RipAssignment {
+/*class RipAssignment {
   constructor(id) {
     this.id = id;
   }
-}
-class Statement {
+}*/
+/*class Statement {
   constructor(val) {
     this.val = val;
   }
-}
-class SquishAssignment {
+}*/
+/*class SquishAssignment {
   constructor(id) {
-    this.id = id;
+    Object.assign(this, { id });
   }
-}
+}*/
 class WhileLoop {
   constructor(testExp, body) {
     Object.assign(this, { testExp, body });
@@ -126,7 +126,7 @@ class EmptyArray {
 }
 
 module.exports = {
-  Argument,
+  // Argument,
   Arg,
   Array,
   Assignment,
@@ -138,18 +138,18 @@ module.exports = {
   ForIncrement,
   Func,
   Break,
-  IfStatement,
-  NumericLiteral,
+  // IfStatement,
+  // NumericLiteral,
   Parameter,
   Postfix,
   Program,
   PrimitiveType,
+// Rip Assignment 
   Return,
-  RipAssignment,
-  Statement,
-  SquishAssignment,
+// SquishAssignment
+ // Statement,
   WhileLoop,
   Literal,
-  Tablet,
+  // Tablet, TO DO BY RELEASE
   EmptyArray,
 };

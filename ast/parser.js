@@ -3,7 +3,7 @@ const util = require('util');
 const ohm = require('ohm-js');
 
 const {
-  Argument, Arg, Array, Assignment, BinaryExp, ForIncrement,
+  Arg, Array, Assignment, BinaryExp, ForIncrement,
   Conditional, Call, Declaration, ForLoop,
   Postfix, Program,
   Func, Return, WhileLoop, Literal, Tablet, Break
