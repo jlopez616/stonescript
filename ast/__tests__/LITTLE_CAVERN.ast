@@ -5,12 +5,12 @@ Program {
         source:
         Array {
           args:
-            [ [ Literal { value: 1 },
-                Literal { value: 2 },
-                Literal { value: 4 },
-                Literal { value: 8 },
-                Literal { value: 16 },
-                Literal { value: 32 } ] ] },
+            [ Literal { value: 1 },
+              Literal { value: 2 },
+              Literal { value: 4 },
+              Literal { value: 8 },
+              Literal { value: 16 },
+              Literal { value: 32 } ] },
         type: 'COUNTERS',
         array: 'CAVE' },
       Call { id: 'SPEAK', args: [ 'CAVERN' ] } ] }
