@@ -1,9 +1,8 @@
 const {
-  Arg, Array, Assignment, BinaryExp,
-  Conditional, Call, Declaration, ForLoop, FunctionDeclaration, FunctionObject,
-  IfStatement, NumericLiteral, Parameter, Postfix, RelExp, ReturnStatement,
-  RipAssignment, Func, Return, SquishAssignment, Statement, StringLiteral, UnaryExpression,
-  VariableDeclaration, WhileLoop, Literal, intlit, Obj, Break
+  Argument, Array, Assignment, BinaryExp, Conditional, Call, Declaration, 
+  ForLoop, Parameter, Postfix, RelExp, RipAssignment, Func, Return, 
+  SquishAssignment, Statement, UnaryExpression, VariableDeclaration, 
+  WhileLoop, Literal, intlit, Obj, Break
 } = require('../ast');
 
 const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
@@ -28,30 +27,24 @@ Assignment.prototype.analyze = (context) => {
 BinaryExp.prototype.analyze = (context) => {
   this.left.analyze(context);
   this.right.analyze(context);
-  check.isInteger(this.left);
-  check.isInteger(this.right);
-  this.type = CounterType;
-};
-
-Exp2_binary.prototype.analyze = (context) => {
-  this.left.analyze(context);
-  this.right.analyze(context);
-  check.expressionHaveTheSameType(this.left, this.right);
   if (/SQUISH/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
     check.isInteger(this.right);
+    this.type = CounterType;
   } else if (/RIP/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
     check.isInteger(this.right);
+  } else if (/OOGA/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
+    this.type = YesnosType;
+  } else if (/NOOGA/.test(this.op)) {
+    check.expressionHaveTheSameType(this.left, this.right);
+    this.type = YesnosType;
+  } else {
+    check.expressionsHaveTheSameType(this.left, this.right);
   }
-  this.type = CounterType;
-};
-
-Exp3_binary.prototype.analyze = (context) => {
-  this.left.analyze(context);
-  this.right.analyze(context);
-  check.expressionHaveTheSameType(this.left, this.right);
-  this.type = YesnosType;
 };
 
 Conditional.prototype.analyze = (context) => {
@@ -83,18 +76,6 @@ Func.prototype.analyze = (context) => {
   // Do Later
 };
 
-FunctionDeclaration.prototype.analyze = (context) => {
-  // Is this needed?
-};
-
-FunctionObject.prototype.analyze = (context) => {
-  // Is this needed?
-};
-
-/* IfStatement.prototype.analyze = (context) => {
-  // I have no idea if we actually need this :/
-}; */
-
 Literal.prototype.analyze = (context) => {
   if (typeof this.value === 'number') {
     this.type = CounterType;
@@ -103,10 +84,6 @@ Literal.prototype.analyze = (context) => {
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
   }
-};
-
-NumericLiteral.prototype.analyze = (context) => {
-  // Do.. do we really need this? - we don't
 };
 
 Parameter.prototype.analyze = (context) => {
@@ -123,21 +100,16 @@ RelExp.prototype.analyze = (context) => {
   // TODO
 };
 
-ReturnStatement.prototype.analyze = (context) => {
-  // is this needed?
-};
-
 RipAssignment.prototype.analyze = (context) => {
   // Is this needed?
 };
 
+SquishAssignment.prototype.analyze = (context) => {
+  // Is this needed?
+};
 
 Return.prototype.analyze = (context) => {
   // TODO
-};
-
-SquishAssignment.prototype.analyze = (context) => {
-  // Is this needed?
 };
 
 Statement.prototype.analyze = (context) => {
@@ -158,7 +130,6 @@ WhileLoop.prototype.analyze = (context) => {
   const bodyContext = context.createChildContextForLoop();
   this.body.forEach(line => line.analyze(bodyContext));
 };
-
 
 intlit.prototype.analyze = (context) => {
   // Not needed?
