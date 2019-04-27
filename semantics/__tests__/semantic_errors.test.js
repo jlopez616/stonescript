@@ -25,7 +25,7 @@ const errors = [
   ['types do not match in inequality test', '2 SMASH "ROCK"!'],
   ['types do not match in declaration', 'ROCK COUNTERS n IS "ROCK"!'],
   ['undeclared because in other scope', 'FOR(ROCK COUNTERS x IS 0! x NOT SMASH 5! x IS x SQUISH 1) PART ROCK COUNTERS y IS 1 SQUISH x! NOT PART! y SQUISH 1!'],
-  ['redeclaration of variable', 'ROCK WORDERS w IS "OOGA"! ROCK WORDERS w is "OOGA OOGA!"'],
+  ['redeclaration of variable', 'ROCK WORDERS w IS "OOGA"! ROCK WORDERS w IS "OOGA OOGA!"'],
   ['type mismatch in assignment', 'ROCK WORDERS w IS 2!'],
   ['incorrect type assignment in for loop', 'FOR(ROCK WORDERS x IS "WORDUP"; x NOT SMASH 5; x IS x SQUISH 1) PART ROCK COUNTERS r IS 5! NOT PART!'],
   ['writing to for loop index', 'FOR(ROCK COUNTERS x IS 0; x NOT SMASH 5; x IS x SQUISH 1) PART x IS 5! NOT PART!'],
