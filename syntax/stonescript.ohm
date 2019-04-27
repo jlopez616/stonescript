@@ -43,7 +43,8 @@ Stonescript {
   EmptyArray			 =  "CAVEIN" "CAVEOUT"
   Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
   Assignment       =  id "IS" Exp
-  Call             =  ("SPEAK" | id) "(" listOf<Exp, ","> ")"
+  Call             =  ("SPEAK" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
+                   |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | id) "(" listOf<Exp, ","> ")"
   Field            =  id "THINGIS" Exp "!"
   Conditional      =  "OOF" "(" Exp ")" "PART" Body "NOT PART"
                       ("OOOF" "(" Exp ")" "PART" Body "NOT PART" )*
@@ -59,7 +60,8 @@ Stonescript {
   keyword          =  ("YESNOS" | "OOF" | "OOOF" | "OOFF" | "FOR" | "GIVE" | "WHAT"
                    |  "WHILE" | "SQUISH" | "RIP" | "PART" | "THINGIS" | "IS" | "LEFT"
                    |  "CUT" | "OOGA" | "WORDERS" | "YABBADABBADO" | "NOOGA" | "SPEAK"
-                   |  "RAGEQUIT" | primtype | "NOT PART") ~idrest
+                   |  "RAGEQUIT" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
+                   |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | primtype | "NOT PART") ~idrest
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"
