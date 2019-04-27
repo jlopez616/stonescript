@@ -63,7 +63,8 @@ WHILE (score SMASH OR IS 50) PART
 NOT PART!
 
 ROCK CAVE characters IS CAVEIN "Mimir", "Laufey", "Atreus", "Fafnir" CAVEOUT!
-SPEAK(characters.SIZE)!
+🦖TODO: Builtin should work
+🦖SPEAK(characters.SIZE)!
 
 ROCK COUNTERS randomNum IS 100!
 bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
