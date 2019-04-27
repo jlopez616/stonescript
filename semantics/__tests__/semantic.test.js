@@ -63,8 +63,13 @@ WHILE (score SMASH OR IS 50) PART
 NOT PART!
 
 ROCK CAVE characters IS CAVEIN "Mimir", "Laufey", "Atreus", "Fafnir" CAVEOUT!
-🦖TODO: Builtin should work
-🦖SPEAK(characters.SIZE)!
+SPEAK(characters.SIZE())!
+
+ROCK WORDERS shoutout IS "Isn't STONESCRIPT rocking awesome?!"!
+SPEAK(shoutout.GOHIGH())!
+
+ROCK WORDERS waitASec IS "Wait, you want string length? Ah, whoops!"!
+SPEAK(waitASec.DALENGTH)!
 
 ROCK COUNTERS randomNum IS 100!
 bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
@@ -75,6 +80,7 @@ WHILE (NOT funbool) PART
     🦖 Infinite loop? Nahhhhhh
     RAGEQUIT!
 NOT PART!
+
 
 `;
 

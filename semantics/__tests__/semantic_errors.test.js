@@ -9,6 +9,7 @@ const parse = require('../../ast/parser');
 const Context = require('../context');
 
 const errors = [
+  // TODO: have to decide how we want to call builtins
   ['use of undeclared variable', 'x IS 1!'],
   ['writing to a const variable', 'BEDROCK COUNTERS x IS 33! x IS 42!'],
   ['non boolean while condition', 'WHILE ("OOGA") PART SPEAK("OOGA")! NOT PART!'],
@@ -38,13 +39,13 @@ const errors = [
   ['too few function arguments', 'BIGHUG("YABBADABBADOO!!!!")!'],
   ['wrong type of function argument', 'SIZE(33)!'],
   ['empty function argument', 'SIZE()!'],
-  ['redeclared field', 'let type p = {r: int, r: int} in 0 end'], // DO WE NEED A CHECK FOR THIS? nOT SURE IF OUR LANG INCLUDED THIS.
-  ['no such field', 'let type p = {r: int} var s: p := nil in s.zzz end'], // DONT HAVE WORKING TABLETS YET... DO LATER
-  ['member of nonrecord', 'let var x := 3 in x.y end'], // RECORDS = TABLETS IN OUR LANG I THINK? DONT KNOW WHAT TO DO YET
-  ['subscript of nonarray', 'ROCK COUNTER c IS 68! c.DACHAR(3)!'], // WELL THIS WRONG FOR NOW- HAVE TO DECIDE HOW WE WANT TO CALL BUILT INS
+  ['redeclared field', 'ROCK COUNTERS x IS 5! ROCK COUNTERS x IS 5!'], 
+  // ['no such field', 'let type p = {r: int} var s: p := nil in s.zzz end'], // don't have working tablets yet... do later
+  // ['member of nonrecord', 'let var x := 3 in x.y end'], // once tablets are working
+  ['subscript of nonarray', 'ROCK COUNTER c IS 68! c.DACHAR(3)!'],
   ['call of nonfunction', 'ROCK COUNTERS x IS 1! x(3)!'],
-  ['non integer subscript', 'let type list = array of int var a := list [1] of 0 in a["x"] end'], // DONT KNOW HOW TO CALL OR IF WE INCLUDED
   // TODO: We need dozens more here....
+
   // return type error within a function?
   // empty array substring
   // potential tablet errors: too many/too few tablet assignments,

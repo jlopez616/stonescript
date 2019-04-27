@@ -88,6 +88,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   nonemptyListOf(first, _, rest) {
     return [first.ast(), ...rest.ast()];
   },
+  emptyListOf() {
+    return [];
+  },
   EmptyArray(_1, _2) {
     return [];
   },
