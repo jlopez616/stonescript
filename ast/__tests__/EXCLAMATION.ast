@@ -16,7 +16,8 @@ Program {
         type: 'COUNTERS',
         array: null },
       WhileLoop {
-        testExp: BinaryExp { op: 'SMASH', left: 'END', right: 'COUNT' },
+        testExp:
+        BinaryExp { op: [ 'SMASH' ], left: 'END', right: [ 'COUNT' ] },
         body:
         [ [ Assignment {
               target: 'RESULT',
