@@ -115,19 +115,13 @@ class SquishAssignment {
     this.id = id;
   }
 }
-class UnaryExpression {
-  constructor(op, operand) {
-    Object.assign(this, { op, operand });
-  }
-}
-class VariableDeclaration {
-  constructor(id, exp) {
-    Object.assign(this, { id, exp });
-  }
-}
 class WhileLoop {
   constructor(testExp, body) {
     Object.assign(this, { testExp, body });
+  }
+}
+class EmptyArray {
+  constructor(_1, _2) {
   }
 }
 
@@ -154,9 +148,8 @@ module.exports = {
   RipAssignment,
   Statement,
   SquishAssignment,
-  UnaryExpression,
-  VariableDeclaration,
   WhileLoop,
   Literal,
   Tablet,
+  EmptyArray,
 };

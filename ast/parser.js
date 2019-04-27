@@ -5,8 +5,8 @@ const ohm = require('ohm-js');
 const {
   Argument, Arg, Array, Assignment, BinaryExp, ForIncrement,
   Conditional, Call, Declaration, ForLoop,
-  IfStatement, Postfix, Program,
-  Func, Return, WhileLoop, Literal, Tablet, Break,
+  Postfix, Program,
+  Func, Return, WhileLoop, Literal, Tablet, Break
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
@@ -88,7 +88,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   nonemptyListOf(first, _, rest) {
     return [first.ast(), ...rest.ast()];
   },
-  EmptyListOf() {
+  EmptyArray(_1, _2) {
     return [];
   },
   strlit(_1, chars, _6) {
