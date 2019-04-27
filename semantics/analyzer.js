@@ -27,19 +27,19 @@ Assignment.prototype.analyze = (context) => {
 BinaryExp.prototype.analyze = (context) => {
   this.left.analyze(context);
   this.right.analyze(context);
-  if (/SQUISH/.test(this.op)) {
+  if (this.op === 'SQUISH') {
     check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
     check.isInteger(this.right);
     this.type = CounterType;
-  } else if (/RIP/.test(this.op)) {
+  } else if (this.op === 'RIP') {
     check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
     check.isInteger(this.right);
-  } else if (/OOGA/.test(this.op)) {
+  } else if (this.op === 'OOGA') {
     check.expressionHaveTheSameType(this.left, this.right);
     this.type = YesnosType;
-  } else if (/NOOGA/.test(this.op)) {
+  } else if (this.op === 'NOOGA') {
     check.expressionHaveTheSameType(this.left, this.right);
     this.type = YesnosType;
   } else {
@@ -50,6 +50,7 @@ BinaryExp.prototype.analyze = (context) => {
 Conditional.prototype.analyze = (context) => {
   this.testExp.analyze(context);
   this.consequent.analyze(context);
+  check.isBoolean(this.testExp.op);
   if (this.alternate) {
     this.alternate.analyze(context);
   }
@@ -71,24 +72,33 @@ Declaration.prototype.analyze = (context) => {
 };
 
 ForLoop.prototype.analyze = (context) => {
-  // Unsure if correct but I'm trying >.<
+  this.setup.analyze(context);
   this.testExp.analyze(context);
+  check.isInteger(this.setup.source);
+  this.increment.analyze(context);
+  const bodyContext = context.createChildContextForLoop();
+  this.body.forEach(line => line.analyze(bodyContext));
 };
 
 ForIncrement.prototype.analyze = (context) => {
-  //to do
+  this.id1 = lookupValue(id1);
+  this.id2 = lookupValue(id2);
+  this.addop.analyze(id1);
+  this.intlit.analyze(context);
 }
 
 Func.prototype.analyze = (context) => {
-  // THIS is the ONE TRUE FUNCTION!
-  // Do Later
+  const bodyContext = context.createChildContextForLoop();
+  this.params.forEach(line => line.analyze(bodyContext));
+  this.statements.forEach(line => line.analyze(bodyContext));
+  this.returnType = context.lookupType(this.returnType);
 };
 
 Literal.prototype.analyze = (context) => {
   if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
-    this.type = YesNosType;
+    this.type = YesnosType;
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
   }
@@ -113,6 +123,7 @@ WhileLoop.prototype.analyze = (context) => {
   this.testExp.analyze(context);
   const bodyContext = context.createChildContextForLoop();
   this.body.forEach(line => line.analyze(bodyContext));
+
 };
 
 Break.prototype.analyze = (context) => {
