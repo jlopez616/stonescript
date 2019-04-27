@@ -63,7 +63,6 @@ Reference Types:
 * \- RIP 
 * \/ CUT 
 * \* MANY
-* % LEFT
 
 ### Relational Operators
 * == IS IS
