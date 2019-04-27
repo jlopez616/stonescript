@@ -53,6 +53,11 @@ class Func {
     Object.assign(this, { params, statements, returnType});
   }
 }
+class Literal {
+  constructor(value) {
+    Object.assign(this, { value });
+  }
+}
 /*class IfStatement {
   constructor(cases, alternate) {
     Object.assign(this, { cases, alternate });
@@ -88,11 +93,7 @@ class PrimitiveType {
     Object.assign(this, { name });
   }
 }
-class Literal {
-  constructor(value) {
-    Object.assign(this, { value });
-  }
-}
+
 class Return {
   constructor(value) {
     this.value = value;

@@ -1,6 +1,6 @@
 const {
-  Argument, Array, Assignment, BinaryExp, Conditional, Call, Declaration, 
-  ForLoop, Parameter, Postfix, RelExp, RipAssignment, Func, Return, 
+  Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, 
+  ForLoop, ForIncrement, Parameter, Postfix, RelExp, RipAssignment, Func, Return, 
   SquishAssignment, Statement, UnaryExpression, VariableDeclaration, 
   WhileLoop, Literal, intlit, Obj, Break
 } = require('../ast');
@@ -9,7 +9,7 @@ const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('.
 
 const check = require('./check');
 
-Argument.prototype.analyze = (context) => {
+Arg.prototype.analyze = (context) => {
   this.type = context.lookupType(this.type);
   this.id = context.lookupValue(this.id); // I think this is right?
 
@@ -59,17 +59,25 @@ Conditional.prototype.analyze = (context) => {
 };
 
 Call.prototype.analyze = (context) => {
-  //is this even needed?
+  this.id.analyze(context);
+  this.args.analyze(context);
 };
 
 Declaration.prototype.analyze = (context) => {
-  // TODO
+   this.target.analyze(context);
+   this.source.analyze(context);
+   this.type = context.lookupType(context);
+   this.array.analyze(context);
 };
 
 ForLoop.prototype.analyze = (context) => {
   // Unsure if correct but I'm trying >.<
   this.testExp.analyze(context);
 };
+
+ForIncrement.prototype.analyze = (context) => {
+  //to do
+}
 
 Func.prototype.analyze = (context) => {
   // THIS is the ONE TRUE FUNCTION!
@@ -88,55 +96,23 @@ Literal.prototype.analyze = (context) => {
 
 Parameter.prototype.analyze = (context) => {
   this.id = context.lookupValue(this.id);
+  this.defaultExpression.analyze(context) // unsure if i need to lookup value or just do this
 
 };
 
 Postfix.prototype.analyze = (context) => {
-  // Broken alongside unary
-};
-
-
-RelExp.prototype.analyze = (context) => {
-  // TODO
-};
-
-RipAssignment.prototype.analyze = (context) => {
-  // Is this needed?
-};
-
-SquishAssignment.prototype.analyze = (context) => {
-  // Is this needed?
+  this.left.analyze(context);
+  //unsure if anything needs to be done with thi
 };
 
 Return.prototype.analyze = (context) => {
-  // TODO
-};
-
-Statement.prototype.analyze = (context) => {
-  // TODO
-};
-
-UnaryExpression.prototype.analyze = (context) => {
-  //broken < is really postfix
-  this.type = context.lookupType(this.type);
-};
-
-VariableDeclaration.prototype.analyze = (context) => {
-  // Not needed?
+  this.value = lookupValue(value);
 };
 
 WhileLoop.prototype.analyze = (context) => {
   this.testExp.analyze(context);
   const bodyContext = context.createChildContextForLoop();
   this.body.forEach(line => line.analyze(bodyContext));
-};
-
-intlit.prototype.analyze = (context) => {
-  // Not needed?
-};
-
-Obj.prototype.analyze = (context) => {
-  // TODO : Next Patch
 };
 
 Break.prototype.analyze = (context) => {
