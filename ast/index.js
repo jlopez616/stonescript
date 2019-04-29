@@ -57,7 +57,7 @@ class Literal {
   constructor(value) {
     Object.assign(this, { value });
   }
-}
+} 
 /*class IfStatement {
   constructor(cases, alternate) {
     Object.assign(this, { cases, alternate });

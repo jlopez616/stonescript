@@ -1,6 +1,6 @@
 const {
   Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, 
-  ForLoop, ForIncrement, Parameter, Postfix, RelExp, RipAssignment, Func, Return, 
+  ForLoop, ForIncrement, Parameter, Postfix, Program, RelExp, RipAssignment, Func, Return, 
   SquishAssignment, Statement, UnaryExpression, VariableDeclaration, 
   WhileLoop, Literal, intlit, Obj, Break
 } = require('../ast');
@@ -105,9 +105,15 @@ Literal.prototype.analyze = (context) => {
 };
 
 Parameter.prototype.analyze = (context) => {
+
   this.id = context.lookupValue(this.id);
   this.defaultExpression.analyze(context) // unsure if i need to lookup value or just do this
 
+};
+
+Program.prototype.analyze = (context) => {
+  console.log("Made it here");
+  this.statements.forEach(s => s.analyze(context));
 };
 
 Postfix.prototype.analyze = (context) => {

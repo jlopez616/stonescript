@@ -100,8 +100,8 @@ class Context {
     }
     throw new Error(`${id} has not been declared`);
   }
-}
 
+}
 Context.INITIAL = new Context();
 standardFunctions.forEach((f) => { Context.INITIAL.valueMap[f.id] = f; });
 Context.INITIAL.typeMap.counter = CounterType;
@@ -109,5 +109,8 @@ Context.INITIAL.typeMap.worder = WorderType;
 Context.INITIAL.typeMap.yesnos = YesnosType;
 Context.INITIAL.typeMap.what = WhatType;
 Context.INITIAL.typeMap.tablet = TabletType;
+
+
+
 
 module.exports = Context;

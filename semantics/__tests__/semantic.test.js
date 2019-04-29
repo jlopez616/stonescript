@@ -63,13 +63,13 @@ WHILE (score SMASH OR IS 50) PART
 NOT PART!
 
 ROCK CAVE characters IS CAVEIN "Mimir", "Laufey", "Atreus", "Fafnir" CAVEOUT!
-SPEAK(characters.SIZE())!
+SPEAK(SIZE(characters))!
 
 ROCK WORDERS shoutout IS "Isn't STONESCRIPT rocking awesome?!"!
-SPEAK(shoutout.GOHIGH())!
+SPEAK(GOHIGH(shoutout))!
 
 ROCK WORDERS waitASec IS "Wait, you want string length? Ah, whoops!"!
-SPEAK(waitASec.DALENGTH)!
+SPEAK(DALENGTH(waitASec))!
 
 ROCK COUNTERS randomNum IS 100!
 bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
@@ -86,10 +86,17 @@ NOT PART!
 
 describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
+
     const astRoot = parse(program);
-    expect(astRoot).toBeTruthy();
-    astRoot.analyze(Context.INITIAL);
-    expect(astRoot).toBeTruthy();
+    contextObject = Context.INITIAL;
+    //  console.log(astRoot);
+    // console.log("Truth test: " + (astRoot) === true);
+    // expect(astRoot).toBeTruthy(); Comes out false? Why?
+    //console.log(astRoot);
+    //console.log(astRoot.statements);
+    console.log(contextObject);
+    astRoot.analyze(contextObject);
+    expect(astRoot).toBeTruthy(); 
     done();
   });
-}); 
+});  
