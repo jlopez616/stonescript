@@ -1,6 +1,6 @@
 const util = require('util');
 const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
-const { Array, Func } = require('../ast'); //not sure if this is all we need
+const { Array, Func } = require('../ast'); // not sure if this is all we need
 
 function doCheck(condition, message) {
   if (!condition) {
@@ -9,10 +9,10 @@ function doCheck(condition, message) {
 }
 
 module.exports = {
-  //add ALL the type checking functions!
+  // add ALL the type checking functions!
   isArray(expression) {
     doCheck(expression.type.constructor === Array, 'Not an array');
-  }, 
+  },
 
   isInteger(expression) {
     doCheck(expression.type === CounterType, 'Not an integer');
@@ -28,9 +28,9 @@ module.exports = {
       'Not an integer or string',
     );
   },
-  
+
   isLogicalValue(expression) {
-    doCheck( 
+    doCheck(
       expression.type === CounterType || expression.type === YesnosType,
       'Not a boolean or integer',
     );
@@ -45,23 +45,23 @@ module.exports = {
   },
 
   // array out of bounds
-  isOutOfBounds(params){
+  isOutOfBounds(params) {
     doCheck(params.length < 100, 'Array out of bounds');
   },
 
   // invalid date (may be subject for revision    -Anthony)
-  isDateInvalid(month, day, year){
-    doCheck(month <= 12 && month.type === day.type && day.type === year.type, 
+  isDateInvalid(month, day, year) {
+    doCheck(month <= 12 && month.type === day.type && day.type === year.type,
       'Invalid month, and types must be integers');
   },
 
-  //TODO: invalid assignment left-hand side (may or may not be needed)
-  isInvalidAssignment(){
+  // TODO: invalid assignment left-hand side (may or may not be needed)
+  isInvalidAssignment() {
     doCheck();
   },
 
-  //TODO: "x" is not iterable
-  isNotIterable(){
+  // TODO: "x" is not iterable
+  isNotIterable() {
     doCheck();
   },
 

@@ -1,8 +1,8 @@
-/*class Argument {
+/* class Argument {
   constructor(expression) {
     Object.assign(this, { expression });
   }
-}*/
+} */
 class Arg {
   constructor(type, id) {
     Object.assign(this, { type, id });
@@ -50,19 +50,19 @@ class ForIncrement {
 }
 class Func {
   constructor(params, statements, returnType) {
-    Object.assign(this, { params, statements, returnType});
+    Object.assign(this, { params, statements, returnType });
   }
 }
 class Literal {
   constructor(value) {
     Object.assign(this, { value });
   }
-} 
-/*class IfStatement {
+}
+/* class IfStatement {
   constructor(cases, alternate) {
     Object.assign(this, { cases, alternate });
   }
-}*/
+} */
 /* class NumericLiteral {
   constructor(value) {
     this.value = value;
@@ -101,21 +101,21 @@ class Return {
 }
 class Break {
 }
-/*class RipAssignment {
+/* class RipAssignment {
   constructor(id) {
     this.id = id;
   }
-}*/
-/*class Statement {
+} */
+/* class Statement {
   constructor(val) {
     this.val = val;
   }
-}*/
-/*class SquishAssignment {
+} */
+/* class SquishAssignment {
   constructor(id) {
     Object.assign(this, { id });
   }
-}*/
+} */
 class WhileLoop {
   constructor(testExp, body) {
     Object.assign(this, { testExp, body });
@@ -145,10 +145,10 @@ module.exports = {
   Postfix,
   Program,
   PrimitiveType,
-// Rip Assignment 
+  // Rip Assignment
   Return,
-// SquishAssignment
- // Statement,
+  // SquishAssignment
+  // Statement,
   WhileLoop,
   Literal,
   // Tablet, TO DO BY RELEASE

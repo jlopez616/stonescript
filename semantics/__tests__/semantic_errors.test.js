@@ -39,7 +39,7 @@ const errors = [
   ['too few function arguments', 'BIGHUG("YABBADABBADOO!!!!")!'],
   ['wrong type of function argument', 'SIZE(33)!'],
   ['empty function argument', 'SIZE()!'],
-  ['redeclared field', 'ROCK COUNTERS x IS 5! ROCK COUNTERS x IS 5!'], 
+  ['redeclared field', 'ROCK COUNTERS x IS 5! ROCK COUNTERS x IS 5!'],
   // ['no such field', 'let type p = {r: int} var s: p := nil in s.zzz end'], // don't have working tablets yet... do later
   // ['member of nonrecord', 'let var x := 3 in x.y end'], // once tablets are working
   ['subscript of nonarray', 'ROCK COUNTER c IS 68! c.DACHAR(3)!'],
@@ -55,13 +55,13 @@ const errors = [
   // need some comment errors, probably just if multiline is missing end emoji
 ];
 
- describe('The semantic analyzer', () => {
+describe('The semantic analyzer', () => {
   errors.forEach(([scenario, program]) => {
-   test(`detects the error ${scenario}`, (done) => {
+    test(`detects the error ${scenario}`, (done) => {
       const astRoot = parse(program);
       expect(astRoot).toBeTruthy();
       expect(() => astRoot.analyze(Context.INITIAL)).toThrow();
       done();
     });
   });
-}); 
+});

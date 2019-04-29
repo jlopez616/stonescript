@@ -4,7 +4,7 @@
   "description": "A dumb, esoteric language",
   "main": "stonescript.js",
   "scripts": {
-    "lint": "eslint ./syntax",
+    "lint": "eslint **/*.js",
     "test": "jest --collect-coverage"
   },
   "repository": {

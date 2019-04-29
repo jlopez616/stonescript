@@ -67,7 +67,7 @@ class Context {
     if (entity.target in this.valueMap) {
       throw new Error(`${entity.target} already declared in this scope`);
     }
-    console.log("Entity:" + entity.target);
+    console.log(`Entity:${entity.target}`);
     this.valueMap[entity.target] = entity;
   }
 
@@ -100,7 +100,6 @@ class Context {
     }
     throw new Error(`${id} has not been declared`);
   }
-
 }
 Context.INITIAL = new Context();
 standardFunctions.forEach((f) => { Context.INITIAL.valueMap[f.id] = f; });
@@ -109,8 +108,6 @@ Context.INITIAL.typeMap.worder = WorderType;
 Context.INITIAL.typeMap.yesnos = YesnosType;
 Context.INITIAL.typeMap.what = WhatType;
 Context.INITIAL.typeMap.tablet = TabletType;
-
-
 
 
 module.exports = Context;

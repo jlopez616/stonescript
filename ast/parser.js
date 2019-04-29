@@ -6,7 +6,7 @@ const {
   Arg, Array, Assignment, BinaryExp, ForIncrement,
   Conditional, Call, Declaration, ForLoop,
   Postfix, Program,
-  Func, Return, WhileLoop, Literal, Tablet, Break
+  Func, Return, WhileLoop, Literal, Tablet, Break,
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
@@ -117,8 +117,8 @@ function parse(text) {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
- console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
+  console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
   return astGenerator(match).ast();
-};
+}
 
 module.exports = parse;

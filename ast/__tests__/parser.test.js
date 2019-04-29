@@ -1,5 +1,5 @@
 
- /* Grammar Tests
+/* Grammar Tests
  * Made using the template from Ray Toal's Plainscript
  * https://github.com/rtoal/plainscript/blob/master/test/grammar/grammar-test.js
  *

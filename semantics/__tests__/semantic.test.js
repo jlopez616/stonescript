@@ -81,15 +81,14 @@ WHILE (NOT funbool) PART
 NOT PART!
 
 
-`; 
+`;
 
 describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
-
     const astRoot = parse(program);
-    expect(astRoot).toBeTruthy(); 
+    expect(astRoot).toBeTruthy();
     astRoot.analyze(Context.INITIAL);
-    expect(astRoot).toBeTruthy(); 
+    expect(astRoot).toBeTruthy();
     done();
   });
-});  
+});
