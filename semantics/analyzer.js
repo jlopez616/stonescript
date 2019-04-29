@@ -112,9 +112,13 @@ Parameter.prototype.analyze = (context) => {
 };
 
 Program.prototype.analyze = (context) => {
-  console.log("Made it here");
-  this.statements.forEach(s => s.analyze(context));
+  const newContext = context.createChildContextForBlock();
+  console.log(this);
+  //console.log(newContext);
+  /// console.log(this.statements);
+  this.statements.forEach(s => s.analyze(newContext));
 };
+
 
 Postfix.prototype.analyze = (context) => {
   this.left.analyze(context);

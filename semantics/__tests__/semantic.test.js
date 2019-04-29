@@ -88,14 +88,9 @@ describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
 
     const astRoot = parse(program);
-    contextObject = Context.INITIAL;
     //  console.log(astRoot);
-    // console.log("Truth test: " + (astRoot) === true);
     // expect(astRoot).toBeTruthy(); Comes out false? Why?
-    //console.log(astRoot);
-    //console.log(astRoot.statements);
-    console.log(contextObject);
-    astRoot.analyze(contextObject);
+    astRoot.analyze(Context.INITIAL);
     expect(astRoot).toBeTruthy(); 
     done();
   });
