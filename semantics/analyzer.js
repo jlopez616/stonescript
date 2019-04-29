@@ -1,11 +1,11 @@
 const {
   Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration,
-  ForLoop, ForIncrement, Parameter, Postfix, Program, RelExp, RipAssignment, Func, Return,
-  SquishAssignment, Statement, UnaryExpression, VariableDeclaration,
-  WhileLoop, Literal, intlit, Obj, Break,
+  ForLoop, ForIncrement, Parameter, Postfix, Program, Func, Return, // RelExp, RipAssignment,
+  // SquishAssignment, Statement, UnaryExpression, VariableDeclaration  intlit, Obj, Break,
+  WhileLoop, Literal,
 } = require('../ast');
 
-const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
+const { CounterType, WorderType, YesnosType /* WhatType, TabletType */ } = require('./builtins');
 
 const check = require('./check');
 
@@ -15,7 +15,8 @@ Arg.prototype.analyze = function (context) {
 };
 
 Array.prototype.analyze = function (context) {
-  this.args = context.lookupType(this.args); // tells us the type of the array - idk if this is right :(
+  this.args = context.lookupType(this.args);
+  // tells us the type of the array - idk if this is right :(
 };
 
 Assignment.prototype.analyze = function (context) {
@@ -88,9 +89,9 @@ ForLoop.prototype.analyze = function (context) {
 };
 
 ForIncrement.prototype.analyze = function (context) {
-  this.id1 = lookupValue(id1);
-  this.id2 = lookupValue(id2);
-  this.addop.analyze(id1);
+  this.id1 = context.lookupValue(this.id1);
+  this.id2 = context.lookupValue(this.id2);
+  this.addop.analyze(context);
   this.intlit.analyze(context);
 };
 
@@ -109,6 +110,7 @@ Literal.prototype.analyze = function (context) {
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
   }
+  this.value.analyze(context);
 };
 
 Parameter.prototype.analyze = function (context) {
@@ -128,7 +130,7 @@ Postfix.prototype.analyze = function (context) {
 };
 
 Return.prototype.analyze = function (context) {
-  this.value = lookupValue(value);
+  this.value = context.lookupValue(this.value);
 };
 
 WhileLoop.prototype.analyze = function (context) {
@@ -137,6 +139,7 @@ WhileLoop.prototype.analyze = function (context) {
   this.body.forEach(line => line.analyze(bodyContext));
 };
 
-Break.prototype.analyze = function (context) {
+/* Break.prototype.analyze = function (context) {
   // TODO
-};
+}
+*/

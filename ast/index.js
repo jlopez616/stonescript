@@ -121,10 +121,10 @@ class WhileLoop {
     Object.assign(this, { testExp, body });
   }
 }
-class EmptyArray {
+/* class EmptyArray {
   constructor(_1, _2) {
   }
-}
+} */
 
 module.exports = {
   // Argument,
@@ -152,5 +152,5 @@ module.exports = {
   WhileLoop,
   Literal,
   // Tablet, TO DO BY RELEASE
-  EmptyArray,
+  // EmptyArray,
 };

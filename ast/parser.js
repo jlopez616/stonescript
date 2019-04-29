@@ -6,7 +6,7 @@ const {
   Arg, Array, Assignment, BinaryExp, ForIncrement,
   Conditional, Call, Declaration, ForLoop,
   Postfix, Program,
-  Func, Return, WhileLoop, Literal, Tablet, Break,
+  Func, Return, WhileLoop, Literal, Break, // Tablet
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('syntax/stonescript.ohm', 'utf-8'));
@@ -34,8 +34,10 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   WhileLoop(_kw, _lp, testExp, _rp, _p, body, _np) {
     return new WhileLoop(testExp.ast(), body.ast());
   },
-  Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9, alternate, _10, _11, _12, final, _13) { // arrayToNullable alternate?
-    return new Conditional(testExp.ast(), consequent.ast(), arrayToNullable(alternate.ast()), arrayToNullable(final.ast()));
+  Conditional(_1, _2, testExp, _3, _4, body, _5, _6, _7, consequent, _8, _9,
+    alternate, _10, _11, _12, final, _13) {
+    return new Conditional(testExp.ast(), consequent.ast(),
+      arrayToNullable(alternate.ast()), arrayToNullable(final.ast()));
   },
   Assignment(target, _1, source) {
     return new Assignment(target.ast(), source.ast());

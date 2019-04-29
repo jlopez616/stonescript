@@ -1,5 +1,5 @@
 const util = require('util');
-const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
+const { CounterType, WorderType, YesnosType, WhatType /* TabletType */ } = require('./builtins');
 const { Array, Func } = require('../ast'); // not sure if this is all we need
 
 function doCheck(condition, message) {
@@ -83,12 +83,12 @@ module.exports = {
     );
   },
 
-  isNotReadOnly(lvalue) {
+  /* isNotReadOnly(lvalue) {
     doCheck(
       !(lvalue.constructor === IdExp && lvalue.ref.readOnly),
       'Assignment to read-only variable',
     );
-  },
+  }, */
 
   fieldHasNotBeenUsed(field, usedFields) {
     doCheck(!usedFields.has(field), `Field ${field} already declared`);

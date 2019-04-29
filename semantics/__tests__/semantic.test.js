@@ -30,11 +30,11 @@ BEDROCK COUNTERS x IS 5!
 ROCK WORDERS s IS "welcome"!
 
 YABBADABBADOO (WORDERS intro, COUNTERS count) PART
-	intro IS "My name is "!
+    intro IS "My name is "!
     count IS 10!
     🦖 Will loop ten times, printing "kratos" each time
     FOR (ROCK COUNTERS i IS 0! i NOT SMASH 10! i IS i SQUISH 1) PART
-    	SPEAK(kratos)!        
+        SPEAK(kratos)!        
     NOT PART!
     GIVE WHAT!
 NOT PART!
