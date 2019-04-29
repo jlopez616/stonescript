@@ -8,7 +8,6 @@
  */
 
 const { standardFunctions, CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
-
 require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
@@ -65,10 +64,11 @@ class Context {
 
   // Adds a variable or function to this context.
   add(entity) {
-    if (entity.id in this.valueMap) {
-      throw new Error(`${entity.id} already declared in this scope`);
+    if (entity.target in this.valueMap) {
+      throw new Error(`${entity.target} already declared in this scope`);
     }
-    this.valueMap[entity.id] = entity;
+    console.log("Entity:" + entity.target);
+    this.valueMap[entity.target] = entity;
   }
 
   addType(typeDec) {

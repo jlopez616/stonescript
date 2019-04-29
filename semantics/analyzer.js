@@ -65,10 +65,19 @@ Call.prototype.analyze = function(context) {
 };
 
 Declaration.prototype.analyze = function(context) {
-   this.type = context.lookupType(context);
-   this.target.analyze(context);
-   this.source.analyze(context);
-   this.array.analyze(context);
+
+ this.source.analyze(context);
+
+  
+ if (this.type) {
+   this.type = context.lookupType(this.type);
+   // check.isAssignableTo(this.source, this.type); //do in morning?
+ } else {
+   this.type = this.type; //is this needed?
+ } 
+
+  
+  context.add(this);
 };
 
 ForLoop.prototype.analyze = function(context) {
@@ -113,9 +122,6 @@ Parameter.prototype.analyze = function(context) {
 
 Program.prototype.analyze = function(context) {
   const newContext = context.createChildContextForBlock();
-  console.log(this);
-  //console.log(newContext);
-  /// console.log(this.statements);
   this.statements.forEach(s => s.analyze(newContext));
 };
 

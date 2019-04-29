@@ -50,7 +50,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Return(value.ast());
   },
   Declaration(_1, type, array, target, _2, source) {
-    return new Declaration(type.ast(), arrayToNullable(array.ast()), target.ast(), source.ast());
+    return new Declaration(target.ast(), source.ast(), type.ast(), arrayToNullable(array.ast()));
   },
   Func(_1, _2, params, _3, _4, statements, returnType, _5) {
     return new Func(params.ast(), statements.ast(), returnType.ast());
@@ -117,7 +117,7 @@ function parse(text) {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  // console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
+ console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
   return astGenerator(match).ast();
 };
 

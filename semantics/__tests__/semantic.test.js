@@ -27,7 +27,6 @@ const program = String.raw`
 🦕
 
 BEDROCK COUNTERS x IS 5!
-BEDROCK CAVE emptyArray IS CAVEIN CAVEOUT!
 ROCK WORDERS s IS "welcome"!
 
 YABBADABBADOO (WORDERS intro, COUNTERS count) PART
@@ -82,14 +81,13 @@ WHILE (NOT funbool) PART
 NOT PART!
 
 
-`;
+`; 
 
 describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
 
     const astRoot = parse(program);
-    //  console.log(astRoot);
-    // expect(astRoot).toBeTruthy(); Comes out false? Why?
+    expect(astRoot).toBeTruthy(); 
     astRoot.analyze(Context.INITIAL);
     expect(astRoot).toBeTruthy(); 
     done();
