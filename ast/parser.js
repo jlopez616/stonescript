@@ -42,9 +42,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Assignment(target, _1, source) {
     return new Assignment(target.ast(), source.ast());
   },
-  Tablet(id, _1, fields, _2, _3) {
+  /* Tablet(id, _1, fields, _2, _3) {
     return null; // TODO: new Tablet(id.ast(), fields.ast());
-  },
+  }, */
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
   },
@@ -119,7 +119,7 @@ function parse(text) {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  //console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
+  console.log(util.inspect(astGenerator(match).ast(), { depth: null }));
   return astGenerator(match).ast();
 }
 

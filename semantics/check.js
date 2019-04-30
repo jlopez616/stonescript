@@ -10,51 +10,46 @@ function doCheck(condition, message) {
 
 module.exports = {
   // add ALL the type checking functions!
-  isArray(expression) {
+  /*isArray(expression) {
     doCheck(expression.type.constructor === Array, 'Not an array');
-  },
+  }, */
 
   isInteger(expression) {
     doCheck(expression.type === CounterType, 'Not an integer');
   },
 
-  isString(expression) {
+ /* isString(expression) {
     doCheck(expression.type === WorderType, 'Not a string');
-  },
+  }, */
 
-  isIntegerOrString(expression) {
+ /* isIntegerOrString(expression) {
     doCheck(
       expression.type === CounterType || expression.type === WorderType,
       'Not an integer or string',
     );
-  },
+  }, */
 
-  isLogicalValue(expression) {
+  /*isLogicalValue(expression) {
     doCheck(
       expression.type === CounterType || expression.type === YesnosType,
       'Not a boolean or integer',
     );
-  },
+  },*/
 
   isBoolean(expression) {
     doCheck(expression.type === YesnosType, 'Not a boolean');
   },
 
-  isUndefined(expression) {
+  /*isUndefined(expression) {
     doCheck(expression.type === WhatType, 'Not undefined');
-  },
+  }, */
 
   // array out of bounds
-  isOutOfBounds(params) {
+  /* isOutOfBounds(params) {
     doCheck(params.length < 100, 'Array out of bounds');
-  },
+  },*/
 
-  // invalid date (may be subject for revision    -Anthony)
-  isDateInvalid(month, day, year) {
-    doCheck(month <= 12 && month.type === day.type && day.type === year.type,
-      'Invalid month, and types must be integers');
-  },
-
+  /*
   // TODO: invalid assignment left-hand side (may or may not be needed)
   isInvalidAssignment() {
     doCheck();
@@ -68,6 +63,7 @@ module.exports = {
   isFunction(value) {
     doCheck(value.constructor === Func, 'Not a function');
   },
+   */
 
   // Are two types exactly the same?
   expressionsHaveTheSameType(e1, e2) {
@@ -76,12 +72,12 @@ module.exports = {
 
   // Can we assign expression to a variable/param/field of type type?
   // uncertain if we need this   -Anthony
-  isAssignableTo(expression, type) {
+ /* isAssignableTo(expression, type) {
     doCheck(
       (expression.type === type),
       `Expression of type ${util.format(expression.type)} not compatible with type ${util.format(type)}`,
     );
-  },
+  }, */
 
   /* isNotReadOnly(lvalue) {
     doCheck(
@@ -90,15 +86,16 @@ module.exports = {
     );
   }, */
 
-  fieldHasNotBeenUsed(field, usedFields) {
+  /*fieldHasNotBeenUsed(field, usedFields) {
     doCheck(!usedFields.has(field), `Field ${field} already declared`);
-  },
+  }, */
 
   // Same number of args and params; all types compatible
-  legalArguments(args, params) {
+
+  /* legalArguments(args, params) {
     doCheck(args.length === params.length,
       `Expected ${params.length} args in call, got ${args.length}`);
     args.forEach((arg, i) => this.isAssignableTo(arg, params[i].type));
-  },
+  }, */
 
 };

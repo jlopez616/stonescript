@@ -122,10 +122,10 @@ Literal.prototype.analyze = function (context) {
   }
 };
 
-Parameter.prototype.analyze = function (context) {
+/* Parameter.prototype.analyze = function (context) {
   this.id = context.lookupValue(this.id);
   this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
-};
+}; */
 
 Program.prototype.analyze = function (context) {
   const newContext = context.createChildContextForBlock();
@@ -138,9 +138,9 @@ Postfix.prototype.analyze = function (context) {
   // unsure if anything needs to be done with thi
 };
 
-Return.prototype.analyze = function (context) {
+/* Return.prototype.analyze = function (context) {
   this.value = context.lookupValue(this.value);
-};
+}; */
 
 WhileLoop.prototype.analyze = function (context) {
   this.testExp.analyze(context);
