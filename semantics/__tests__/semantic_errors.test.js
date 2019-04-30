@@ -13,7 +13,7 @@ const errors = [
   ['use of undeclared variable', 'x IS 1!'],
   ['writing to a const variable', 'BEDROCK COUNTERS x IS 33! x IS 42!'],
   ['non boolean while condition', 'WHILE ("OOGA") PART SPEAK("OOGA")! NOT PART!'],
-  ['non boolean if condition', 'OOF("OOGA) PART SPEAK("OOGA")! NOT PART!'],
+  ['non boolean if condition', 'OOF("OOGA") PART SPEAK("OOGA")! NOT PART!'],
   ['non integer in add', '3 SQUISH "ROCK"!'],
   ['non integer in subtract', '3 RIP "ROCK"!'],
   ['non integer in multiply', '3 MANY "ROCK"!'],
