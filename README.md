@@ -214,3 +214,35 @@ else {
 * John Lopez
 * Kevin Patterson
 * Alex Richardson
+
+# Static Semantic Errors:
+* Use of undeclared variable
+* Writing to a `const` variable
+* Non-boolean in while condition
+* Non-boolean in if condition
+* Non-integer or string in add
+* Non-integer in subtract
+* Non-integer in multiply
+* Non-integer in divide
+* Non-integer in modulus
+* Non-boolean in logical operations
+* Non-boolean in logical negation
+* Non-boolean in conditionals
+* Types do not match in equality test
+* Types match in inequality test
+* Types do not match in declaration
+* Variable is undeclared because it's out of scope
+* Redeclaration of variable
+* Type mismatch in assignment
+* Incorrect type assignment (not Counters) in `for` loop
+* Writing to for loop index
+* Wrong var called in for loop
+* Using a reserved keyword.
+* Using break outside of a loop
+* Too many function arguments
+* Too few function arguments
+* Wrong type of function assignment
+* Empty function assignment
+* Redeclared field'
+* Subscript of nonarray
+* Call of nonfunction
