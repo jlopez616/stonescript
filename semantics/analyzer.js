@@ -69,23 +69,17 @@ Call.prototype.analyze = function (context) {
 Declaration.prototype.analyze = function (context) {
   if (typeof this.value === 'number') {
     this.type = CounterType;
-    this.type = context.lookupType(context);
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
     this.type = YesnosType;
-    this.type = context.lookupType(context);
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
-    this.type = context.lookupType(context);
-  } 
-   console.log("this :", this);
-   console.log("this.source :", this.source);
-   console.log("this.source.analyze :", this.source.analyze);
+  }
   this.source.analyze(context);
-  
+
   // if (this.type) {
   //   this.type = context.lookupType(this.type);
   //   // check.isAssignableTo(this.source, this.type); //do in morning?
-  // } 
+  // }
   context.add(this);
 };
 
@@ -115,13 +109,10 @@ Func.prototype.analyze = function (context) {
 Literal.prototype.analyze = function (context) {
   if (typeof this.value === 'number') {
     this.type = CounterType;
-    this.type = context.lookupType(context);
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
     this.type = YesnosType;
-    this.type = context.lookupType(context);
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
-    this.type = context.lookupType(context);
   }
 };
 

@@ -103,11 +103,11 @@ class Context {
 }
 Context.INITIAL = new Context();
 standardFunctions.forEach((f) => { Context.INITIAL.valueMap[f.id] = f; });
-Context.INITIAL.typeMap.counter = CounterType;
-Context.INITIAL.typeMap.worder = WorderType;
-Context.INITIAL.typeMap.yesnos = YesnosType;
-Context.INITIAL.typeMap.what = WhatType;
-Context.INITIAL.typeMap.tablet = TabletType;
+Context.INITIAL.typeMap.COUNTERS = CounterType;
+Context.INITIAL.typeMap.WORDERS = WorderType;
+Context.INITIAL.typeMap.YESNOS = YesnosType;
+Context.INITIAL.typeMap.WHAT = WhatType;
+Context.INITIAL.typeMap.TABLET = TabletType;
 
 
 module.exports = Context;
