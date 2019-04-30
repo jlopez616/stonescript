@@ -26,13 +26,13 @@ const errors = [
   ['types do not match in inequality test', '2 SMASH "ROCK"!'],
   ['types do not match in declaration', 'ROCK COUNTERS n IS "ROCK"!'],
   ['undeclared because in other scope', 'FOR(ROCK COUNTERS x IS 0! x NOT SMASH 5! x IS x SQUISH 1) PART ROCK COUNTERS y IS 1 SQUISH x! NOT PART! y SQUISH 1!'],
-  ['redeclaration of variable', 'ROCK WORDERS w IS "OOGA"! ROCK WORDERS w IS "OOGA OOGA!"'],
+  ['redeclaration of variable', 'ROCK WORDERS w IS "OOGA"! ROCK WORDERS w IS "OOGA OOGA"!'],
   ['type mismatch in assignment', 'ROCK WORDERS w IS 2!'],
   ['incorrect type assignment in for loop', 'FOR(ROCK WORDERS x IS "WORDUP"; x NOT SMASH 5; x IS x SQUISH 1) PART ROCK COUNTERS r IS 5! NOT PART!'],
   ['writing to for loop index', 'FOR(ROCK COUNTERS x IS 0; x NOT SMASH 5; x IS x SQUISH 1) PART x IS 5! NOT PART!'],
   ['wrong var called in for loop', 'FOR(ROCK COUNTERS x IS 0; y NOT SMASH 5; x IS x SQUISH 1) PART ROCK COUNTERS r IS 5! NOT PART!'],
   ['wrong type inside of the while loop relExp', 'WHILE( x NOT SMASH OR IS "ROCKY") PART NOT PART!'],
-  ['using a reserved keyword', 'ROCK COUNTERS OOF IS 3!'],
+  // ['using a reserved keyword', 'ROCK COUNTERS OOF IS 3!'],
   ['using break outside a loop', 'ROCK COUNTERS C IS 15! RAGEQUIT! C IS C SQUISH 5!'],
 
   ['too many function arguments', 'SIZE("CAT", "DOG", "FISH")!'],
@@ -43,7 +43,7 @@ const errors = [
   // ['no such field', 'let type p = {r: int} var s: p := nil in s.zzz end'],
   // don't have working tablets yet... do later
   // ['member of nonrecord', 'let var x := 3 in x.y end'], // once tablets are working
-  ['subscript of nonarray', 'ROCK COUNTER c IS 68! c.DACHAR(3)!'],
+  ['subscript of nonarray', 'ROCK COUNTERS c IS 68! SPEAK(c.DACHAR(3))!'],
   ['call of nonfunction', 'ROCK COUNTERS x IS 1! x(3)!'],
   // TODO: We need dozens more here....
 
