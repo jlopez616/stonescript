@@ -28,7 +28,8 @@ const program = String.raw`
 
 BEDROCK COUNTERS x IS 5!
 ROCK WORDERS s IS "welcome"!
-
+ROCK WORDERS intro IS "hello"!
+ROCK COUNTERS count IS 0!
 YABBADABBADOO (WORDERS intro, COUNTERS count) PART
     intro IS "My name is "!
     count IS 10!

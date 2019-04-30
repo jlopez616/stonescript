@@ -7,7 +7,7 @@ const {
   WhileLoop, Literal,
 } = require('../ast');
 
-const { CounterType, WorderType, YesnosType /* WhatType */, TabletType } = require('./builtins');
+const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
 
 const check = require('./check');
 
@@ -23,12 +23,9 @@ Array.prototype.analyze = function (context) {
 
 Assignment.prototype.analyze = function (context) {
   this.source.analyze(context);
-  this.target.analyze(context);
 };
 
 BinaryExp.prototype.analyze = function (context) {
-  this.left.analyze(context);
-  this.right.analyze(context);
   if (this.op === 'SQUISH') {
     check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
@@ -51,8 +48,9 @@ BinaryExp.prototype.analyze = function (context) {
 
 Conditional.prototype.analyze = function (context) {
   this.testExp.analyze(context);
+  
+  check.isBoolean(this.testExp);
   this.consequent.analyze(context);
-  check.isBoolean(this.testExp.op);
   if (this.alternate) {
     this.alternate.analyze(context);
   }
@@ -89,13 +87,12 @@ ForLoop.prototype.analyze = function (context) {
   check.isInteger(this.setup.source);
   this.increment.analyze(context);
   const bodyContext = context.createChildContextForLoop();
-  this.body.forEach(line => line.analyze(bodyContext));
+  //this.body.analyze(context);
 };
 
 ForIncrement.prototype.analyze = function (context) {
   this.id1 = context.lookupValue(this.id1);
   this.id2 = context.lookupValue(this.id2);
-  this.addop.analyze(context);
   this.intlit.analyze(context);
 };
 
@@ -103,7 +100,16 @@ Func.prototype.analyze = function (context) {
   const bodyContext = context.createChildContextForLoop();
   this.params.forEach(line => line.analyze(bodyContext));
   this.statements.forEach(line => line.analyze(bodyContext));
-  this.returnType = context.lookupType(this.returnType);
+  // this.returnType.forEach(line => line.analyze(bodyContext));
+  if (typeof this.value === 'number') {
+    this.type = CounterType;
+  } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
+    this.type = YesnosType;
+  } else if (typeof this.value === 'string') {
+    this.type = WorderType;
+  } else if (typeof this.value === 'undefined') {
+      this.type = WhatType;
+  }
 };
 
 Literal.prototype.analyze = function (context) {
