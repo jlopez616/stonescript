@@ -20,7 +20,7 @@ const errors = [
   ['non integer in divide', '3 CUT "ROCK"!'],
   ['non integer in modulus', '3 LEFT "ROCK"!'],
   ['non boolean in logical operations', '3 SMASH 1 OR "OOGA WORLD!"!'],
-  ['non boolean in logical negation', 'ROCK YESNOS b IS NOT 33 > 7!'],
+  ['non boolean in logical negation', 'ROCK YESNOS b IS NOT 33!'],
   ['non boolean in conditionals', 'OOF("ROCK") PART ROCK COUNTERS c IS 7! NOT PART!'],
   ['types do not match in equality test', '1 IS IS "ROCK"!'],
   ['types do not match in inequality test', '2 SMASH "ROCK"!'],
