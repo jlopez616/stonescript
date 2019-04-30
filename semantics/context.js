@@ -43,7 +43,7 @@ class Context {
     });
   }
 
-  /*createChildContextForFunctionBody(currentFunction) {
+  /* createChildContextForFunctionBody(currentFunction) {
     // When entering a new function, we're not in a loop anymore
     return new Context({ parent: this, currentFunction, inLoop: false });
   } */
@@ -86,7 +86,7 @@ class Context {
         return context.typeMap[id];
       }
     }
-    // throw new Error(`Type ${id} has not been declared`);
+    throw new Error(`Type ${id} has not been declared`);
   }
 
   // Returns the variable or function entity bound to the given identifier,
@@ -98,7 +98,7 @@ class Context {
         return context.valueMap[id];
       }
     }
-    // throw new Error(`${id} has not been declared`);
+    throw new Error(`${id} has not been declared`);
   }
 }
 Context.INITIAL = new Context();

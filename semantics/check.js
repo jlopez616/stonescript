@@ -1,6 +1,6 @@
-const util = require('util');
-const { CounterType, WorderType, YesnosType, WhatType /* TabletType */ } = require('./builtins');
-const { Array, Func } = require('../ast'); // not sure if this is all we need
+// const util = require('util');
+const { CounterType, YesnosType /* TabletType, WorderType, WhatType */ } = require('./builtins');
+// const { Array, Func } = require('../ast'); // not sure if this is all we need
 
 function doCheck(condition, message) {
   if (!condition) {
@@ -10,7 +10,7 @@ function doCheck(condition, message) {
 
 module.exports = {
   // add ALL the type checking functions!
-  /*isArray(expression) {
+  /* isArray(expression) {
     doCheck(expression.type.constructor === Array, 'Not an array');
   }, */
 
@@ -18,36 +18,36 @@ module.exports = {
     doCheck(expression.type === CounterType, 'Not an integer');
   },
 
- /* isString(expression) {
+  /* isString(expression) {
     doCheck(expression.type === WorderType, 'Not a string');
   }, */
 
- /* isIntegerOrString(expression) {
+  /* isIntegerOrString(expression) {
     doCheck(
       expression.type === CounterType || expression.type === WorderType,
       'Not an integer or string',
     );
   }, */
 
-  /*isLogicalValue(expression) {
+  /* isLogicalValue(expression) {
     doCheck(
       expression.type === CounterType || expression.type === YesnosType,
       'Not a boolean or integer',
     );
-  },*/
+  }, */
 
   isBoolean(expression) {
     doCheck(expression.type === YesnosType, 'Not a boolean');
   },
 
-  /*isUndefined(expression) {
+  /* isUndefined(expression) {
     doCheck(expression.type === WhatType, 'Not undefined');
   }, */
 
   // array out of bounds
   /* isOutOfBounds(params) {
     doCheck(params.length < 100, 'Array out of bounds');
-  },*/
+  }, */
 
   /*
   // TODO: invalid assignment left-hand side (may or may not be needed)
@@ -72,10 +72,11 @@ module.exports = {
 
   // Can we assign expression to a variable/param/field of type type?
   // uncertain if we need this   -Anthony
- /* isAssignableTo(expression, type) {
+  /* isAssignableTo(expression, type) {
     doCheck(
       (expression.type === type),
-      `Expression of type ${util.format(expression.type)} not compatible with type ${util.format(type)}`,
+      `Expression of type ${util.format(expression.type)}
+      not compatible with type ${util.format(type)}`,
     );
   }, */
 
@@ -86,7 +87,7 @@ module.exports = {
     );
   }, */
 
-  /*fieldHasNotBeenUsed(field, usedFields) {
+  /* fieldHasNotBeenUsed(field, usedFields) {
     doCheck(!usedFields.has(field), `Field ${field} already declared`);
   }, */
 

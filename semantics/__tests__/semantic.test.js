@@ -92,4 +92,4 @@ describe('The semantic analyzer', () => {
     expect(astRoot).toBeTruthy();
     done();
   });
-}); 
+});

@@ -1,13 +1,13 @@
-const util = require('util');
+// const util = require('util');
 
 const {
   Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration,
-  ForLoop, ForIncrement, Parameter, Postfix, Program, Func, Return, // RelExp, RipAssignment,
-  // SquishAssignment, Statement, UnaryExpression, VariableDeclaration  intlit, Obj, Break,
-  WhileLoop, Literal,
+  ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop, // RelExp, RipAssignment,
+  // SquishAssignment, Statement, UnaryExpression, VariableDeclaration
+  // Parameter, Return intlit, Obj, Break,
 } = require('../ast');
 
-const { CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
+const { CounterType, WorderType, YesnosType, WhatType /* TabletType */ } = require('./builtins');
 
 const check = require('./check');
 
@@ -25,7 +25,7 @@ Assignment.prototype.analyze = function (context) {
   this.source.analyze(context);
 };
 
-BinaryExp.prototype.analyze = function (context) {
+BinaryExp.prototype.analyze = function (/* context */) {
   if (this.op === 'SQUISH') {
     check.expressionHaveTheSameType(this.left, this.right);
     check.isInteger(this.left);
@@ -48,7 +48,7 @@ BinaryExp.prototype.analyze = function (context) {
 
 Conditional.prototype.analyze = function (context) {
   this.testExp.analyze(context);
-  
+
   check.isBoolean(this.testExp);
   this.consequent.analyze(context);
   if (this.alternate) {
@@ -86,8 +86,8 @@ ForLoop.prototype.analyze = function (context) {
   this.testExp.analyze(context);
   check.isInteger(this.setup.source);
   this.increment.analyze(context);
-  const bodyContext = context.createChildContextForLoop();
-  //this.body.analyze(context);
+  // const bodyContext = context.createChildContextForLoop();
+  // this.body.analyze(bodyContext);
 };
 
 ForIncrement.prototype.analyze = function (context) {
@@ -108,11 +108,11 @@ Func.prototype.analyze = function (context) {
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
   } else if (typeof this.value === 'undefined') {
-      this.type = WhatType;
+    this.type = WhatType;
   }
 };
 
-Literal.prototype.analyze = function (context) {
+Literal.prototype.analyze = function (/* context */) {
   if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
