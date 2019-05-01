@@ -21,6 +21,8 @@ was the coolest thing since fire. StoneScript is not a visually pleasing languag
 being particularly hard to read and write in, but we assert that it is the best 
 language to yell at anything.
 
+For more information about the project, visit our [website!](https://johnllopez616.github.io/stonescript/home.html)
+
 # Grammar
 
 Full grammar may be found [here!](https://github.com/johnllopez616/stonescript/blob/master/syntax/stonescript.ohm)
