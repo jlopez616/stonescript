@@ -4,9 +4,9 @@ Program {
       Conditional {
         testExp:
         BinaryExp {
-          op: BinaryExp { op: 'x', left: 'IS IS', right: 'y' },
-          left: 'OR',
-          right: BinaryExp { op: 'a', left: 'NOT SMASH', right: 'b' } },
+          left: BinaryExp { left: 'x', op: 'IS IS', right: 'y' },
+          op: 'OR',
+          right: BinaryExp { left: 'a', op: 'NOT SMASH', right: 'b' } },
         consequent: [],
         alternate: null,
         final: null } ] }

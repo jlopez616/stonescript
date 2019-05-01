@@ -24,9 +24,11 @@ const prettyJs = require('pretty-js');
 const Context = require('../semantics/context');
 // const { StringType } = require('../semantics/builtins');
 
-function makeOp(op) {
+// TO Do for Kevin (I commented this out so the linter doesn't give me trouble):
+
+/* function makeOp(op) {
   return { '=': '===', '<>': '!==', '&': '&&', '|': '||' }[op] || op;
-}
+} */
 
 // javaScriptId(e) takes any Tiger object with an id property, such as a Variable,
 // Param, or Func, and produces a JavaScript name by appending a unique identifying
@@ -165,3 +167,4 @@ WhileExp.prototype.gen = function () {
   return `while (${this.test.gen()}) { ${this.body.gen()} }`;
 };
 */
+/* eslint-disable eol-last */

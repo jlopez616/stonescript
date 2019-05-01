@@ -1,33 +1,7 @@
-Program {
-  statements:
-    [ Declaration {
-        target: 'COUNT',
-        source: Literal { value: 1 },
-        type: 'COUNTERS',
-        array: null },
-      Declaration {
-        target: 'END',
-        source: Literal { value: 10 },
-        type: 'COUNTERS',
-        array: null },
-      Declaration {
-        target: 'RESULT',
-        source: Literal { value: 1 },
-        type: 'COUNTERS',
-        array: null },
-      Declaration { target: 'TEST', source: 'OOGA', type: 'YESNOS', array: null },
-      WhileLoop {
-        testExp:
-        BinaryExp { op: [ 'IS IS' ], left: 'TEST', right: [ 'OOGA' ] },
-        body: [ [] ] },
-      WhileLoop {
-        testExp:
-        BinaryExp { op: [ 'SMASH' ], left: 'END', right: [ 'COUNT' ] },
-        body:
-        [ [ Assignment {
-              target: 'RESULT',
-              source: BinaryExp { op: 'RESULT', left: 'MANY', right: 'COUNT' } },
-            Assignment {
-              target: 'COUNT',
-              source:
-                BinaryExp { op: 'COUNT', left: 'SQUISH', right: Literal { value: 1 } } } ] ] } ] }
+Program {        statements:  [ Declaration { target:'COUNT',source:Literal{value:1},type:'COUNTERS',array:null},
+Declaration{target:'END',source:Literal{value:10},type:'COUNTERS',array:null},
+Declaration{target:'RESULT',source:Literal{value:1},type:'COUNTERS',array:null},
+Declaration{target:'TEST',source:'OOGA',type:'YESNOS',array:null},
+WhileLoop{testExp:BinaryExp{left:['ISIS'],op:'TEST',right:['OOGA']},body:[[]]},
+WhileLoop{testExp:BinaryExp{left:['SMASH'],op:'END',right:['COUNT']},body:[[Assignment{target:'RESULT',source:BinaryExp{left:'RESULT',op:'MANY',right:'COUNT'}},
+Assignment{target:'COUNT',source:BinaryExp{left:'COUNT',op:'SQUISH',right:Literal{value:1}}}]]}]}

@@ -4,24 +4,24 @@ Program {
         target: 'total',
         source:
         BinaryExp {
-          op:
+          left:
             BinaryExp {
-              op:
+              left:
               BinaryExp {
-                op:
+                left:
                   BinaryExp {
-                    op: Literal { value: 5 },
-                    left: 'SQUISH',
+                    left: Literal { value: 5 },
+                    op: 'SQUISH',
                     right: Literal { value: 4 } },
-                left: 'SQUISH',
+                op: 'SQUISH',
                 right: Literal { value: 3 } },
-              left: 'SQUISH',
+              op: 'SQUISH',
               right: Literal { value: 2 } },
-          left: 'AND',
+          op: 'AND',
           right:
             BinaryExp {
-              op: Literal { value: 1 },
-              left: 'RIP',
+              left: Literal { value: 1 },
+              op: 'RIP',
               right: Literal { value: 7 } } },
         type: 'COUNTERS',
         array: null } ] }

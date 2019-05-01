@@ -28,7 +28,7 @@ Program {
                   source: Literal { value: 2 },
                   type: 'COUNTERS',
                   array: null },
-                testExp: BinaryExp { op: 'I', left: 'NOT SMASH OR IS', right: 'N' },
+                testExp: BinaryExp { left: 'I', op: 'NOT SMASH OR IS', right: 'N' },
                 increment:
                 ForIncrement {
                   id1: 'I',
@@ -38,7 +38,7 @@ Program {
                 body:
                 [ [ Assignment {
                       target: 'F',
-                      source: BinaryExp { op: 'A', left: 'SQUISH', right: 'B' } },
+                      source: BinaryExp { left: 'A', op: 'SQUISH', right: 'B' } },
                     Assignment { target: 'A', source: 'B' },
                     Assignment { target: 'B', source: 'F' } ] ] } ],
           returnType: [ Return { value: 'F' } ] },

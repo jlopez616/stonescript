@@ -57,20 +57,20 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Func(_1, _2, params, _3, _4, statements, returnType, _5) {
     return new Func(params.ast(), statements.ast(), returnType.ast());
   },
-  Exp_or(op, left, right) {
-    return new BinaryExp(op.ast(), left.ast(), right.ast());
+  Exp_or(left, op, right) {
+    return new BinaryExp(left.ast(), op.ast(), right.ast());
   },
-  Exp_and(op, left, right) {
-    return new BinaryExp(op.ast(), left.ast(), right.ast());
+  Exp_and(left, op, right) {
+    return new BinaryExp(left.ast(), op.ast(), right.ast());
   },
-  Exp1_binary(op, left, right) {
-    return new BinaryExp(op.ast(), left.ast(), right.ast());
+  Exp1_binary(left, op, right) {
+    return new BinaryExp(left.ast(), op.ast(), right.ast());
   },
-  Exp2_binary(op, left, right) {
-    return new BinaryExp(op.ast(), left.ast(), right.ast());
+  Exp2_binary(left, op, right) {
+    return new BinaryExp(left.ast(), op.ast(), right.ast());
   },
-  Exp3_binary(op, left, right) {
-    return new BinaryExp(op.ast(), left.ast(), right.ast());
+  Exp3_binary(left, op, right) {
+    return new BinaryExp(left.ast(), op.ast(), right.ast());
   },
   RelExp(id, relop, primary) {
     return new BinaryExp(relop.ast(), id.ast(), primary.ast());

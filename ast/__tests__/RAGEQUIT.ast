@@ -3,7 +3,7 @@ Program {
     [ ForLoop {
         setup: Assignment { target: 'x', source: Literal { value: 5 } },
         testExp:
-        BinaryExp { op: 'x', left: 'SMASH', right: Literal { value: 4 } },
+        BinaryExp { left: 'x', op: 'SMASH', right: Literal { value: 4 } },
         increment:
         ForIncrement { id1: 'x', id2: 'x', addop: 'RIP', intlit: Literal { value: 5 } },
         body: [ [ Break {} ] ] } ] }

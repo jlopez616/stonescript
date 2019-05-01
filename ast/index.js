@@ -19,8 +19,8 @@ class Assignment {
   }
 }
 class BinaryExp {
-  constructor(op, left, right) {
-    Object.assign(this, { op, left, right });
+  constructor(left, op, right) {
+    Object.assign(this, { left, op, right });
   }
 }
 class Conditional {

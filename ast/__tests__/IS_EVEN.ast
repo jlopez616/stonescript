@@ -9,16 +9,17 @@ Program {
             [ Declaration {
                 target: 'is_even',
                 source:
-                BinaryExp { op: 'x', left: 'LEFT', right: Literal { value: 2 } },
+                BinaryExp { left: 'x', op: 'LEFT', right: Literal { value: 2 } },
                 type: 'COUNTERS',
                 array: null },
               Declaration { target: 'ANSWER', source: 'NOOGA', type: 'YESNOS', array: null },
               Conditional {
                 testExp:
-                BinaryExp { op: 'is_even', left: 'IS IS', right: Literal { value: 0 } },
+                BinaryExp { left: 'is_even', op: 'IS IS', right: Literal { value: 0 } },
                 consequent: [],
                 alternate: null,
                 final: [ Assignment { target: 'ANSWER', source: 'NOOGA' } ] } ],
           returnType: [ Return { value: 'ANSWER' } ] },
         type: 'DOERS',
         array: null } ] }
+

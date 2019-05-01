@@ -10,12 +10,12 @@ Program {
                 id: 'SPEAK',
                 args:
                 [ BinaryExp {
-                    op:
+                    left:
                       BinaryExp {
-                        op: Literal { value: 'I AM HERE TO SAY ' },
-                        left: 'AND',
+                        left: Literal { value: 'I AM HERE TO SAY ' },
+                        op: 'AND',
                         right: 'word' },
-                    left: 'AND',
+                    op: 'AND',
                     right: Literal { value: 'THANKS FOR LISTENING!' } } ] } ],
           returnType: [] },
         type: 'DOERS',
