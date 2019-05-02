@@ -26,9 +26,9 @@ const Context = require('../semantics/context');
 
 // TO Do for Kevin (I commented this out so the linter doesn't give me trouble):
 
-/* function makeOp(op) {
-  return { '=': '===', '<>': '!==', '&': '&&', '|': '||' }[op] || op;
-} */
+function makeOp(op) {
+  return { AND: '&&', OR: '||', 'NOT IS': '!=', 'IS IS': '==' }[op] || op;
+} // note that the use of == and != is intended because cavemen didn't care about exact matches
 
 // javaScriptId(e) takes any Tiger object with an id property, such as a Variable,
 // Param, or Func, and produces a JavaScript name by appending a unique identifying
