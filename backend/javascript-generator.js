@@ -51,14 +51,33 @@ function generateLibraryFunctions() {
     return `function ${javaScriptId(entity)}(${params}) {${body}}`;
   }
   return [
-    generateLibraryStub('print', 's', 'console.log(s);'),
-    generateLibraryStub('ord', 's', 'return s.charCodeAt(0);'),
-    generateLibraryStub('chr', 'i', 'return String.fromCharCode(i);'),
+    generateLibraryStub('HUNTDOWN', 's', 'console.log(s);'), // WAIT TO SEE WHAT IT DOES
+    generateLibraryStub('SPEAK', 's', 'console.log(s);'),
+    generateLibraryStub('TYPE', 'x', ` function stonescriptType(x) {
+                                        if (Array.isArray(x)) {
+                                          return 'CAVES';
+                                        } else if (typeof x === 'number') {
+                                           return 'COUNTERS';
+                                        } else if (typeof x === 'string'){
+                                          return 'WORDERS';
+                                        } else if (typeof x === 'boolean'){
+                                          return 'YESNOS';
+                                        } else if (typeof x === 'undefined'){
+                                          return 'WHUTS';
+                                        } else if (typeof x === 'object'){
+                                          return 'TABLETS';
+                                        } else if (typeof x === 'function'){
+                                          return 'YABBADABBADOO';
+                                        }`),
+    generateLibraryStub('DATE', `var today = new Date();
+                                var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
+                                return date`), // if we want we can edit date and have it take in no args but return the current date
     generateLibraryStub('SIZE', 's', 'return s.length;'),
-    generateLibraryStub('substring', 's, i, j', 'return s.substr(i, n);'),
-    generateLibraryStub('concat', 's, t', 'return s.concat(t);'),
-    generateLibraryStub('not', 's', 'return !s;'),
-    generateLibraryStub('exit', 'code', 'process.exit(code);'),
+    generateLibraryStub('DACHAR', 'n', 'return Array.charAt(n);'),
+    generateLibraryStub('GOAWAY', 's1, s2', 'return '), // what??? do we want this
+    generateLibraryStub('GOHIGH', 'return String.toUpperCase();'), // DOES THIS HAVE AN ARG PASSED IN?
+    generateLibraryStub('DALENGTH', 'String.size();'), // i hope this is right
+    generateLibraryStub('BIGHUG', 's, t', 'return s.concat(t);'),
   ].join('');
 }
 
