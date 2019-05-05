@@ -16,13 +16,13 @@ const {
   }
 
   // TODO
-  Arg.prototype.analyze = function (context) {
+  Arg.prototype.optimize = function (context) {
     this.type = context.lookup(this.type);
     this.id = context.lookupValue(this.id); 
   };
   
   // TODO
-  Array.prototype.analyze = function (context) {
+  Array.prototype.optimze = function (context) {
     this.args = context.lookup(this.args);
   };
   
@@ -70,7 +70,7 @@ const {
   };
   
   // TODO
-  Declaration.prototype.analyze = function (context) {
+  Declaration.prototype.optimize = function () {
     this.typeDec.analyze(context);
     this.id = context.lookupValue(this.id);
     this.exp.analyze(context);
@@ -99,13 +99,15 @@ const {
     return this;
   };
   
-  ForIncrement.prototype.analyze = function (context) {
+  // TODO
+  ForIncrement.prototype.optimize = function () {
     this.id1 = context.lookupValue(this.id1);
     this.id2 = context.lookupValue(this.id2);
     this.intlit.analyze(context);
   };
   
-  Func.prototype.analyze = function (context) {
+  // TODO
+  Func.prototype.optimize = function () {
     const bodyContext = context.createChildContextForBlock();
     this.params.forEach(line => line.analyze(bodyContext));
     this.statements.forEach(line => line.analyze(bodyContext));
@@ -121,14 +123,8 @@ const {
     }
   };
   
-  Literal.prototype.analyze = function (/* context */) {
-    if (typeof this.value === 'number') {
-      this.type = CounterType;
-    } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
-      this.type = YesnosType;
-    } else if (typeof this.value === 'string') {
-      this.type = WorderType;
-    }
+  Literal.prototype.optimize = function () {
+    return this;
   };
   
   /* Parameter.prototype.analyze = function (context) {
