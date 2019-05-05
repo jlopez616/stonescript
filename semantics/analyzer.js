@@ -8,8 +8,8 @@ const {
 } = require('../ast');
 
 const { CounterType, WorderType, YesnosType, WhatType /* TabletType */ } = require('./builtins');
-
 const check = require('./check');
+// const Context = require('./context');
 
 Arg.prototype.analyze = function (context) {
   this.type = context.lookup(this.type);
