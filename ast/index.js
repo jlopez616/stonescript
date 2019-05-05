@@ -49,7 +49,7 @@ class ForIncrement {
   }
 }
 class Func {
-  constructor(params, statements, returnType) {
+  constructor(id, params, statements, returnType) {
     Object.assign(this, { params, statements, returnType });
   }
 }
