@@ -41,7 +41,8 @@ Stonescript {
   Break            =  "RAGEQUIT"
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   EmptyArray			 =  "CAVEIN" "CAVEOUT"
-  Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
+  Declaration      =  TypeDec id "IS" Exp
+  TypeDec          =  mutability type array?
   Assignment       =  id "IS" Exp
   Call             =  ("SPEAK" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
                    |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | id) "(" listOf<Exp, ","> ")"
@@ -62,6 +63,7 @@ Stonescript {
                    |  "CUT" | "OOGA" | "WORDERS" | "YABBADABBADO" | "NOOGA" | "SPEAK"
                    |  "RAGEQUIT" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
                    |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | primtype | "NOT PART") ~idrest
+  mutability       =  ("ROCK" | "BEDROCK")
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"

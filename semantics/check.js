@@ -17,6 +17,21 @@ module.exports = {
   isInteger(expression) {
     doCheck(expression.type === CounterType, 'Not an integer');
   },
+  
+  mutabilityCheck(expression) {
+    doCheck((expression === 'ROCK' || expression === 'BEDROCK'),
+    'Declarations must either be set as a \'ROCK\' or \'BEDROCK\'');
+  },
+  
+  isMutable(expression) {
+    doCheck(!(expression.mutability === 'BEDROCK'),
+    'Data cannot be changed');
+  },
+  
+  isValidType(expression) {
+    doCheck(expression)
+  },
+  
 
   /* isString(expression) {
     doCheck(expression.type === WorderType, 'Not a string');

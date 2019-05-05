@@ -8,7 +8,7 @@
  */
 
 const { standardFunctions, CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
-require('./analyzer');
+const TypeDec = require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
 //
@@ -38,8 +38,7 @@ class Context {
       parent,
       currentFunction,
       inLoop,
-      typeMap: Object.create(null),
-      valueMap: Object.create(null),
+      locals: new Map(),
     });
   }
 
@@ -63,51 +62,30 @@ class Context {
   }
 
   // Adds a variable or function to this context.
-  add(entity) {
-    if (entity.target in this.valueMap) {
-      throw new Error(`${entity.target} already declared in this scope`);
+  add(declaration) {
+    if (this.locals.has(declaration.id) && (declaration.id !== undefined)) {
+      throw new Error(`${declaration.id} already declared in this scope`);
     }
-    console.log(`Entity:${entity.target}`);
-    this.valueMap[entity.target] = entity;
+    console.log(declaration);
+    const entity = (declaration.typeDec) ? declaration.type : declaration;
+    this.locals.set(declaration.id, entity);
   }
 
-  addType(typeDec) {
-    if (typeDec.id in this.typeMap) {
-      throw new Error(`Type ${typeDec.id} already declared in this scope`);
-    }
-    this.typeMap[typeDec.id] = typeDec.type;
-  }
-
-  // Returns the type entity bound to the given identifier, starting from this
-  // context and searching "outward" through enclosing contexts if necessary.
-  lookupType(id) {
+  lookup(id) {
     for (let context = this; context !== null; context = context.parent) {
-      if (id in context.typeMap) {
-        return context.typeMap[id];
+      if (context.locals.has(id)) {
+        return context.locals.get(id);
       }
     }
-    throw new Error(`Type ${id} has not been declared`);
-  }
-
-  // Returns the variable or function entity bound to the given identifier,
-  // starting from this context and searching "outward" through enclosing
-  // contexts if necessary.
-  lookupValue(id) {
-    for (let context = this; context !== null; context = context.parent) {
-      if (id in context.valueMap) {
-        return context.valueMap[id];
-      }
-    }
-    throw new Error(`${id} has not been declared`);
+    throw new Error(`Identifier ${id} has not been declared`);
   }
 }
-Context.INITIAL = new Context();
-standardFunctions.forEach((f) => { Context.INITIAL.valueMap[f.id] = f; });
-Context.INITIAL.typeMap.COUNTERS = CounterType;
-Context.INITIAL.typeMap.WORDERS = WorderType;
-Context.INITIAL.typeMap.YESNOS = YesnosType;
-Context.INITIAL.typeMap.WHAT = WhatType;
-Context.INITIAL.typeMap.TABLET = TabletType;
 
+Context.INITIAL = new Context();
+[CounterType, 
+  WorderType, 
+  YesnosType, 
+  /* What Type, TabletType, */
+  ...standardFunctions].forEach((f) => { Context.INITIAL.add(f) });
 
 module.exports = Context;

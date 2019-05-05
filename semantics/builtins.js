@@ -1,8 +1,8 @@
 const { Func, Parameter, PrimitiveType } = require('../ast');
 
-const CounterType = new PrimitiveType('counter'); // number
-const WorderType = new PrimitiveType('worder'); // string
-const YesnosType = new PrimitiveType('yesno'); // boolean
+const CounterType = new PrimitiveType('COUNTERS'); // number
+const WorderType = new PrimitiveType('WORDERS'); // string
+const YesnosType = new PrimitiveType('YESNOS'); // boolean
 // const WhatType = new PrimitiveType('what'); // undefined
 // const TabletType = new PrimitiveType('tablet'); // object
 

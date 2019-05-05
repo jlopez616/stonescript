@@ -34,8 +34,8 @@ class Call {
   }
 }
 class Declaration {
-  constructor(target, source, type, array) {
-    Object.assign(this, { target, source, type, array });
+  constructor(typeDec, id, exp) {
+    Object.assign(this, { typeDec, id, exp });
   }
 }
 class ForLoop {
@@ -89,8 +89,8 @@ class Program {
   }
 }
 class PrimitiveType {
-  constructor(name) {
-    Object.assign(this, { name });
+  constructor(id) {
+    Object.assign(this, { id });
   }
 }
 
@@ -99,7 +99,17 @@ class Return {
     this.value = value;
   }
 }
+
+class TypeDec {
+  constructor(mutability, type, array) {
+    Object.assign(this, { mutability, type, array });
+  }
+}
+
 class Break {
+  constructor(value) {
+    Object.assign(this);
+  }
 }
 /* class RipAssignment {
   constructor(id) {
@@ -149,6 +159,7 @@ module.exports = {
   Return,
   // SquishAssignment
   // Statement,
+  TypeDec,
   WhileLoop,
   Literal,
   // Tablet, TO DO BY RELEASE
