@@ -9,11 +9,11 @@ const {
   
   function isZero(e) {
     return e instanceof Literal && e.value === 0;
-  }
+  };
   
   function isOne(e) {
     return e instanceof Literal && e.value === 1;
-  }
+  };
 
   // TODO
   Arg.prototype.optimize = function (context) {
@@ -132,35 +132,31 @@ const {
     this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
   }; */
   
-  Program.prototype.analyze = function (context) {
+  // TODO
+  Program.prototype.optimize = function () {
     const newContext = context.createChildContextForBlock();
     this.statements.forEach(s => s.analyze(newContext));
   };
   
-  
-  Postfix.prototype.analyze = function (context) {
-    this.left.analyze(context);
-    // unsure if anything needs to be done with thi
-  };
-  
-  TypeDec.prototype.analyze = function (context) {
+  // TODO
+  TypeDec.prototype.optimize = function () {
     check.mutabilityCheck(this.mutability);
     this.type.analyze(context);
     this.array.analyze(context);
-  }
+  };
   
-  /* Return.prototype.analyze = function (context) {
-    this.value = context.lookupValue(this.value);
-  }; */
+  Return.prototype.optimize = function () {
+    return this;
+  };
   
-  WhileLoop.prototype.analyze = function (context) {
-    this.testExp.analyze(context);
-    const bodyContext = context.createChildContextForLoop();
-    this.body.forEach(line => line.analyze(bodyContext));
+  WhileLoop.prototype.optimize = function () {
+    this.test = this.test.optimize();
+    this.body = this.body.optimize();
+    return this;
   };
   
   Break.prototype.optimize = function () {
     return this;
-  }
+  };
   
   
