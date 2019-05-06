@@ -58,7 +58,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Declaration(typeDec.ast(), id.ast(), expr.ast());
   },
   Func(_1, _2, params, _3, _4, statements, returnType, _5) {
-    return new Func(params.ast(), statements.ast(), returnType.ast());
+    return new Func(arrayToNullable(params.ast()), arrayToNullable(statements.ast()), returnType.ast());
   },
   Exp_or(left, op, right) {
     return new BinaryExp(left.ast(), op.ast(), right.ast());

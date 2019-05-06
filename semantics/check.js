@@ -30,7 +30,7 @@ module.exports = {
   },
   
   isValidType(expression) {
-    doCheck(expression === "COUNTERS" || expression === "WORDERS" || expression === "YESNOS", 'Invalid type');
+    doCheck(!(expression === "COUNTERS") || !(expression === "WORDERS") || !(expression === "YESNOS"), 'Invalid type');
   },
   
 

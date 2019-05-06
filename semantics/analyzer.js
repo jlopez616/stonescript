@@ -27,22 +27,23 @@ Array.prototype.analyze = function (context) {
 Assignment.prototype.analyze = function (context) {
   this.source.analyze(context);
 };
-
+// TO DO: Is integer
 BinaryExp.prototype.analyze = function (/* context */) {
+    console.log(this);
   if (this.op === 'SQUISH') {
-    check.expressionHaveTheSameType(this.left, this.right);
-    check.isInteger(this.left);
-    check.isInteger(this.right);
+    check.expressionsHaveTheSameType(this.left, this.right);
+    // check.isInteger(this.left);
+    // check.isInteger(this.right);
     this.type = CounterType;
   } else if (this.op === 'RIP') {
-    check.expressionHaveTheSameType(this.left, this.right);
-    check.isInteger(this.left);
-    check.isInteger(this.right);
+    check.expressionsHaveTheSameType(this.left, this.right);
+    // check.isInteger(this.left);
+    // check.isInteger(this.right);
   } else if (this.op === 'OOGA') {
-    check.expressionHaveTheSameType(this.left, this.right);
+    check.expressionsHaveTheSameType(this.left, this.right);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {
-    check.expressionHaveTheSameType(this.left, this.right);
+    check.expressionsHaveTheSameType(this.left, this.right);
     this.type = YesnosType;
   } else {
     check.expressionsHaveTheSameType(this.left, this.right);
@@ -65,12 +66,13 @@ Conditional.prototype.analyze = function (context) {
 };
 
 Call.prototype.analyze = function (context) {
-  console.log(this);
-  this.id = context.lookupValue(this.id);
-  this.args.analyze(context);
+
+  this.id = context.lookup(this.id);
+
 };
 
 Declaration.prototype.analyze = function (context) {
+  console.log ("LOOK AT ME: " + this.exp);
   this.typeDec.analyze(context);
   context.add(this.id);
   this.exp.analyze(context);
@@ -81,7 +83,6 @@ Declaration.prototype.analyze = function (context) {
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
   } */
-  this.exp.analyze(context);
 
   // if (this.type) {
   //   this.type = context.lookup(this.type);
@@ -94,24 +95,32 @@ Declaration.prototype.analyze = function (context) {
 ForLoop.prototype.analyze = function (context) {
   this.setup.analyze(context);
   this.testExp.analyze(context);
-  check.isInteger(this.setup.source);
+  //check.isInteger(this.setup.exp.value);
+  context.add(this.setup.id);
   this.increment.analyze(context);
-  // const bodyContext = context.createChildContextForLoop();
-  // this.body.analyze(bodyContext);
+  const bodyContext = context.createChildContextForLoop();
+  this.body.forEach(line => line.analyze(bodyContext));
 };
 
 ForIncrement.prototype.analyze = function (context) {
-  this.id1 = context.lookupValue(this.id1);
-  this.id2 = context.lookupValue(this.id2);
+  this.id1 = context.lookup(this.id1);
+  this.id2 = context.lookup(this.id2);
   this.intlit.analyze(context);
 };
 
 Func.prototype.analyze = function (context) {
-  const bodyContext = context.createChildContextForBlock();
-  this.params.forEach(line => line.analyze(bodyContext));
-  this.statements.forEach(line => line.analyze(bodyContext));
+  const paramContext = context.createChildContextForBlock();
+  if (!this.params === null) {
+      this.params.forEach(line => line.analyze(paramContext));
+  }
+  
+  //const statementContext = context.createChildContextForBlock();
+  if (!this.statements === null) {
+      this.statements.forEach(line => line.analyze(paramContext));
+  }
+
   // this.returnType.forEach(line => line.analyze(bodyContext));
-  if (typeof this.value === 'number') {
+  /*if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
     this.type = YesnosType;
@@ -119,7 +128,7 @@ Func.prototype.analyze = function (context) {
     this.type = WorderType;
   } else if (typeof this.value === 'undefined') {
     this.type = WhatType;
-  }
+  } */
 };
 
 Literal.prototype.analyze = function (/* context */) {

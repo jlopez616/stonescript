@@ -52,9 +52,9 @@ Stonescript {
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
   ForLoop          =  "FOR" "(" Setup "!" Exp3 "!" ForIncrement ")"
-                      "PART" Body? "NOT PART"
+                      "PART" Body "NOT PART"
   ForIncrement     =  id "IS" id addop intlit
-  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body? "NOT PART"
+  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  Exp4 (relop Exp4)?
   Body             =  Statement*
 

@@ -87,6 +87,11 @@ Context.INITIAL = new Context();
   WorderType, 
   YesnosType, 
   /* What Type, TabletType, */
-  ...standardFunctions].forEach((f) => { Context.INITIAL.add(f) });
+].forEach((f) => { Context.INITIAL.add(f) });
+standardFunctions.forEach((funct) => { Context.INITIAL.add(funct.id)});
+  
+  
+  
+
 
 module.exports = Context;
