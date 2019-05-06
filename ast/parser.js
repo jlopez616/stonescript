@@ -4,7 +4,7 @@ const ohm = require('ohm-js');
 
 const {
   Arg, Array, Assignment, BinaryExp, ForIncrement,
-  Conditional, Call, Declaration, ForLoop, 
+  Conditional, Call, Declaration, ForLoop,
   Postfix, Program, TypeDec,
   Func, Return, WhileLoop, Literal, Break, // Tablet
 } = require('../ast');
@@ -46,7 +46,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return null; // TODO: new Tablet(id.ast(), fields.ast());
   }, */
   TypeDec(mutability, type, array) {
-  return new TypeDec(mutability.ast(), type.ast(), arrayToNullable(array.ast()));
+    return new TypeDec(mutability.ast(), type.ast(), arrayToNullable(array.ast()));
   },
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
@@ -58,7 +58,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Declaration(typeDec.ast(), id.ast(), expr.ast());
   },
   Func(_1, _2, params, _3, _4, statements, returnType, _5) {
-    return new Func(arrayToNullable(params.ast()), arrayToNullable(statements.ast()), returnType.ast());
+    return new Func(arrayToNullable(params.ast()),
+      arrayToNullable(statements.ast()), returnType.ast());
   },
   Exp_or(left, op, right) {
     return new BinaryExp(left.ast(), op.ast(), right.ast());

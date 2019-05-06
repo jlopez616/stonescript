@@ -7,8 +7,8 @@
  *   const Context = require('./semantics/context');
  */
 
-const { standardFunctions, CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
-const TypeDec = require('./analyzer');
+const { standardFunctions, CounterType, WorderType, YesnosType /* WhatType, TabletType */ } = require('./builtins');
+// const TypeDec = require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
 //
@@ -66,7 +66,7 @@ class Context {
     if (this.locals.has(declaration) && (declaration === undefined)) {
       throw new Error(`${declaration} already declared in this scope`);
     }
-    console.log(declaration);
+    // console.log(declaration);
     const entity = (declaration.typeDec) ? declaration.type : declaration;
     this.locals.set(declaration, entity);
   }
@@ -83,15 +83,12 @@ class Context {
 }
 
 Context.INITIAL = new Context();
-[CounterType, 
-  WorderType, 
-  YesnosType, 
+[CounterType,
+  WorderType,
+  YesnosType,
   /* What Type, TabletType, */
-].forEach((f) => { Context.INITIAL.add(f) });
-standardFunctions.forEach((funct) => { Context.INITIAL.add(funct.id)});
-  
-  
-  
+].forEach((f) => { Context.INITIAL.add(f); });
+standardFunctions.forEach((funct) => { Context.INITIAL.add(funct.id); });
 
 
 module.exports = Context;
