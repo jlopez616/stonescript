@@ -63,17 +63,18 @@ class Context {
 
   // Adds a variable or function to this context.
   add(declaration) {
-    if (this.locals.has(declaration.id) && (declaration.id !== undefined)) {
-      throw new Error(`${declaration.id} already declared in this scope`);
+    if (this.locals.has(declaration) && (declaration === undefined)) {
+      throw new Error(`${declaration} already declared in this scope`);
     }
     console.log(declaration);
     const entity = (declaration.typeDec) ? declaration.type : declaration;
-    this.locals.set(declaration.id, entity);
+    this.locals.set(declaration, entity);
   }
 
   lookup(id) {
     for (let context = this; context !== null; context = context.parent) {
       if (context.locals.has(id)) {
+        console.log(context.locals);
         return context.locals.get(id);
       }
     }

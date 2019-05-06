@@ -10,9 +10,10 @@ function doCheck(condition, message) {
 
 module.exports = {
   // add ALL the type checking functions!
-  /* isArray(expression) {
-    doCheck(expression.type.constructor === Array, 'Not an array');
-  }, */
+  
+  isArray(expression) {
+    doCheck(expression.length <= 0);
+  },
 
   isInteger(expression) {
     doCheck(expression.type === CounterType, 'Not an integer');
@@ -24,12 +25,12 @@ module.exports = {
   },
   
   isMutable(expression) {
-    doCheck(!(expression.mutability === 'BEDROCK'),
+    doCheck(!(expression === 'BEDROCK'),
     'Data cannot be changed');
   },
   
   isValidType(expression) {
-    doCheck(expression)
+    doCheck(expression === "COUNTERS" || expression === "WORDERS" || expression === "YESNOS", 'Invalid type');
   },
   
 

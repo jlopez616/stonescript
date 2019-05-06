@@ -13,12 +13,15 @@ const check = require('./check');
 
 Arg.prototype.analyze = function (context) {
   this.type = context.lookup(this.type);
-  this.id = context.lookupValue(this.id); // I think this is right?
+  this.id = context.lookup(this.id); // I think this is right?
 };
 
 Array.prototype.analyze = function (context) {
-  this.args = context.lookup(this.args);
-  // tells us the type of the array - idk if this is right :(
+  if (!this === null) {
+    const newContext = context.createChildContextForBlock();
+    this.args.forEach(line => line.analyze(newContext));
+    
+  }
 };
 
 Assignment.prototype.analyze = function (context) {
@@ -69,16 +72,16 @@ Call.prototype.analyze = function (context) {
 
 Declaration.prototype.analyze = function (context) {
   this.typeDec.analyze(context);
-  this.id = context.lookupValue(this.id);
+  context.add(this.id);
   this.exp.analyze(context);
-  if (typeof this.value === 'number') {
+/*  if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
     this.type = YesnosType;
   } else if (typeof this.value === 'string') {
     this.type = WorderType;
-  }
-  this.source.analyze(context);
+  } */
+  this.exp.analyze(context);
 
   // if (this.type) {
   //   this.type = context.lookup(this.type);
@@ -147,8 +150,10 @@ Postfix.prototype.analyze = function (context) {
 
 TypeDec.prototype.analyze = function (context) {
   check.mutabilityCheck(this.mutability);
-  this.type.analyze(context);
-  this.array.analyze(context);
+  check.isValidType(this.type);
+  if (!this.array === null) {
+      this.array.analyze(context);
+  }
 }
 
 /* Return.prototype.analyze = function (context) {

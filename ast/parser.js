@@ -46,7 +46,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return null; // TODO: new Tablet(id.ast(), fields.ast());
   }, */
   TypeDec(mutability, type, array) {
-  return new TypeDec(mutability.ast(), type.ast(), array.ast());
+  return new TypeDec(mutability.ast(), type.ast(), arrayToNullable(array.ast()));
   },
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
