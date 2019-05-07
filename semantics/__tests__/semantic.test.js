@@ -72,7 +72,7 @@ ROCK WORDERS waitASec IS "Wait, you want string length? Ah, whoops!"!
 SPEAK(DALENGTH(waitASec))!
 
 ROCK COUNTERS randomNum IS 100!
-bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
+ROCK COUNTERS bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
 🦖 output: 1
 
 ROCK YESNOS funbool IS OOGA!
