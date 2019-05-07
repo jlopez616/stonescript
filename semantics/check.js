@@ -56,6 +56,10 @@ module.exports = {
     doCheck(!(expression === 'OOGA') || !(expression === 'NOOGA'), 'Not a boolean');
   },
 
+  inLoop(context, keyword) {
+    doCheck(context.inLoop, `${keyword} can only be used in a loop`);
+  },
+
   /* isUndefined(expression) {
     doCheck(expression.type === WhatType, 'Not undefined');
   }, */

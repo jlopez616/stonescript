@@ -49,8 +49,8 @@ BinaryExp.prototype.analyze = function (/* context */) {
   }
 };
 
-Break.prototype.analyze = function () {
-  // TO DO: CHECK TO SEE IF IT'S IN A LOOP?
+Break.prototype.analyze = function (context) {
+  check.inLoop(context, 'break');
 };
 
 Conditional.prototype.analyze = function (context) {
