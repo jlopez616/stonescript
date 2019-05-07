@@ -24,6 +24,7 @@ Array.prototype.analyze = function (context) {
 };
 
 Assignment.prototype.analyze = function (context) {
+  this.target = context.lookup(this.target);
   this.source.analyze(context);
 };
 // TO DO: Is integer
@@ -31,13 +32,13 @@ BinaryExp.prototype.analyze = function (/* context */) {
   console.log(this);
   if (this.op === 'SQUISH') {
     check.expressionsHaveTheSameType(this.left, this.right);
-    // check.isInteger(this.left);
-    // check.isInteger(this.right);
+    check.isInteger(this.left);
+    check.isInteger(this.right);
     this.type = CounterType;
   } else if (this.op === 'RIP') {
     check.expressionsHaveTheSameType(this.left, this.right);
-    // check.isInteger(this.left);
-    // check.isInteger(this.right);
+    check.isInteger(this.left);
+    check.isInteger(this.right);
   } else if (this.op === 'OOGA') {
     check.expressionsHaveTheSameType(this.left, this.right);
     this.type = YesnosType;
