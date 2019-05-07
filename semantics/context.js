@@ -8,7 +8,7 @@
  */
 
 const { standardFunctions, CounterType, WorderType, YesnosType /* WhatType, TabletType */ } = require('./builtins');
-// const TypeDec = require('./analyzer');
+const TypeDec = require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
 //
@@ -74,7 +74,7 @@ class Context {
   lookup(id) {
     for (let context = this; context !== null; context = context.parent) {
       if (context.locals.has(id)) {
-        console.log(context.locals);
+        // console.log(context.locals);
         return context.locals.get(id);
       }
     }
