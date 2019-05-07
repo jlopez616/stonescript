@@ -2,9 +2,9 @@
 
 const {
     Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, TypeDec,
-    ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop, // RelExp, RipAssignment,
+    ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop, Break,// RelExp, RipAssignment,
     // SquishAssignment, Statement, UnaryExpression, VariableDeclaration
-    // Parameter, Return intlit, Obj, Break,
+    // Parameter, Return intlit, Obj,
   } = require('../ast');
   
   function isZero(e) {
@@ -99,11 +99,11 @@ const {
     return this;
   };
   
-  // TODO
   ForIncrement.prototype.optimize = function () {
-    this.id1 = context.lookupValue(this.id1);
-    this.id2 = context.lookupValue(this.id2);
-    this.intlit.analyze(context);
+    this.id1 = this.id1.optimize();
+    this.id2 = this.id2.optimize();
+    this.intlit = this.intlit.optimize();
+    return this; 
   };
   
   // TODO
