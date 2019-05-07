@@ -126,37 +126,31 @@ const {
   Literal.prototype.optimize = function () {
     return this;
   };
-  
-  /* Parameter.prototype.analyze = function (context) {
-    this.id = context.lookupValue(this.id);
-    this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
-  }; */
-  
-  // TODO
-  Program.prototype.optimize = function () {
-    const newContext = context.createChildContextForBlock();
-    this.statements.forEach(s => s.analyze(newContext));
-  };
-  
-  // TODO
-  TypeDec.prototype.optimize = function () {
-    check.mutabilityCheck(this.mutability);
-    this.type.analyze(context);
-    this.array.analyze(context);
-  };
-  
-  Return.prototype.optimize = function () {
-    return this;
-  };
-  
-  WhileLoop.prototype.optimize = function () {
-    this.test = this.test.optimize();
-    this.body = this.body.optimize();
-    return this;
-  };
-  
-  Break.prototype.optimize = function () {
-    return this;
-  };
-  
-  
+
+
+// TODO
+Program.prototype.optimize = function () {
+  const newContext = context.createChildContextForBlock();
+  this.statements.forEach(s => s.analyze(newContext));
+};
+
+// TODO
+TypeDec.prototype.optimize = function () {
+  check.mutabilityCheck(this.mutability);
+  this.type.analyze(context);
+  this.array.analyze(context);
+};
+
+Return.prototype.optimize = function () {
+  return this;
+};
+
+WhileLoop.prototype.optimize = function () {
+  this.test = this.test.optimize();
+  this.body = this.body.optimize();
+  return this;
+};
+
+Break.prototype.optimize = function () {
+  return this;
+};

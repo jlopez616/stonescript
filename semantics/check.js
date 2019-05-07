@@ -1,5 +1,5 @@
 // const util = require('util');
-const { CounterType, YesnosType /* TabletType, WorderType, WhatType */ } = require('./builtins');
+const { CounterType /* YesnosType, TabletType, WorderType, WhatType */ } = require('./builtins');
 // const { Array, Func } = require('../ast'); // not sure if this is all we need
 
 function doCheck(condition, message) {
@@ -10,7 +10,7 @@ function doCheck(condition, message) {
 
 module.exports = {
   // add ALL the type checking functions!
-  
+
   isArray(expression) {
     doCheck(expression.length <= 0);
   },
@@ -18,21 +18,21 @@ module.exports = {
   isInteger(expression) {
     doCheck(expression.type === CounterType, 'Not an integer');
   },
-  
+
   mutabilityCheck(expression) {
     doCheck((expression === 'ROCK' || expression === 'BEDROCK'),
-    'Declarations must either be set as a \'ROCK\' or \'BEDROCK\'');
+      'Declarations must either be set as a \'ROCK\' or \'BEDROCK\'');
   },
-  
+
   isMutable(expression) {
     doCheck(!(expression === 'BEDROCK'),
-    'Data cannot be changed');
+      'Data cannot be changed');
   },
-  
+
   isValidType(expression) {
-    doCheck(!(expression === "COUNTERS") || !(expression === "WORDERS") || !(expression === "YESNOS"), 'Invalid type');
+    doCheck(!(expression === 'COUNTERS') || !(expression === 'WORDERS') || !(expression === 'YESNOS'), 'Invalid type');
   },
-  
+
 
   /* isString(expression) {
     doCheck(expression.type === WorderType, 'Not a string');
@@ -53,7 +53,11 @@ module.exports = {
   }, */
 
   isBoolean(expression) {
-    doCheck(expression.type === YesnosType, 'Not a boolean');
+    doCheck(!(expression === 'OOGA') || !(expression === 'NOOGA'), 'Not a boolean');
+  },
+
+  inLoop(context, keyword) {
+    doCheck(context.inLoop, `${keyword} can only be used in a loop`);
   },
 
   /* isUndefined(expression) {

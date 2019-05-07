@@ -107,7 +107,7 @@ class TypeDec {
 }
 
 class Break {
-  constructor(value) {
+  constructor() {
     Object.assign(this);
   }
 }

@@ -1,13 +1,13 @@
 // const util = require('util');
 
 const {
-  Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, TypeDec,
+  Arg, Array, Assignment, Break, BinaryExp, Conditional, Call, Declaration, TypeDec,
   ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop, // RelExp, RipAssignment,
   // SquishAssignment, Statement, UnaryExpression, VariableDeclaration
   // Parameter, Return intlit, Obj, Break,
 } = require('../ast');
 
-const { CounterType, WorderType, YesnosType, WhatType /* TabletType */ } = require('./builtins');
+const { CounterType, WorderType, YesnosType /* WhatType TabletType */ } = require('./builtins');
 const check = require('./check');
 // const Context = require('./context');
 
@@ -20,7 +20,6 @@ Array.prototype.analyze = function (context) {
   if (!this === null) {
     const newContext = context.createChildContextForBlock();
     this.args.forEach(line => line.analyze(newContext));
-    
   }
 };
 
@@ -29,7 +28,7 @@ Assignment.prototype.analyze = function (context) {
 };
 // TO DO: Is integer
 BinaryExp.prototype.analyze = function (/* context */) {
-    console.log(this);
+  console.log(this);
   if (this.op === 'SQUISH') {
     check.expressionsHaveTheSameType(this.left, this.right);
     // check.isInteger(this.left);
@@ -50,8 +49,11 @@ BinaryExp.prototype.analyze = function (/* context */) {
   }
 };
 
-Conditional.prototype.analyze = function (context) {
+Break.prototype.analyze = function (context) {
+  check.inLoop(context, 'break');
+};
 
+Conditional.prototype.analyze = function (context) {
   this.testExp.analyze(context);
   const consequentContext = context.createChildContextForBlock();
   this.consequent.forEach(line => line.analyze(consequentContext));
@@ -66,17 +68,18 @@ Conditional.prototype.analyze = function (context) {
 };
 
 Call.prototype.analyze = function (context) {
-
   this.id = context.lookup(this.id);
-
 };
 
 Declaration.prototype.analyze = function (context) {
-  console.log ("LOOK AT ME: " + this.exp);
+//  console.log ("LOOK AT ME: " + this.exp);
   this.typeDec.analyze(context);
   context.add(this.id);
-  this.exp.analyze(context);
-/*  if (typeof this.value === 'number') {
+  if (this.exp !== 'OOGA' && this.exp !== 'NOOGA') {
+    this.exp.analyze(context);
+  }
+
+  /*  if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
     this.type = YesnosType;
@@ -88,14 +91,14 @@ Declaration.prototype.analyze = function (context) {
   //   this.type = context.lookup(this.type);
   //   // check.isAssignableTo(this.source, this.type); //do in morning?
   // }
-  
-  //context.add(this);
+
+  // context.add(this);
 };
 
 ForLoop.prototype.analyze = function (context) {
   this.setup.analyze(context);
   this.testExp.analyze(context);
-  //check.isInteger(this.setup.exp.value);
+  // check.isInteger(this.setup.exp.value);
   context.add(this.setup.id);
   this.increment.analyze(context);
   const bodyContext = context.createChildContextForLoop();
@@ -111,16 +114,16 @@ ForIncrement.prototype.analyze = function (context) {
 Func.prototype.analyze = function (context) {
   const paramContext = context.createChildContextForBlock();
   if (!this.params === null) {
-      this.params.forEach(line => line.analyze(paramContext));
+    this.params.forEach(line => line.analyze(paramContext));
   }
-  
-  //const statementContext = context.createChildContextForBlock();
+
+  // const statementContext = context.createChildContextForBlock();
   if (!this.statements === null) {
-      this.statements.forEach(line => line.analyze(paramContext));
+    this.statements.forEach(line => line.analyze(paramContext));
   }
 
   // this.returnType.forEach(line => line.analyze(bodyContext));
-  /*if (typeof this.value === 'number') {
+  /* if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
     this.type = YesnosType;
@@ -161,9 +164,9 @@ TypeDec.prototype.analyze = function (context) {
   check.mutabilityCheck(this.mutability);
   check.isValidType(this.type);
   if (!this.array === null) {
-      this.array.analyze(context);
+    this.array.analyze(context);
   }
-}
+};
 
 /* Return.prototype.analyze = function (context) {
   this.value = context.lookupValue(this.value);

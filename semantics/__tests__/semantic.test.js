@@ -76,7 +76,8 @@ bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1
 🦖 output: 1
 
 ROCK YESNOS funbool IS OOGA!
-WHILE (NOT funbool) PART 
+ROCK COUNTERS penis IS 34!
+WHILE (funbool NOT IS funbool) PART 
     🦖 Infinite loop? Nahhhhhh
     RAGEQUIT!
 NOT PART!
