@@ -15,20 +15,20 @@
 
 const prettyJs = require('pretty-js');
 
-/* const {
-  ArrayExp, Assignment, BinaryExp, Binding, Break, Call, ExpSeq, ForExp, Func,
+const {
+  ArrayExp, Assignment, BinaryExp, Binding, Break, Call, ExpSeq, ForExp, Func, Program,
   IdExp, IfExp, LetExp, Literal, MemberExp, NegationExp, Nil, Param, RecordExp,
   SubscriptedExp, TypeDec, Variable, WhileExp,
-} = require('../ast'); */
+} = require('../ast');
 
 const Context = require('../semantics/context');
 // const { StringType } = require('../semantics/builtins');
 
 // TO Do for Kevin (I commented this out so the linter doesn't give me trouble):
 
-/* function makeOp(op) {
+function makeOp(op) {
   return { AND: '&&', OR: '||', 'NOT IS': '!=', 'IS IS': '==' }[op] || op;
-} */ // note that the use of == and != is intended because cavemen didn't care about exact matches
+} // note that the use of == and != is intended because cavemen didn't care about exact matches
 
 // javaScriptId(e) takes any Tiger object with an id property, such as a Variable,
 // Param, or Func, and produces a JavaScript name by appending a unique identifying
@@ -45,15 +45,25 @@ const javaScriptId = (() => {
   };
 })();
 
+let libFuncs = new Map();
+libFuncs.set('SPEAK', 'console.log');
+// I don't understand this tiger stuff so I made my own :) - John
+function getLibraryFunction(name) {
+  const entity = Context.INITIAL.locals.get(name);
+  return `${libFuncs.get(entity.id)}`;
+  
+}
+
 function generateLibraryFunctions() {
   function generateLibraryStub(name, params, body) {
     const entity = Context.INITIAL.locals.get(name);
-    return `function ${javaScriptId(entity)}(${params}) {${body}}`;
+    //return `${javaScriptId(entity)}(${params}) {${body}}`;
+    return `${entity.id}${body}`;
   }
   return [
-    generateLibraryStub('HUNTDOWN', 's', 'console.log(s);'), // WAIT TO SEE WHAT IT DOES
-    generateLibraryStub('SPEAK', 's', 'console.log(s);'),
-    generateLibraryStub('TYPE', 'x', ` function stonescriptType(x) {
+    //generateLibraryStub('HUNTDOWN', 's', 'console.log(s);'), // WAIT TO SEE WHAT IT DOES
+    generateLibraryStub('SPEAK', '_', 'console.log("_")'),
+  /*  generateLibraryStub('TYPE', 'x', ` function stonescriptType(x) {
                                         if (Array.isArray(x)) {
                                           return 'CAVES';
                                         } else if (typeof x === 'number') {
@@ -78,12 +88,12 @@ function generateLibraryFunctions() {
     generateLibraryStub('GOHIGH', 'return String.toUpperCase();'), // DOES THIS HAVE AN ARG PASSED IN?
     generateLibraryStub('DALENGTH', 'String.size();'), // i hope this is right
     generateLibraryStub('BIGHUG', 's, t', 'return s.concat(t);'),
-  ].join('');
+  */].join(''); 
 }
 
 module.exports = function (exp) {
-  const libraryFunctions = generateLibraryFunctions();
-  const program = `${libraryFunctions} ${exp.gen()}`;
+  //const libraryFunctions = generateLibraryFunctions();
+  const program =  /*`${libraryFunctions}*/  `${exp.gen()}`;
   return prettyJs(program, { indent: '  ' });
 };
 
@@ -106,11 +116,23 @@ Binding.prototype.gen = function () {
 Break.prototype.gen = function () {
   return 'break';
 };
-
+*/
 Call.prototype.gen = function () {
-  return `${javaScriptId(this.callee)}(${this.args.map(a => a.gen()).join(',')})`;
+  if (Context.INITIAL.locals.has(this.id)) {
+    this.id = getLibraryFunction(this.id);
+  }
+  return `${this.id}(${this.args.map(a => a.gen()).join(',')})`;
 };
 
+Program.prototype.gen = function() {
+  return  `${this.statements.map(d => d.gen()).join(';')};`;
+};
+
+Literal.prototype.gen = function () {
+//  return this.type === 'WORDERS' ? `"${this.value}"` : this.value;
+  return `\"${this.value}\"`;
+}
+/*
 ExpSeq.prototype.gen = function () {
   return this.exps.map(s => `${s.gen()};`).join('');
 };

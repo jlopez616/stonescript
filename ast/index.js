@@ -34,8 +34,8 @@ class Call {
   }
 }
 class Declaration {
-  constructor(typeDec, id, exp) {
-    Object.assign(this, { typeDec, id, exp });
+  constructor(mutability, typeDec, id, exp) {
+    Object.assign(this, { mutability, typeDec, id, exp });
   }
 }
 class ForLoop {
@@ -101,8 +101,8 @@ class Return {
 }
 
 class TypeDec {
-  constructor(mutability, type, array) {
-    Object.assign(this, { mutability, type, array });
+  constructor(type, array) {
+    Object.assign(this, { type, array });
   }
 }
 

@@ -1,4 +1,4 @@
-const { Call, Parameter, PrimitiveType } = require('../ast');
+const { Parameter, PrimitiveType, Call } = require('../ast');
 
 const CounterType = new PrimitiveType('COUNTERS'); // number
 const WorderType = new PrimitiveType('WORDERS'); // string
@@ -29,11 +29,15 @@ const standardFunctions = [
   ], WorderType),
 ];
 
+standardFunctions.forEach(f=> {
+  f.builtin = true;
+});
+
 module.exports = {
   CounterType,
   WorderType,
   YesnosType,
   //  WhatType,
   //  TabletType,
-  standardFunctions,
+  standardFunctions
 };

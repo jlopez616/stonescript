@@ -41,8 +41,8 @@ Stonescript {
   Break            =  "RAGEQUIT"
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   EmptyArray			 =  "CAVEIN" "CAVEOUT"
-  Declaration      =  TypeDec id "IS" Exp
-  TypeDec          =  mutability type array?
+  Declaration      =  mutability TypeDec id "IS" Exp
+  TypeDec          =  type array?
   Assignment       =  id "IS" Exp
   Call             =  ("SPEAK" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
                    |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | id) "(" listOf<Exp, ","> ")"
