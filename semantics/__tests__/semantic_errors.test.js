@@ -34,24 +34,12 @@ const errors = [
   ['wrong type inside of the while loop relExp', 'WHILE( x NOT SMASH OR IS "ROCKY") PART NOT PART!'],
   // ['using a reserved keyword', 'ROCK COUNTERS OOF IS 3!'],
   ['using break outside a loop', 'ROCK COUNTERS C IS 15! RAGEQUIT! C IS C SQUISH 5!'],
-  ['forgot one emoji for multiline comment', '🦕THIS IS SUPPOSED TO WORK, BUT AT THE SAME TIME NOT... HAHA'],
-  ['too many function arguments', 'SIZE("CAT", "DOG", "FISH")!'],
-  ['too few function arguments', 'BIGHUG("YABBADABBADOO!!!!")!'],
   ['wrong type of function argument', 'SIZE(33)!'],
   ['empty function argument', 'SIZE()!'],
   ['redeclared field', 'ROCK COUNTERS x IS 5! ROCK COUNTERS x IS 5!'],
-  // ['no such field', 'let type p = {r: int} var s: p := nil in s.zzz end'],
-  // ['member of nonrecord', 'let var x := 3 in x.y end'], // once tablets are working
   ['subscript of nonarray', 'ROCK COUNTERS c IS 68! c(DACHAR(3))!'],
   ['call of nonfunction', 'ROCK COUNTERS x IS 1! x(3)!'],
 
-  // return type error within a function?
-  // empty array substring
-  // potential tablet errors: too many/too few tablet assignments,
-  // (cont.) assigning args/types that dont exist in the TABLET
-  // Are calls to built-ins fixed? Have some tests already
-  // Do we want to check strings with illegal characters? -how?
-  // need some comment errors, probably just if multiline is missing end emoji
 ];
 
 describe('The semantic analyzer', () => {
