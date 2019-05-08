@@ -26,6 +26,7 @@ module.exports = {
 
   isMutable(expression) {
     doCheck(expression === 'BEDROCK', 'Data cannot be changed');
+    // doCheck(expression.mutability === 'ROCK', 'Data cannot be changed');
   },
 
   isValidType(expression) {
