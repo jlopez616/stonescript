@@ -103,6 +103,9 @@ Reference Types:
 * Lazy Evaluation
 * Support Pattern matching via Regular Expressions
 
+A Warning About Built-In Functions:
+THE CHILDREN OF ALL BUILT IN FUNCTIONS RETURN THE TYPE OF THEIR PARENTS
+
 # Example Programs
 
 ### Hello world
