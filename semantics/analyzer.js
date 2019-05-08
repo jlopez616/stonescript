@@ -65,16 +65,20 @@ Conditional.prototype.analyze = function (context) {
 };
 
 Call.prototype.analyze = function (context) {
-  this.id = context.lookup(this.id);
+  context.lookup(this.id);
 };
 
 Declaration.prototype.analyze = function (context) {
-//  console.log ("LOOK AT ME: " + this.exp);
+  
+  context.add(this)
+  // console.log(context);
+
+  check.mutabilityCheck(this.mutability);
   this.typeDec.analyze(context);
-  context.add(this.id);
   if (this.exp !== 'OOGA' && this.exp !== 'NOOGA') {
     this.exp.analyze(context);
   }
+  
 
   /*  if (typeof this.value === 'number') {
     this.type = CounterType;
@@ -148,7 +152,7 @@ Literal.prototype.analyze = function (/* context */) {
 
 Program.prototype.analyze = function (context) {
   const newContext = context.createChildContextForBlock();
-  this.statements.forEach(s => s.analyze(newContext));
+  this.statements.forEach(s => s.analyze(context));
 };
 
 
@@ -158,7 +162,6 @@ Postfix.prototype.analyze = function (context) {
 };
 
 TypeDec.prototype.analyze = function (context) {
-  check.mutabilityCheck(this.mutability);
   check.isValidType(this.type);
   if (!this.array === null) {
     this.array.analyze(context);

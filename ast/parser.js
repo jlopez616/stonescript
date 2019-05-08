@@ -45,8 +45,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   /* Tablet(id, _1, fields, _2, _3) {
     return null; // TODO: new Tablet(id.ast(), fields.ast());
   }, */
-  TypeDec(mutability, type, array) {
-    return new TypeDec(mutability.ast(), type.ast(), arrayToNullable(array.ast()));
+  TypeDec(type, array) {
+    return new TypeDec(type.ast(), arrayToNullable(array.ast()));
   },
   Call(id, _1, args, _2) {
     return new Call(id.ast(), args.ast());
@@ -54,8 +54,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Return(_1, value, _2) {
     return new Return(value.ast());
   },
-  Declaration(typeDec, id, _1, expr) {
-    return new Declaration(typeDec.ast(), id.ast(), expr.ast());
+  Declaration(mutability, typeDec, id, _1, expr) {
+    return new Declaration(mutability.ast(), typeDec.ast(), id.ast(), expr.ast());
   },
   Func(_1, _2, params, _3, _4, statements, returnType, _5) {
     return new Func(arrayToNullable(params.ast()),

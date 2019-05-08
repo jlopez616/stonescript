@@ -23,10 +23,7 @@ require('./analyzer');
 //
 //   3. Whether we are in a loop (to know that a `break` is okay).
 //
-//   4. A map for looking up types declared in this context.
-//
-//   5. A map for looking up vars and functions declared in this context.
-//
+
 // The reason for the two maps is that in Tiger, types are kept in a separate
 // namespace from all of the variables and functions. So you could declare a
 // type called "list" and a variable called "list" in the same scope. But you
@@ -63,18 +60,17 @@ class Context {
 
   // Adds a variable or function to this context.
   add(declaration) {
-    if (this.locals.has(declaration) && (declaration === undefined)) {
+    if (this.locals.has(declaration.id)) {
       throw new Error(`${declaration} already declared in this scope`);
     }
     // console.log(declaration);
-    const entity = (declaration.typeDec) ? declaration.type : declaration;
-    this.locals.set(declaration, entity);
+    //const entity = (declaration.typeDec) ? declaration.type : declaration;
+    this.locals.set(declaration.id, declaration);
   }
 
   lookup(id) {
     for (let context = this; context !== null; context = context.parent) {
       if (context.locals.has(id)) {
-        // console.log(context.locals);
         return context.locals.get(id);
       }
     }
@@ -87,8 +83,9 @@ Context.INITIAL = new Context();
   WorderType,
   YesnosType,
   /* What Type, TabletType, */
+  ...standardFunctions
 ].forEach((f) => { Context.INITIAL.add(f); });
-standardFunctions.forEach((funct) => { Context.INITIAL.add(funct.id); });
+
 
 
 module.exports = Context;
