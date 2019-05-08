@@ -32,7 +32,7 @@ const standardFunctions = [
   ], WorderType),
 ];
 
-standardFunctions.forEach(f=> {
+standardFunctions.forEach((f) => {
   f.builtin = true;
 });
 
@@ -42,5 +42,5 @@ module.exports = {
   YesnosType,
   //  WhatType,
   //  TabletType,
-  standardFunctions
+  standardFunctions,
 };

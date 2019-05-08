@@ -33,10 +33,10 @@ Assignment.prototype.analyze = function (context) {
 // TODO: Implement 'CUT'
 BinaryExp.prototype.analyze = function (context) {
   if (this.left instanceof Literal) {
-      this.left.analyze(context);
+    this.left.analyze(context);
   }
   if (this.right instanceof Literal) {
-      this.right.analyze(context);
+    this.right.analyze(context);
   }
   if (this.op === 'RIP' || this.op === 'SQUISH' || this.op === 'MANY') {
     check.isInteger(this.left);
@@ -74,7 +74,7 @@ Call.prototype.analyze = function (context) {
   if (context.locals.has(this.id)) {
     const match = context.locals.get(this.id);
     this.type = match.type;
-  };
+  }
   context.lookup(this.id);
 };
 
@@ -170,13 +170,11 @@ Postfix.prototype.analyze = function (context) {
 };
 
 TypeDec.prototype.analyze = function (context) {
-
   if (this.op === 'RIP' | this.op === 'SQUISH' | this.op === 'MANY') {
     check.isInteger(this.left);
     check.isInteger(this.right);
     this.type = CounterType;
-  }
-  else if (this.op === 'OOGA') {
+  } else if (this.op === 'OOGA') {
     check.isBoolean(this.type);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {

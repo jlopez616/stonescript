@@ -21,7 +21,7 @@ const {
   SubscriptedExp, TypeDec, Variable, WhileLoop,
 } = require('../ast');
 
-const { CounterType, YesnosType, WorderType} = require('../semantics/builtins');
+const { CounterType, YesnosType, WorderType } = require('../semantics/builtins');
 
 const Context = require('../semantics/context');
 // const { StringType } = require('../semantics/builtins');
@@ -29,10 +29,13 @@ const Context = require('../semantics/context');
 // TO Do for Kevin (I commented this out so the linter doesn't give me trouble):
 
 function makeOp(op) {
-  return { 'MANY': '*',
-          'SQUISH': '+',
-          'RIP': '-',
-          'AND': '&&', 'OR': '||', 'NOT IS': '!=', 'IS IS': '==' }[op] || op;
+  return { MANY: '*',
+    SQUISH: '+',
+    RIP: '-',
+    AND: '&&',
+    OR: '||',
+    'NOT IS': '!=',
+    'IS IS': '==' }[op] || op;
 } // note that the use of == and != is intended because cavemen didn't care about exact matches
 
 function rockType(op) {
@@ -44,13 +47,12 @@ function rockType(op) {
 // string each time it is called with a particular entity.
 
 
-let libFuncs = new Map();
+const libFuncs = new Map();
 libFuncs.set('SPEAK', 'console.log');
 // I don't understand this tiger stuff so I made my own :) - John
 function getLibraryFunction(name) {
   const entity = Context.INITIAL.locals.get(name);
   return `${libFuncs.get(entity.id)}`;
-
 }
 
 
@@ -79,12 +81,12 @@ Break.prototype.gen = function () {
 };
 */
 
-Array.prototype.gen = function() {
+Array.prototype.gen = function () {
   console.log(this);
-  return `[${this.args.forEach(x => {x.gen()})}]`;
+  return `[${this.args.forEach((x) => { x.gen(); })}]`;
 };
 
-Break.prototype.gen = function() {
+Break.prototype.gen = function () {
   return `break`;
 };
 
@@ -98,13 +100,13 @@ Call.prototype.gen = function () {
     this.id = getLibraryFunction(this.id);
     // USE WITH ABSOLUTE CAUTION: MUST DOCUMENT THAT THE CHILDREN OF ALL BUILT IN FUNCTIONS
     // RETURN THE TYPE OF THEIR PARENTS
-    this.args.forEach(x => {x.type = this.type});
-  };
+    this.args.forEach((x) => { x.type = this.type; });
+  }
 
   return `${this.id}(${this.args.map(a => a.gen()).join(',')})`;
 };
 
-Declaration.prototype.gen = function() {
+Declaration.prototype.gen = function () {
   return `${rockType(this.mutability)} ${this.id} = ${this.exp.gen()}`;
 };
 
@@ -113,12 +115,12 @@ Program.prototype.gen = function () {
 };
 
 Literal.prototype.gen = function () {
- return this.type.id === 'WORDERS' ? `\"${this.value}\"` : this.value;
+  return this.type.id === 'WORDERS' ? `\"${this.value}\"` : this.value;
 };
 
 // While Loops to be done by Homework 5
 
-/*WhileLoop.prototype.gen = function() {
+/* WhileLoop.prototype.gen = function() {
   return `while (${this.testExp.gen()}) {
     {${this.body.gen()}}
   }`
