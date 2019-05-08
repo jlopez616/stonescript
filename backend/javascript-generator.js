@@ -34,6 +34,7 @@ function makeOp(op) {
     'NOT IS': '!=',
     'IS IS': '==' }[op] || op;
 } // note that the use of == and != is intended because cavemen didn't care about exact matches
+*/
 
 function rockType(op) {
   return (op === 'BEDROCK') ? 'const' : 'let';
