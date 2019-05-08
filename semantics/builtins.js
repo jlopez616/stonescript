@@ -6,9 +6,12 @@ const YesnosType = new PrimitiveType('YESNOS'); // boolean
 // const WhatType = new PrimitiveType('what'); // undefined
 // const TabletType = new PrimitiveType('tablet'); // object
 
+const speak = new Call('SPEAK');
+speak.type = WorderType;
+
 const standardFunctions = [
   new Call('HUNTDOWN', WorderType),
-  new Call('SPEAK', WorderType),
+  speak,
   new Call('TYPE', [new Parameter('x', PrimitiveType)], WorderType), // gives type of Parameter; does that work?????
   new Call('DATE', [
     new Parameter('month', CounterType),
