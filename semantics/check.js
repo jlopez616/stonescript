@@ -1,7 +1,7 @@
 // const util = require('util');
 const { CounterType, YesnosType, /*TabletType*/ WorderType, /*WhatType*/ } = require('./builtins');
 // const { Array, Func } = require('../ast'); // not sure if this is all we need
-
+const {Literal} = require('../ast');
 function doCheck(condition, message) {
   if (!condition) {
     throw new Error(message);
@@ -16,7 +16,12 @@ module.exports = {
   },
 
   isInteger(expression) {
-    doCheck(expression.type === CounterType, 'Not an integer');
+    if (expression instanceof Literal) {
+      doCheck(typeof expression.value === 'number', 'Not an integer');
+    } else {
+      doCheck(expression.type === CounterType, 'Not an integer');
+    };
+
   },
 
   mutabilityCheck(expression) {
@@ -25,13 +30,14 @@ module.exports = {
   },
 
   isMutable(expression) {
-    doCheck(expression === 'BEDROCK', 'Data cannot be changed');
+    doCheck(expression === 'ROCK', 'Data cannot be changed');
     // doCheck(expression.mutability === 'ROCK', 'Data cannot be changed');
   },
 
   isValidType(expression) {
     doCheck(expression.type === CounterType || expression.type === YesnosType || expression.type === WorderType, 'Invalid type');
   },
+
 
 
   /* isString(expression) {
