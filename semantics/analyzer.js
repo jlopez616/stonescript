@@ -24,25 +24,30 @@ Array.prototype.analyze = function (context) {
 };
 
 Assignment.prototype.analyze = function (context) {
+  check.isMutable(this.target);
   this.target = context.lookup(this.target);
   // Make sure that this.target is mutable
-  // check.isMutable(this.target);
   this.source.analyze(context);
 };
 
 // TODO: Implement 'CUT'
-BinaryExp.prototype.analyze = function (/* context */) {
-  // console.log('RIP', this.op === 'RIP');
-  check.expressionsHaveTheSameType(this.left, this.right);
+BinaryExp.prototype.analyze = function (context) {
+  if (this.left instanceof Literal) {
+      this.left.analyze(context);
+  }
+  if (this.right instanceof Literal) {
+      this.right.analyze(context);
+  }
   if (this.op === 'RIP' || this.op === 'SQUISH' || this.op === 'MANY') {
     check.isInteger(this.left);
+    this.left.type = CounterType;
     check.isInteger(this.right);
-    this.type = CounterType;
+    this.right.type = CounterType;
   } else if (this.op === 'OOGA') {
-    check.isBoolean(this.type);
+    check.isBoolean(this.left);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {
-    check.isBoolean(this.type);
+    check.isBoolean(this.left);
     this.type = YesnosType;
   }
 };
@@ -66,6 +71,10 @@ Conditional.prototype.analyze = function (context) {
 };
 
 Call.prototype.analyze = function (context) {
+  if (context.locals.has(this.id)) {
+    const match = context.locals.get(this.id);
+    this.type = match.type;
+  };
   context.lookup(this.id);
 };
 
@@ -136,7 +145,7 @@ Func.prototype.analyze = function (context) {
 };
 
 Literal.prototype.analyze = function (/* context */) {
-  check.isMutable(this.type);
+//  check.isMutable(this.type);
   if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
@@ -161,18 +170,19 @@ Postfix.prototype.analyze = function (context) {
 };
 
 TypeDec.prototype.analyze = function (context) {
+
   if (this.op === 'RIP' | this.op === 'SQUISH' | this.op === 'MANY') {
     check.isInteger(this.left);
     check.isInteger(this.right);
     this.type = CounterType;
-  } 
+  }
   else if (this.op === 'OOGA') {
     check.isBoolean(this.type);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {
     check.isBoolean(this.type);
     this.type = YesnosType;
-  } 
+  }
   if (!this.array === null) {
     this.array.analyze(context);
   }
