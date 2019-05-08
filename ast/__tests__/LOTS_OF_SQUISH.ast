@@ -1,8 +1,10 @@
 Program {
   statements:
     [ Declaration {
-        target: 'total',
-        source:
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'COUNTERS', array: null },
+        id: 'total',
+        exp:
         BinaryExp {
           left:
             BinaryExp {
@@ -22,6 +24,4 @@ Program {
             BinaryExp {
               left: Literal { value: 1 },
               op: 'RIP',
-              right: Literal { value: 7 } } },
-        type: 'COUNTERS',
-        array: null } ] }
+              right: Literal { value: 7 } } } } ] }

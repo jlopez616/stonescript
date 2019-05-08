@@ -1,8 +1,12 @@
 Program {
   statements:
-    [ Declaration { target: 'x', source: 'y', type: 'WORDERS', array: null },
+    [ Declaration {
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'WORDERS', array: null },
+        id: 'x',
+        exp: 'y' },
       Declaration {
-        target: 'mybeautifulvariable',
-        source: Postfix { op: Literal { value: 3 }, left: undefined },
-        type: 'COUNTERS',
-        array: null } ] }
+        mutability: 'BEDROCK',
+        typeDec: TypeDec { type: 'COUNTERS', array: null },
+        id: 'mybeautifulvariable',
+        exp: Postfix { op: Literal { value: 3 }, left: undefined } } ] }

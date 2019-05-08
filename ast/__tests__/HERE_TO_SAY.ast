@@ -1,25 +1,25 @@
 Program {
   statements:
     [ Declaration {
-        target: 'speak',
-        source:
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'DOERS', array: null },
+        id: 'speak',
+        exp:
         Func {
-          params: [ Arg { type: 'WORDERS', id: 'word' } ],
-          statements:
-            [ Call {
-                id: 'SPEAK',
-                args:
-                [ BinaryExp {
-                    left:
-                      BinaryExp {
-                        left: Literal { value: 'I AM HERE TO SAY ' },
-                        op: 'AND',
-                        right: 'word' },
-                    op: 'AND',
-                    right: Literal { value: 'THANKS FOR LISTENING!' } } ] } ],
-          returnType: [] },
-        type: 'DOERS',
-        array: null },
+          params:
+            Call {
+              id: 'SPEAK',
+              args:
+              [ BinaryExp {
+                  left:
+                    BinaryExp {
+                      left: Literal { value: 'I AM HERE TO SAY ' },
+                      op: 'AND',
+                      right: 'word' },
+                  op: 'AND',
+                  right: Literal { value: 'THANKS FOR LISTENING!' } } ] },
+          statements: [],
+          returnType: undefined } },
       Call {
         id: 'speak',
         args: [ Literal { value: 'I wish my homework was done!' } ] } ] }

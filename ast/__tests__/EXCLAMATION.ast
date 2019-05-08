@@ -1,7 +1,37 @@
-Program {        statements:  [ Declaration { target:'COUNT',source:Literal{value:1},type:'COUNTERS',array:null},
-Declaration{target:'END',source:Literal{value:10},type:'COUNTERS',array:null},
-Declaration{target:'RESULT',source:Literal{value:1},type:'COUNTERS',array:null},
-Declaration{target:'TEST',source:'OOGA',type:'YESNOS',array:null},
-WhileLoop{testExp:BinaryExp{left:['ISIS'],op:'TEST',right:['OOGA']},body:[[]]},
-WhileLoop{testExp:BinaryExp{left:['SMASH'],op:'END',right:['COUNT']},body:[[Assignment{target:'RESULT',source:BinaryExp{left:'RESULT',op:'MANY',right:'COUNT'}},
-Assignment{target:'COUNT',source:BinaryExp{left:'COUNT',op:'SQUISH',right:Literal{value:1}}}]]}]}
+Program {
+    statements:
+        [ Declaration {
+            mutability: 'ROCK',
+            typeDec: TypeDec { type: 'COUNTERS', array: null },
+            id: 'COUNT',
+            exp: Literal { value: 1 } },
+        Declaration {
+            mutability: 'ROCK',
+            typeDec: TypeDec { type: 'COUNTERS', array: null },
+            id: 'END',
+            exp: Literal { value: 10 } },
+        Declaration {
+            mutability: 'ROCK',
+            typeDec: TypeDec { type: 'COUNTERS', array: null },
+            id: 'RESULT',
+            exp: Literal { value: 1 } },
+        Declaration {
+            mutability: 'ROCK',
+            typeDec: TypeDec { type: 'YESNOS', array: null },
+            id: 'TEST',
+            exp: 'OOGA' },
+        WhileLoop {
+            testExp:
+            BinaryExp { left: [ 'IS IS' ], op: 'TEST', right: [ 'OOGA' ] },
+            body: [] },
+        WhileLoop {
+            testExp:
+            BinaryExp { left: [ 'SMASH' ], op: 'END', right: [ 'COUNT' ] },
+            body:
+            [ Assignment {
+                target: 'RESULT',
+                source: BinaryExp { left: 'RESULT', op: 'MANY', right: 'COUNT' } },
+            Assignment {
+                target: 'COUNT',
+                source:
+                BinaryExp { left: 'COUNT', op: 'SQUISH', right: Literal { value: 1 } } } ] } ] }

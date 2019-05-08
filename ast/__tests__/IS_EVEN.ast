@@ -1,25 +1,17 @@
 Program {
   statements:
     [ Declaration {
-        target: 'is_even',
-        source:
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'DOERS', array: null },
+        id: 'is_even',
+        exp:
         Func {
-          params: [ Arg { type: 'COUNTERS', id: 'x' } ],
-          statements:
-            [ Declaration {
-                target: 'is_even',
-                source:
-                BinaryExp { left: 'x', op: 'LEFT', right: Literal { value: 2 } },
-                type: 'COUNTERS',
-                array: null },
-              Declaration { target: 'ANSWER', source: 'NOOGA', type: 'YESNOS', array: null },
-              Conditional {
-                testExp:
-                BinaryExp { left: 'is_even', op: 'IS IS', right: Literal { value: 0 } },
-                consequent: [],
-                alternate: null,
-                final: [ Assignment { target: 'ANSWER', source: 'NOOGA' } ] } ],
-          returnType: [ Return { value: 'ANSWER' } ] },
-        type: 'DOERS',
-        array: null } ] }
-
+          params:
+            Declaration {
+              mutability: 'ROCK',
+              typeDec: TypeDec { type: 'COUNTERS', array: null },
+              id: 'is_even',
+              exp:
+              BinaryExp { left: 'x', op: 'LEFT', right: Literal { value: 2 } } },
+          statements: [ Return { value: 'ANSWER' } ],
+          returnType: undefined } } ] }
