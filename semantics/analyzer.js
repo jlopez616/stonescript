@@ -25,6 +25,8 @@ Array.prototype.analyze = function (context) {
 
 Assignment.prototype.analyze = function (context) {
   this.target = context.lookup(this.target);
+  // Make sure that this.target is mutable
+  // check.isMutable(this.target);
   this.source.analyze(context);
 };
 
@@ -32,12 +34,11 @@ Assignment.prototype.analyze = function (context) {
 BinaryExp.prototype.analyze = function (/* context */) {
   // console.log('RIP', this.op === 'RIP');
   check.expressionsHaveTheSameType(this.left, this.right);
-  if (this.op === 'RIP' | this.op === 'SQUISH' | this.op === 'MANY') {
+  if (this.op === 'RIP' || this.op === 'SQUISH' || this.op === 'MANY') {
     check.isInteger(this.left);
     check.isInteger(this.right);
     this.type = CounterType;
-  } 
-  else if (this.op === 'OOGA') {
+  } else if (this.op === 'OOGA') {
     check.isBoolean(this.type);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {
@@ -69,8 +70,7 @@ Call.prototype.analyze = function (context) {
 };
 
 Declaration.prototype.analyze = function (context) {
-  
-  context.add(this)
+  context.add(this);
   // console.log(context);
 
   check.mutabilityCheck(this.mutability);
@@ -78,7 +78,7 @@ Declaration.prototype.analyze = function (context) {
   if (this.exp !== 'OOGA' && this.exp !== 'NOOGA') {
     this.exp.analyze(context);
   }
-  
+
 
   /*  if (typeof this.value === 'number') {
     this.type = CounterType;
@@ -151,10 +151,8 @@ Literal.prototype.analyze = function (/* context */) {
 }; */
 
 Program.prototype.analyze = function (context) {
-  const newContext = context.createChildContextForBlock();
   this.statements.forEach(s => s.analyze(context));
 };
-
 
 Postfix.prototype.analyze = function (context) {
   this.left.analyze(context);

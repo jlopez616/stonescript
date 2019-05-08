@@ -51,7 +51,7 @@ libFuncs.set('SPEAK', 'console.log');
 function getLibraryFunction(name) {
   const entity = Context.INITIAL.locals.get(name);
   return `${libFuncs.get(entity.id)}`;
-  
+
 }
 
 function generateLibraryFunctions() {
@@ -88,7 +88,7 @@ function generateLibraryFunctions() {
     generateLibraryStub('GOHIGH', 'return String.toUpperCase();'), // DOES THIS HAVE AN ARG PASSED IN?
     generateLibraryStub('DALENGTH', 'String.size();'), // i hope this is right
     generateLibraryStub('BIGHUG', 's, t', 'return s.concat(t);'),
-  */].join(''); 
+  */].join('');
 }
 
 module.exports = function (exp) {
@@ -124,8 +124,8 @@ Call.prototype.gen = function () {
   return `${this.id}(${this.args.map(a => a.gen()).join(',')})`;
 };
 
-Program.prototype.gen = function() {
-  return  `${this.statements.map(d => d.gen()).join(';')};`;
+Program.prototype.gen = function () {
+  return `${this.statements.map(d => d.gen()).join(';')};`;
 };
 
 Literal.prototype.gen = function () {

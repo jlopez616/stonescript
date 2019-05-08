@@ -17,5 +17,7 @@ rules:
     - off
   object-curly-newline:
     - off
+  func-names:
+    - off
 env:
   jest: true

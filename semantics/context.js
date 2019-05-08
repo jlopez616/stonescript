@@ -7,7 +7,14 @@
  *   const Context = require('./semantics/context');
  */
 
-const { standardFunctions, CounterType, WorderType, YesnosType /* WhatType, TabletType */ } = require('./builtins');
+const {
+  standardFunctions,
+  CounterType,
+  WorderType,
+  YesnosType,
+  // WhatType,
+  // TabletType,
+} = require('./builtins');
 require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
@@ -22,12 +29,6 @@ require('./analyzer');
 //      able to type check them.
 //
 //   3. Whether we are in a loop (to know that a `break` is okay).
-//
-
-// The reason for the two maps is that in Tiger, types are kept in a separate
-// namespace from all of the variables and functions. So you could declare a
-// type called "list" and a variable called "list" in the same scope. But you
-// probably shouldn't.
 
 class Context {
   constructor({ parent = null, currentFunction = null, inLoop = false } = {}) {
@@ -63,8 +64,6 @@ class Context {
     if (this.locals.has(declaration.id)) {
       throw new Error(`${declaration} already declared in this scope`);
     }
-    // console.log(declaration);
-    //const entity = (declaration.typeDec) ? declaration.type : declaration;
     this.locals.set(declaration.id, declaration);
   }
 
@@ -82,10 +81,9 @@ Context.INITIAL = new Context();
 [CounterType,
   WorderType,
   YesnosType,
-  /* What Type, TabletType, */
-  ...standardFunctions
+  // WhatType,
+  // TabletType,
+  ...standardFunctions,
 ].forEach((f) => { Context.INITIAL.add(f); });
-
-
 
 module.exports = Context;
