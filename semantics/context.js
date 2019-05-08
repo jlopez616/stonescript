@@ -8,10 +8,11 @@
  */
 
 const {
-  standardFunctions,
+
   CounterType,
   WorderType,
   YesnosType,
+  standardFunctions,
   // WhatType,
   // TabletType,
 } = require('./builtins');
