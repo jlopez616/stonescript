@@ -1,5 +1,6 @@
 // const util = require('util');
-const { CounterType, YesnosType, /* TabletType */ WorderType /* WhatType */ } = require('./builtins');
+// const { CounterType, YesnosType, /* TabletType */ WorderType
+/* WhatType  } = require('./builtins'); */
 // const { Array, Func } = require('../ast'); // not sure if this is all we need
 const { Literal } = require('../ast');
 
@@ -9,18 +10,12 @@ function doCheck(condition, message) {
   }
 }
 
+
 module.exports = {
   // add ALL the type checking functions!
-
-  isArray(expression) {
-    doCheck(expression.length <= 0);
-  },
-
   isInteger(expression) {
     if (expression instanceof Literal) {
       doCheck(typeof expression.value === 'number', 'Not an integer');
-    } else {
-      doCheck(expression.type === CounterType, 'Not an integer');
     }
   },
 
@@ -33,11 +28,6 @@ module.exports = {
     doCheck(expression === 'ROCK', 'Data cannot be changed');
     // doCheck(expression.mutability === 'ROCK', 'Data cannot be changed');
   },
-
-  isValidType(expression) {
-    doCheck(expression.type === CounterType || expression.type === YesnosType || expression.type === WorderType, 'Invalid type');
-  },
-
 
   /* isString(expression) {
     doCheck(expression.type === WorderType, 'Not a string');
@@ -91,8 +81,8 @@ module.exports = {
    */
 
   // Are two types exactly the same?
-  expressionsHaveTheSameType(e1, e2) {
-    doCheck(e1.type === e2.type, 'Types must match exactly');
+  /* expressionsHaveTheSameType(e1, e2) {
+    doCheck(e1 === e2, 'Types must match exactly');
   },
 
   // Can we assign expression to a variable/param/field of type type?

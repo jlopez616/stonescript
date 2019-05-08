@@ -30,6 +30,7 @@ BEDROCK COUNTERS x IS 5!
 ROCK WORDERS s IS "welcome"!
 ROCK WORDERS intro IS "hello"!
 ROCK COUNTERS count IS 0!
+count SQUISH 5!
 YABBADABBADOO () PART
     ROCK WORDERS intro IS "My name is "!
     ROCK COUNTERS count IS 10!
@@ -55,13 +56,7 @@ YABBADABBADOO () PART
     NOT PART!
 NOT PART!
 
-WHILE (score SMASH OR IS 50) PART
-    OOF (score NOT SMASH 50) PART
-        RAGEQUIT!
-    NOT PART!
-    score IS 10!
-NOT PART!
-
+ROCK COUNTERS CAVE lottery IS CAVEIN 2, 5, 6 CAVEOUT!
 
 
 ROCK WORDERS shoutout IS "Isn't STONESCRIPT rocking awesome?!"!
@@ -76,13 +71,11 @@ ROCK COUNTERS randomNum IS 100!
 🦖 ROCK COUNTERS bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
 🦖 output: 1
 
-
 ROCK YESNOS funbool IS OOGA!
 WHILE (funbool NOT IS funbool) PART
     🦖 Infinite loop? Nahhhhhh
     RAGEQUIT!
 NOT PART!
-
 
 `;
 

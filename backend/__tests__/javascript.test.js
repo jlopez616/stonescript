@@ -56,9 +56,7 @@ describe('The JavaScript generator', () => {
     Object.entries(fixture).forEach(([name, [source, expected]]) => {
         test(`produces the correct output for ${name}`, (done) => {
             const ast = parse(source);
-            console.log(ast);
             ast.analyze(Context.INITIAL);
-            console.log(ast);
             expect(generate(ast)).toMatch(expected);
             done();
         });

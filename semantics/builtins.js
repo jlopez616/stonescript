@@ -32,9 +32,7 @@ const standardFunctions = [
   ], WorderType),
 ];
 
-standardFunctions.forEach((f) => {
-  f.builtin = true;
-});
+standardFunctions.forEach((f) => { f.builtin = true; });
 
 module.exports = {
   CounterType,

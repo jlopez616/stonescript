@@ -38,7 +38,8 @@ BinaryExp.prototype.analyze = function (context) {
   if (this.right instanceof Literal) {
     this.right.analyze(context);
   }
-  if (this.op === 'RIP' || this.op === 'SQUISH' || this.op === 'MANY') {
+  if (this.op === 'RIP' || this.op === 'SQUISH' || this.op === 'MANY'
+  || this.op === 'LEFT' || this.op === 'CUT') {
     check.isInteger(this.left);
     this.left.type = CounterType;
     check.isInteger(this.right);
@@ -53,7 +54,7 @@ BinaryExp.prototype.analyze = function (context) {
 };
 
 Break.prototype.analyze = function (context) {
-  check.inLoop(context, 'break');
+  check.inLoop(context);
 };
 
 Conditional.prototype.analyze = function (context) {
@@ -170,17 +171,17 @@ Postfix.prototype.analyze = function (context) {
 };
 
 TypeDec.prototype.analyze = function (context) {
-  if (this.op === 'RIP' | this.op === 'SQUISH' | this.op === 'MANY') {
+  if ((this.op === 'RIP') | (this.op === 'SQUISH') | (this.op === 'MANY')) {
     check.isInteger(this.left);
     check.isInteger(this.right);
     this.type = CounterType;
-  } else if (this.op === 'OOGA') {
-    check.isBoolean(this.type);
+  } /* else if (this.op === 'OOGA') {
+    // check.isBoolean(this.type);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {
-    check.isBoolean(this.type);
+    //check.isBoolean(this.type);
     this.type = YesnosType;
-  }
+  } */
   if (!this.array === null) {
     this.array.analyze(context);
   }
@@ -195,8 +196,3 @@ WhileLoop.prototype.analyze = function (context) {
   const bodyContext = context.createChildContextForLoop();
   this.body.forEach(line => line.analyze(bodyContext));
 };
-
-/* Break.prototype.analyze = function (context) {
-  // TODO
-}
-*/

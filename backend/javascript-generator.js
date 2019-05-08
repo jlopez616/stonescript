@@ -16,12 +16,9 @@
 const prettyJs = require('pretty-js');
 
 const {
-  Array, Assignment, BinaryExp, Binding, Break, Call, Declaration, ExpSeq, ForExp, Func, Program,
-  IdExp, IfExp, LetExp, Literal, MemberExp, NegationExp, Nil, Param, RecordExp,
-  SubscriptedExp, TypeDec, Variable, WhileLoop,
+  Array, BinaryExp, Break, Call, Declaration, Program, Literal,
 } = require('../ast');
 
-const { CounterType, YesnosType, WorderType } = require('../semantics/builtins');
 
 const Context = require('../semantics/context');
 // const { StringType } = require('../semantics/builtins');
@@ -82,7 +79,6 @@ Break.prototype.gen = function () {
 */
 
 Array.prototype.gen = function () {
-  console.log(this);
   return `[${this.args.forEach((x) => { x.gen(); })}]`;
 };
 
@@ -91,7 +87,6 @@ Break.prototype.gen = function () {
 };
 
 BinaryExp.prototype.gen = function () {
-  console.log(this);
   return `${this.left.gen()} ${makeOp(this.op)} ${this.right.gen()}`;
 };
 

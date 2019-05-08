@@ -1,8 +1,9 @@
 // const util = require('util');
-
+/*
 const {
   Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, TypeDec,
-  ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop, Break, // RelExp, RipAssignment,
+  ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop,
+  Break, // RelExp, RipAssignment,
   // SquishAssignment, Statement, UnaryExpression, VariableDeclaration
   // Parameter, Return intlit, Obj,
 } = require('../ast');
@@ -130,7 +131,7 @@ Literal.prototype.optimize = function () {
 /* Parameter.prototype.analyze = function (context) {
     this.id = context.lookupValue(this.id);
     this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
-  }; */
+  };
 
 // TODO
 Program.prototype.optimize = function () {
@@ -158,3 +159,4 @@ WhileLoop.prototype.optimize = function () {
 Break.prototype.optimize = function () {
   return this;
 };
+*/
