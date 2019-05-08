@@ -24,28 +24,25 @@ Array.prototype.analyze = function (context) {
 };
 
 Assignment.prototype.analyze = function (context) {
+  this.target = context.lookup(this.target);
   this.source.analyze(context);
 };
-// TO DO: Is integer
+
+// TODO: Implement 'CUT'
 BinaryExp.prototype.analyze = function (/* context */) {
-  console.log(this);
-  if (this.op === 'SQUISH') {
-    check.expressionsHaveTheSameType(this.left, this.right);
-    // check.isInteger(this.left);
-    // check.isInteger(this.right);
+  // console.log('RIP', this.op === 'RIP');
+  check.expressionsHaveTheSameType(this.left, this.right);
+  if (this.op === 'RIP' | this.op === 'SQUISH' | this.op === 'MANY') {
+    check.isInteger(this.left);
+    check.isInteger(this.right);
     this.type = CounterType;
-  } else if (this.op === 'RIP') {
-    check.expressionsHaveTheSameType(this.left, this.right);
-    // check.isInteger(this.left);
-    // check.isInteger(this.right);
-  } else if (this.op === 'OOGA') {
-    check.expressionsHaveTheSameType(this.left, this.right);
+  } 
+  else if (this.op === 'OOGA') {
+    check.isBoolean(this.type);
     this.type = YesnosType;
   } else if (this.op === 'NOOGA') {
-    check.expressionsHaveTheSameType(this.left, this.right);
+    check.isBoolean(this.type);
     this.type = YesnosType;
-  } else {
-    check.expressionsHaveTheSameType(this.left, this.right);
   }
 };
 

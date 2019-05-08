@@ -126,7 +126,11 @@ const {
   Literal.prototype.optimize = function () {
     return this;
   };
-
+  
+  /* Parameter.prototype.analyze = function (context) {
+    this.id = context.lookupValue(this.id);
+    this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
+  }; */
 
 // TODO
 Program.prototype.optimize = function () {

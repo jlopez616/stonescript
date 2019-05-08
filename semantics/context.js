@@ -8,7 +8,7 @@
  */
 
 const { standardFunctions, CounterType, WorderType, YesnosType /* WhatType, TabletType */ } = require('./builtins');
-const TypeDec = require('./analyzer');
+require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
 //

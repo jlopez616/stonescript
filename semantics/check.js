@@ -1,5 +1,5 @@
 // const util = require('util');
-const { CounterType /* YesnosType, TabletType, WorderType, WhatType */ } = require('./builtins');
+const { CounterType, YesnosType, /*TabletType*/ WorderType, /*WhatType*/ } = require('./builtins');
 // const { Array, Func } = require('../ast'); // not sure if this is all we need
 
 function doCheck(condition, message) {
@@ -20,17 +20,16 @@ module.exports = {
   },
 
   mutabilityCheck(expression) {
-    doCheck((expression === 'ROCK' || expression === 'BEDROCK'),
+    doCheck(expression === 'ROCK' || expression === 'BEDROCK',
       'Declarations must either be set as a \'ROCK\' or \'BEDROCK\'');
   },
 
   isMutable(expression) {
-    doCheck(!(expression === 'BEDROCK'),
-      'Data cannot be changed');
+    doCheck(expression === 'BEDROCK', 'Data cannot be changed');
   },
 
   isValidType(expression) {
-    doCheck(!(expression === 'COUNTERS') || !(expression === 'WORDERS') || !(expression === 'YESNOS'), 'Invalid type');
+    doCheck(expression.type === CounterType || expression.type === YesnosType || expression.type === WorderType, 'Invalid type');
   },
 
 
@@ -53,7 +52,7 @@ module.exports = {
   }, */
 
   isBoolean(expression) {
-    doCheck(!(expression === 'OOGA') || !(expression === 'NOOGA'), 'Not a boolean');
+    doCheck(expression === 'OOGA' || expression === 'NOOGA', 'Not a boolean');
   },
 
   inLoop(context, keyword) {

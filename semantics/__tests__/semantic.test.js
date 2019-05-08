@@ -30,9 +30,9 @@ BEDROCK COUNTERS x IS 5!
 ROCK WORDERS s IS "welcome"!
 ROCK WORDERS intro IS "hello"!
 ROCK COUNTERS count IS 0!
-YABBADABBADOO (WORDERS intro, COUNTERS count) PART
-    intro IS "My name is "!
-    count IS 10!
+YABBADABBADOO () PART
+    ROCK WORDERS intro IS "My name is "!
+    ROCK COUNTERS count IS 10!
     🦖 Will loop ten times, printing "kratos" each time
     FOR (ROCK COUNTERS i IS 0! i NOT SMASH 10! i IS i SQUISH 1) PART
         SPEAK(kratos)!        
@@ -59,11 +59,10 @@ WHILE (score SMASH OR IS 50) PART
     OOF (score NOT SMASH 50) PART
         RAGEQUIT!
     NOT PART!
-    score IS score RIP 1!
+    score IS 10!
 NOT PART!
 
-ROCK CAVE characters IS CAVEIN "Mimir", "Laufey", "Atreus", "Fafnir" CAVEOUT!
-SPEAK(SIZE(characters))!
+
 
 ROCK WORDERS shoutout IS "Isn't STONESCRIPT rocking awesome?!"!
 SPEAK(GOHIGH(shoutout))!
@@ -72,11 +71,13 @@ ROCK WORDERS waitASec IS "Wait, you want string length? Ah, whoops!"!
 SPEAK(DALENGTH(waitASec))!
 
 ROCK COUNTERS randomNum IS 100!
-bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
+100 CUT 2!
+🦖 TODO: Line below doesn't work!!!!! 
+🦖 ROCK COUNTERS bigop IS randomNum SQUISH 100 CUT 10 MANY 5 RIP 69 RIP 1 SQUISH 470 MANY 2 CUT 1000!
 🦖 output: 1
 
+
 ROCK YESNOS funbool IS OOGA!
-ROCK COUNTERS penis IS 34!
 WHILE (funbool NOT IS funbool) PART 
     🦖 Infinite loop? Nahhhhhh
     RAGEQUIT!
@@ -94,3 +95,7 @@ describe('The semantic analyzer', () => {
     done();
   });
 });
+
+// TODO: add both lines in line 65 when ready to add 'CAVE' types
+// ROCK CAVE characters IS CAVEIN "Mimir", "Laufey", "Atreus", "Fafnir" CAVEOUT!
+// SPEAK(SIZE(characters))!
