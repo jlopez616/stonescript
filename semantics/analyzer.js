@@ -136,6 +136,7 @@ Func.prototype.analyze = function (context) {
 };
 
 Literal.prototype.analyze = function (/* context */) {
+  check.isMutable(this.type);
   if (typeof this.value === 'number') {
     this.type = CounterType;
   } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
@@ -162,7 +163,18 @@ Postfix.prototype.analyze = function (context) {
 };
 
 TypeDec.prototype.analyze = function (context) {
-  check.isValidType(this.type);
+  if (this.op === 'RIP' | this.op === 'SQUISH' | this.op === 'MANY') {
+    check.isInteger(this.left);
+    check.isInteger(this.right);
+    this.type = CounterType;
+  } 
+  else if (this.op === 'OOGA') {
+    check.isBoolean(this.type);
+    this.type = YesnosType;
+  } else if (this.op === 'NOOGA') {
+    check.isBoolean(this.type);
+    this.type = YesnosType;
+  } 
   if (!this.array === null) {
     this.array.analyze(context);
   }
