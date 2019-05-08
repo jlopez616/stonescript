@@ -1,6 +1,10 @@
 Program {
   statements:
-    [ Declaration { target: 'mylove', source: 'NOOGA', type: 'YESNOS', array: null },
+    [ Declaration {
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'YESNOS', array: null },
+        id: 'mylove',
+        exp: 'NOOGA' },
       Conditional {
         testExp:
         BinaryExp {

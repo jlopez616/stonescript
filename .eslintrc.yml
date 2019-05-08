@@ -17,5 +17,15 @@ rules:
     - off
   object-curly-newline:
     - off
+  func-names:
+    - off
+  no-bitwise:
+    - off
+  no-param-reassign:
+    - off
+  no-useless-escape:
+    - off
+  quotes:
+    - off
 env:
   jest: true

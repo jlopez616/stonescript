@@ -1,46 +1,16 @@
 Program {
   statements:
     [ Declaration {
-        target: 'FIB',
-        source:
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'DOERS', array: null },
+        id: 'FIB',
+        exp:
         Func {
-          params: [ Arg { type: 'COUNTERS', id: 'N' } ],
-          statements:
-            [ Declaration {
-                target: 'A',
-                source: Literal { value: 0 },
-                type: 'COUNTERS',
-                array: null },
-              Declaration {
-                target: 'B',
-                source: Literal { value: 1 },
-                type: 'COUNTERS',
-                array: null },
-              Declaration {
-                target: 'F',
-                source: Literal { value: 1 },
-                type: 'COUNTERS',
-                array: null },
-              ForLoop {
-                setup:
-                Declaration {
-                  target: 'I',
-                  source: Literal { value: 2 },
-                  type: 'COUNTERS',
-                  array: null },
-                testExp: BinaryExp { left: 'I', op: 'NOT SMASH OR IS', right: 'N' },
-                increment:
-                ForIncrement {
-                  id1: 'I',
-                  id2: 'I',
-                  addop: 'SQUISH',
-                  intlit: Literal { value: 1 } },
-                body:
-                [ [ Assignment {
-                      target: 'F',
-                      source: BinaryExp { left: 'A', op: 'SQUISH', right: 'B' } },
-                    Assignment { target: 'A', source: 'B' },
-                    Assignment { target: 'B', source: 'F' } ] ] } ],
-          returnType: [ Return { value: 'F' } ] },
-        type: 'DOERS',
-        array: null } ] }
+          params:
+            Declaration {
+              mutability: 'ROCK',
+              typeDec: TypeDec { type: 'COUNTERS', array: null },
+              id: 'A',
+              exp: Literal { value: 0 } },
+          statements: [ Return { value: 'F' } ],
+          returnType: undefined } } ] }

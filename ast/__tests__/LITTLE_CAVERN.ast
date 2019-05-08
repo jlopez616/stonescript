@@ -1,8 +1,10 @@
 Program {
   statements:
     [ Declaration {
-        target: 'CAVERN',
-        source:
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'COUNTERS', array: 'CAVE' },
+        id: 'CAVERN',
+        exp:
         Array {
           args:
             [ Literal { value: 1 },
@@ -10,7 +12,5 @@ Program {
               Literal { value: 4 },
               Literal { value: 8 },
               Literal { value: 16 },
-              Literal { value: 32 } ] },
-        type: 'COUNTERS',
-        array: 'CAVE' },
+              Literal { value: 32 } ] } },
       Call { id: 'SPEAK', args: [ 'CAVERN' ] } ] }

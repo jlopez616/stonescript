@@ -1,30 +1,34 @@
 Program {
   statements:
     [ Declaration {
-        target: 'a',
-        source: BinaryExp { left: 'a', op: 'SQUISH', right: 'b' },
-        type: 'COUNTERS',
-        array: null },
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'COUNTERS', array: null },
+        id: 'a',
+        exp: BinaryExp { left: 'a', op: 'SQUISH', right: 'b' } },
       Declaration {
-        target: 'b',
-        source: BinaryExp { left: 'b', op: 'RIP', right: 'c' },
-        type: 'COUNTERS',
-        array: null },
+        mutability: 'BEDROCK',
+        typeDec: TypeDec { type: 'COUNTERS', array: null },
+        id: 'b',
+        exp: BinaryExp { left: 'b', op: 'RIP', right: 'c' } },
       BinaryExp { left: 'c', op: 'MANY', right: 'd' },
       Declaration {
-        target: 'd',
-        source:
-        BinaryExp { left: Literal { value: 100 }, op: 'LEFT', right: 'd' },
-        type: 'COUNTERS',
-        array: null },
-      Declaration { target: 'yah', source: 'OOGA', type: 'YESNOS', array: null },
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'COUNTERS', array: null },
+        id: 'd',
+        exp:
+        BinaryExp { left: Literal { value: 100 }, op: 'LEFT', right: 'd' } },
       Declaration {
-        target: 'dah',
-        source: Literal { value: 'Bepis' },
-        type: 'WORDERS',
-        array: null },
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'YESNOS', array: null },
+        id: 'yah',
+        exp: 'OOGA' },
       Declaration {
-        target: 'nah',
-        source: Postfix { op: 'OOGA', left: undefined },
-        type: 'YESNOS',
-        array: null } ] }
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'WORDERS', array: null },
+        id: 'dah',
+        exp: Literal { value: 'Bepis' } },
+      Declaration {
+        mutability: 'ROCK',
+        typeDec: TypeDec { type: 'YESNOS', array: null },
+        id: 'nah',
+        exp: Postfix { op: 'OOGA', left: undefined } } ] }

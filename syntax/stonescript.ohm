@@ -41,7 +41,8 @@ Stonescript {
   Break            =  "RAGEQUIT"
   Array            =  "CAVEIN" ListOf<Exp, ","> "CAVEOUT"
   EmptyArray			 =  "CAVEIN" "CAVEOUT"
-  Declaration      =  ("ROCK" | "BEDROCK") type array? id "IS" Exp
+  Declaration      =  mutability TypeDec id "IS" Exp
+  TypeDec          =  type array?
   Assignment       =  id "IS" Exp
   Call             =  ("SPEAK" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
                    |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | id) "(" listOf<Exp, ","> ")"
@@ -51,9 +52,9 @@ Stonescript {
                       ("OOFF" "PART" Body "NOT PART" )?
   Setup            =  Declaration | Assignment
   ForLoop          =  "FOR" "(" Setup "!" Exp3 "!" ForIncrement ")"
-                      "PART" Body? "NOT PART"
+                      "PART" Body "NOT PART"
   ForIncrement     =  id "IS" id addop intlit
-  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body? "NOT PART"
+  WhileLoop        =  "WHILE" "(" RelExp ")" "PART" Body "NOT PART"
   RelExp           =  Exp4 (relop Exp4)?
   Body             =  Statement*
 
@@ -62,6 +63,7 @@ Stonescript {
                    |  "CUT" | "OOGA" | "WORDERS" | "YABBADABBADO" | "NOOGA" | "SPEAK"
                    |  "RAGEQUIT" | "HUNTDOWN" | "TYPE" | "DATE" | "SIZE" | "DACHAR" 
                    |  "GOAWAY" | "GOHIGH" | "DALENGTH" | "BIGHUG" | primtype | "NOT PART") ~idrest
+  mutability       =  ("ROCK" | "BEDROCK")
   funckeyword      =  "SPEAK"
   boollit          =  "OOGA"
                    |  "NOOGA"

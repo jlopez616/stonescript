@@ -6,4 +6,4 @@ Program {
         BinaryExp { left: 'x', op: 'SMASH', right: Literal { value: 4 } },
         increment:
         ForIncrement { id1: 'x', id2: 'x', addop: 'RIP', intlit: Literal { value: 5 } },
-        body: [ [ Break {} ] ] } ] }
+        body: [ Break {} ] } ] }

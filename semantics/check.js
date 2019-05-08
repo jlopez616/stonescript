@@ -1,6 +1,8 @@
 // const util = require('util');
-const { CounterType, YesnosType /* TabletType, WorderType, WhatType */ } = require('./builtins');
+// const { CounterType, YesnosType, /* TabletType */ WorderType
+/* WhatType  } = require('./builtins'); */
 // const { Array, Func } = require('../ast'); // not sure if this is all we need
+const { Literal } = require('../ast');
 
 function doCheck(condition, message) {
   if (!condition) {
@@ -8,14 +10,23 @@ function doCheck(condition, message) {
   }
 }
 
+
 module.exports = {
   // add ALL the type checking functions!
-  /* isArray(expression) {
-    doCheck(expression.type.constructor === Array, 'Not an array');
-  }, */
-
   isInteger(expression) {
-    doCheck(expression.type === CounterType, 'Not an integer');
+    if (expression instanceof Literal) {
+      doCheck(typeof expression.value === 'number', 'Not an integer');
+    }
+  },
+
+  mutabilityCheck(expression) {
+    doCheck(expression === 'ROCK' || expression === 'BEDROCK',
+      'Declarations must either be set as a \'ROCK\' or \'BEDROCK\'');
+  },
+
+  isMutable(expression) {
+    doCheck(expression === 'ROCK', 'Data cannot be changed');
+    // doCheck(expression.mutability === 'ROCK', 'Data cannot be changed');
   },
 
   /* isString(expression) {
@@ -37,7 +48,11 @@ module.exports = {
   }, */
 
   isBoolean(expression) {
-    doCheck(expression.type === YesnosType, 'Not a boolean');
+    doCheck(expression === 'OOGA' || expression === 'NOOGA', 'Not a boolean');
+  },
+
+  inLoop(context, keyword) {
+    doCheck(context.inLoop, `${keyword} can only be used in a loop`);
   },
 
   /* isUndefined(expression) {
@@ -66,8 +81,8 @@ module.exports = {
    */
 
   // Are two types exactly the same?
-  expressionsHaveTheSameType(e1, e2) {
-    doCheck(e1.type === e2.type, 'Types must match exactly');
+  /* expressionsHaveTheSameType(e1, e2) {
+    doCheck(e1 === e2, 'Types must match exactly');
   },
 
   // Can we assign expression to a variable/param/field of type type?

@@ -7,7 +7,15 @@
  *   const Context = require('./semantics/context');
  */
 
-const { standardFunctions, CounterType, WorderType, YesnosType, WhatType, TabletType } = require('./builtins');
+const {
+
+  CounterType,
+  WorderType,
+  YesnosType,
+  standardFunctions,
+  // WhatType,
+  // TabletType,
+} = require('./builtins');
 require('./analyzer');
 
 // When doing semantic analysis we pass around context objects.
@@ -22,15 +30,6 @@ require('./analyzer');
 //      able to type check them.
 //
 //   3. Whether we are in a loop (to know that a `break` is okay).
-//
-//   4. A map for looking up types declared in this context.
-//
-//   5. A map for looking up vars and functions declared in this context.
-//
-// The reason for the two maps is that in Tiger, types are kept in a separate
-// namespace from all of the variables and functions. So you could declare a
-// type called "list" and a variable called "list" in the same scope. But you
-// probably shouldn't.
 
 class Context {
   constructor({ parent = null, currentFunction = null, inLoop = false } = {}) {
@@ -38,8 +37,7 @@ class Context {
       parent,
       currentFunction,
       inLoop,
-      typeMap: Object.create(null),
-      valueMap: Object.create(null),
+      locals: new Map(),
     });
   }
 
@@ -63,51 +61,30 @@ class Context {
   }
 
   // Adds a variable or function to this context.
-  add(entity) {
-    if (entity.target in this.valueMap) {
-      throw new Error(`${entity.target} already declared in this scope`);
+  add(declaration) {
+    if (this.locals.has(declaration.id)) {
+      throw new Error(`${declaration} already declared in this scope`);
     }
-    console.log(`Entity:${entity.target}`);
-    this.valueMap[entity.target] = entity;
+    this.locals.set(declaration.id, declaration);
   }
 
-  addType(typeDec) {
-    if (typeDec.id in this.typeMap) {
-      throw new Error(`Type ${typeDec.id} already declared in this scope`);
-    }
-    this.typeMap[typeDec.id] = typeDec.type;
-  }
-
-  // Returns the type entity bound to the given identifier, starting from this
-  // context and searching "outward" through enclosing contexts if necessary.
-  lookupType(id) {
+  lookup(id) {
     for (let context = this; context !== null; context = context.parent) {
-      if (id in context.typeMap) {
-        return context.typeMap[id];
+      if (context.locals.has(id)) {
+        return context.locals.get(id);
       }
     }
-    throw new Error(`Type ${id} has not been declared`);
-  }
-
-  // Returns the variable or function entity bound to the given identifier,
-  // starting from this context and searching "outward" through enclosing
-  // contexts if necessary.
-  lookupValue(id) {
-    for (let context = this; context !== null; context = context.parent) {
-      if (id in context.valueMap) {
-        return context.valueMap[id];
-      }
-    }
-    throw new Error(`${id} has not been declared`);
+    throw new Error(`Identifier ${id} has not been declared`);
   }
 }
-Context.INITIAL = new Context();
-standardFunctions.forEach((f) => { Context.INITIAL.valueMap[f.id] = f; });
-Context.INITIAL.typeMap.COUNTERS = CounterType;
-Context.INITIAL.typeMap.WORDERS = WorderType;
-Context.INITIAL.typeMap.YESNOS = YesnosType;
-Context.INITIAL.typeMap.WHAT = WhatType;
-Context.INITIAL.typeMap.TABLET = TabletType;
 
+Context.INITIAL = new Context();
+[CounterType,
+  WorderType,
+  YesnosType,
+  // WhatType,
+  // TabletType,
+  ...standardFunctions,
+].forEach((f) => { Context.INITIAL.add(f); });
 
 module.exports = Context;
