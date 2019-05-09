@@ -6,7 +6,7 @@
  */
 
 const parse = require('../../ast/parser');
-const analyze = require('../../semantics/analyzer');
+// const analyze = require('../../semantics/analyzer');
 const generate = require('../javascript-generator');
 const Context = require('../../semantics/context');
 

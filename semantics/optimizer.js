@@ -1,11 +1,11 @@
 // const util = require('util');
-/*
+
 const {
   Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, TypeDec,
   ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop,
-  Break, // RelExp, RipAssignment,
-  // SquishAssignment, Statement, UnaryExpression, VariableDeclaration
-  // Parameter, Return intlit, Obj,
+  Break, // RelExp,
+  // Statement, UnaryExpression,
+  // Parameter, intlit, Obj,
 } = require('../ast');
 
 function isZero(e) {
@@ -17,15 +17,15 @@ function isOne(e) {
 }
 
 // TODO
-Arg.prototype.optimize = function (context) {
-  this.type = context.lookup(this.type);
-  this.id = context.lookupValue(this.id);
-};
+// Arg.prototype.optimize = function (context) {
+//   this.type = context.lookup(this.type);
+//   this.id = context.lookupValue(this.id);
+// };
 
 // TODO
-Array.prototype.optimze = function (context) {
-  this.args = context.lookup(this.args);
-};
+// Array.prototype.optimze = function (context) {
+//   this.args = context.lookup(this.args);
+// };
 
 Assignment.prototype.optimize = function () {
   this.target = this.target.optimize();
@@ -41,6 +41,8 @@ BinaryExp.prototype.optimize = function () {
   this.right = this.right.optimize();
   if (this.op === 'SQUISH' && isZero(this.right)) return this.left;
   if (this.op === 'SQUISH' && isZero(this.left)) return this.right;
+  if (this.op === 'RIP' && isZero(this.right)) return this.left;
+  if (this.op === 'RIP' && isZero(this.left)) return this.right;
   if (this.op === 'MANY' && isZero(this.right)) return new Literal(0);
   if (this.op === 'MANY' && isZero(this.left)) return new Literal(0);
   if (this.op === 'MANY' && isOne(this.right)) return this.left;
@@ -48,6 +50,7 @@ BinaryExp.prototype.optimize = function () {
   if (bothLiterals(this)) {
     const [x, y] = [this.left.value, this.right.value];
     if (this.op === 'SQUISH') return new Literal(x + y);
+    if (this.op === 'RIP') return new Literal(x - y);
     if (this.op === 'MANY') return new Literal(x * y);
     if (this.op === 'CUT') return new Literal(x / y);
   }
@@ -70,26 +73,10 @@ Call.prototype.optimize = function () {
   return this;
 };
 
-// TODO
 Declaration.prototype.optimize = function () {
-  this.typeDec.analyze(context);
-  this.id = context.lookupValue(this.id);
-  this.exp.analyze(context);
-  if (typeof this.value === 'number') {
-    this.type = CounterType;
-  } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
-    this.type = YesnosType;
-  } else if (typeof this.value === 'string') {
-    this.type = WorderType;
-  }
-  this.source.analyze(context);
-
-  // if (this.type) {
-  //   this.type = context.lookup(this.type);
-  //   // check.isAssignableTo(this.source, this.type); //do in morning?
-  // }
-
-  // context.add(this);
+  this.decs = this.decs.filter(d => d.constructor !== TypeDec).map(d => d.optimize());
+  this.body = this.body.map(e => e.optimize());
+  return this; 
 };
 
 ForLoop.prototype.optimize = function () {
@@ -107,24 +94,18 @@ ForIncrement.prototype.optimize = function () {
   return this;
 };
 
-// TODO
 Func.prototype.optimize = function () {
-  const bodyContext = context.createChildContextForBlock();
-  this.params.forEach(line => line.analyze(bodyContext));
-  this.statements.forEach(line => line.analyze(bodyContext));
-  // this.returnType.forEach(line => line.analyze(bodyContext));
-  if (typeof this.value === 'number') {
-    this.type = CounterType;
-  } else if (this.value === 'OOGA' || this.value === 'NOOGA') {
-    this.type = YesnosType;
-  } else if (typeof this.value === 'string') {
-    this.type = WorderType;
-  } else if (typeof this.value === 'undefined') {
-    this.type = WhatType;
+  if (this.statements) {
+    this.statements = this.statements.optimize();
   }
+  return this;
 };
 
 Literal.prototype.optimize = function () {
+  return this;
+};
+
+Break.prototype.optimize = function () {
   return this;
 };
 
@@ -139,13 +120,6 @@ Program.prototype.optimize = function () {
   this.statements.forEach(s => s.analyze(newContext));
 };
 
-// TODO
-TypeDec.prototype.optimize = function () {
-  check.mutabilityCheck(this.mutability);
-  this.type.analyze(context);
-  this.array.analyze(context);
-};
-
 Return.prototype.optimize = function () {
   return this;
 };
@@ -153,10 +127,6 @@ Return.prototype.optimize = function () {
 WhileLoop.prototype.optimize = function () {
   this.test = this.test.optimize();
   this.body = this.body.optimize();
-  return this;
-};
-
-Break.prototype.optimize = function () {
   return this;
 };
 */
