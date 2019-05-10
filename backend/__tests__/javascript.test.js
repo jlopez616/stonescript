@@ -18,10 +18,20 @@ const fixture = {
 
   arithmetic: [String.raw`5 MANY 2!`, String.raw `5 * 2;`],
 
-  letAndAssign: [
-    String.raw`ROCK WORDERS a IS "YA BOI"!`,
-    String.raw`let a = "YA BOI";`
-  ],
+  // letAndAssign: [
+  //   String.raw`ROCK WORDERS a IS "YA BOI"!`,
+  //   String.raw`let a = "YA BOI";`
+  // ], 
+
+  // ifThen: [String.raw`OOF (5 SMASH 6) PART x IS 5! NOT PART!`, 
+  //          String.raw`if (5 > 6) { x = 5; };`],
+
+  // forLoop: [
+  //   String.raw`FOR (ROCK COUNTERS i IS 0! i NOT SMASH 5! i IS i SQUISH 1) PART BREAK! NOT PART!`,
+  //   String.raw`FOR (int i = 0; i < 5; i = i + 1) { break; };`
+  // ],
+
+  
 
   /* While loops to be added in Homework 5
   whileLoop: [
@@ -29,15 +39,7 @@ const fixture = {
     /while \(7\) \{\s*break\s*\}/
   ]
 
-  list: [
-    String.raw`ROCK WORDERS CAVE lister IS CAVEIN "WORD" CAVEOUT!`,
-    String.raw`let lister = [ "WORD" ];`
-  ]
 
-  forLoop: [
-    String.raw`FOR ( ROCK i IS 0; I NOT SMASH N; I IS I SQUISH 1) PART BREAK NOT PART`,
-    String.raw`FOR (int i = 0; i < n; i = i + 1) { break; }`
-  ],
 
   ifThen: [String.raw`OOF 3 OOOF 5`, "((3) ? (5) : (null))"],
 
@@ -51,7 +53,6 @@ const fixture = {
   ]
  */
 };
-
 describe('The JavaScript generator', () => {
     Object.entries(fixture).forEach(([name, [source, expected]]) => {
         test(`produces the correct output for ${name}`, (done) => {

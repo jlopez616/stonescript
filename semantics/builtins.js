@@ -7,7 +7,7 @@ const YesnosType = new PrimitiveType('YESNOS'); // boolean
 // const TabletType = new PrimitiveType('tablet'); // object
 
 const speak = new Call('SPEAK');
-speak.type = WorderType;
+speak.type = 'WORDERS';
 
 const standardFunctions = [
   new Call('HUNTDOWN', WorderType),

@@ -8,6 +8,10 @@ const {
   // Parameter, intlit, Obj,
 } = require('../ast');
 
+Program.prototype.optimize = function () {
+  return this;
+};
+
 function isZero(e) {
   return e instanceof Literal && e.value === 0;
 }
@@ -113,12 +117,6 @@ Break.prototype.optimize = function () {
     this.id = context.lookupValue(this.id);
     this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
   };
-
-// TODO
-Program.prototype.optimize = function () {
-  const newContext = context.createChildContextForBlock();
-  this.statements.forEach(s => s.analyze(newContext));
-};
 
 Return.prototype.optimize = function () {
   return this;
