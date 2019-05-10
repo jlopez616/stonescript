@@ -16,7 +16,7 @@
 const prettyJs = require('pretty-js');
 
 const {
-  Array, BinaryExp, Break, Call, Declaration, Program, Literal,
+  Array, BinaryExp, Break, Call, Declaration, Program, Literal, Conditional
 } = require('../ast');
 
 
@@ -34,7 +34,7 @@ function makeOp(op) {
     'NOT IS': '!=',
     'IS IS': '==' }[op] || op;
 } // note that the use of == and != is intended because cavemen didn't care about exact matches
-*/
+
 
 function rockType(op) {
   return (op === 'BEDROCK') ? 'const' : 'let';
@@ -111,8 +111,14 @@ Program.prototype.gen = function () {
 };
 
 Literal.prototype.gen = function () {
-  return this.type.id === 'WORDERS' ? `\"${this.value}\"` : this.value;
+  return this.type === 'WORDERS' ? `\"${this.value}\"` : this.value;
 };
+
+// Conditional.prototype.gen = function () {
+//   const thenPart = this.consequent;
+//   const elsePart = this.alternate ? this.alternate.gen() : '';
+//   return `if (${this.testExp.gen()}) ${thenPart} ${elsePart}`;
+// };
 
 // While Loops to be done by Homework 5
 

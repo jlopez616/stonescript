@@ -113,7 +113,7 @@ ForLoop.prototype.analyze = function (context) {
   context.add(this.setup.id);
   this.increment.analyze(context);
   const bodyContext = context.createChildContextForLoop();
-  this.body.forEach(line => line.analyze(bodyContext));
+  // this.body.forEach(line => line.analyze(bodyContext));
 };
 
 ForIncrement.prototype.analyze = function (context) {
