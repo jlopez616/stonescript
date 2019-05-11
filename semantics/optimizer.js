@@ -1,11 +1,9 @@
 // const util = require('util');
 
 const {
-  Arg, Array, Assignment, BinaryExp, Conditional, Call, Declaration, TypeDec,
-  ForLoop, ForIncrement, Postfix, Program, Func, Literal, WhileLoop,
-  Break, // RelExp,
-  // Statement, UnaryExpression,
-  // Parameter, intlit, Obj,
+  Assignment, BinaryExp, Conditional, Call, Declaration, TypeDec,
+  ForLoop, ForIncrement, Program, Func, Literal,
+  Break,
 } = require('../ast');
 
 Program.prototype.optimize = function () {
@@ -20,16 +18,6 @@ function isOne(e) {
   return e instanceof Literal && e.value === 1;
 }
 
-// TODO
-// Arg.prototype.optimize = function (context) {
-//   this.type = context.lookup(this.type);
-//   this.id = context.lookupValue(this.id);
-// };
-
-// TODO
-// Array.prototype.optimze = function (context) {
-//   this.args = context.lookup(this.args);
-// };
 
 Assignment.prototype.optimize = function () {
   this.target = this.target.optimize();
@@ -51,13 +39,6 @@ BinaryExp.prototype.optimize = function () {
   if (this.op === 'MANY' && isZero(this.left)) return new Literal(0);
   if (this.op === 'MANY' && isOne(this.right)) return this.left;
   if (this.op === 'MANY' && isOne(this.left)) return this.right;
-  if (bothLiterals(this)) {
-    const [x, y] = [this.left.value, this.right.value];
-    if (this.op === 'SQUISH') return new Literal(x + y);
-    if (this.op === 'RIP') return new Literal(x - y);
-    if (this.op === 'MANY') return new Literal(x * y);
-    if (this.op === 'CUT') return new Literal(x / y);
-  }
   return this;
 };
 
@@ -80,7 +61,7 @@ Call.prototype.optimize = function () {
 Declaration.prototype.optimize = function () {
   this.decs = this.decs.filter(d => d.constructor !== TypeDec).map(d => d.optimize());
   this.body = this.body.map(e => e.optimize());
-  return this; 
+  return this;
 };
 
 ForLoop.prototype.optimize = function () {
@@ -112,19 +93,3 @@ Literal.prototype.optimize = function () {
 Break.prototype.optimize = function () {
   return this;
 };
-
-/* Parameter.prototype.analyze = function (context) {
-    this.id = context.lookupValue(this.id);
-    this.defaultExpression.analyze(context); // unsure if i need to lookup value or just do this
-  };
-
-Return.prototype.optimize = function () {
-  return this;
-};
-
-WhileLoop.prototype.optimize = function () {
-  this.test = this.test.optimize();
-  this.body = this.body.optimize();
-  return this;
-};
-*/

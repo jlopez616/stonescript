@@ -16,7 +16,7 @@
 const prettyJs = require('pretty-js');
 
 const {
-  Array, BinaryExp, Break, Call, Declaration, Program, Literal, Conditional
+  Array, BinaryExp, Break, Call, Declaration, Program, Literal,
 } = require('../ast');
 
 
@@ -59,25 +59,6 @@ module.exports = function (exp) {
   return prettyJs(program, { indent: '  ' });
 };
 
-/* ArrayExp.prototype.gen = function () {
-  return `Array(${this.size.gen()}).fill(${this.fill.gen()})`;
-};
-
-Assignment.prototype.gen = function () {
-  return `${this.target.gen()} = ${this.source.gen()}`;
-};
-*/
-
-/*
-
-Binding.prototype.gen = function () {
-  return `${this.id} : ${this.value.gen()}`;
-};
-
-Break.prototype.gen = function () {
-  return 'break';
-};
-*/
 
 Array.prototype.gen = function () {
   return `[${this.args.forEach((x) => { x.gen(); })}]`;
@@ -114,88 +95,4 @@ Literal.prototype.gen = function () {
   return this.type === 'WORDERS' ? `\"${this.value}\"` : this.value;
 };
 
-// Conditional.prototype.gen = function () {
-//   const thenPart = this.consequent;
-//   const elsePart = this.alternate ? this.alternate.gen() : '';
-//   return `if (${this.testExp.gen()}) ${thenPart} ${elsePart}`;
-// };
-
-// While Loops to be done by Homework 5
-
-/* WhileLoop.prototype.gen = function() {
-  return `while (${this.testExp.gen()}) {
-    {${this.body.gen()}}
-  }`
-}
-
-ExpSeq.prototype.gen = function () {
-  return this.exps.map(s => `${s.gen()};`).join('');
-};
-
-ForExp.prototype.gen = function () {
-  const i = javaScriptId(this.index);
-  const low = this.low.gen();
-  const hi = javaScriptId(new Variable('hi'));
-  const body = this.body.gen();
-  return `${hi} = ${this.high.gen()}; for (let ${i} = ${low}; ${i} <= ${hi}; ${i}++) {${body}}`;
-};
-
-Func.prototype.gen = function () {
-  const name = javaScriptId(this);
-  const params = this.params.map(javaScriptId);
-  let body = this.body.gen();
-  if (this.body.type) {
-    // "Void" functions do not have a JS return, others do
-    body = `return ${body};`;
-    // TODO THIS DOES NOT WORK FOR LET EXPRESSIONS!!!!
-  }
-  return `function ${name} (${params.join(',')}) {${body}}`;
-};
-
-IdExp.prototype.gen = function () {
-  return javaScriptId(this.ref);
-};
-
-IfExp.prototype.gen = function () {
-  const thenPart = this.consequent;
-  const elsePart = this.alternate ? this.alternate.gen() : '';
-  return `if (${test.gen()}) ${thenPart} ${elsePart}`;
-};
-
-LetExp.prototype.gen = function () {
-  const decs = this.decs.filter(d => d.constructor !== TypeDec);
-  return `{ ${decs.map(d => d.gen()).join(';')} ; ${this.body.map(e => e.gen()).join(';')} }`;
-};
-MemberExp.prototype.gen = function () {
-  return `${this.record.gen()}.${javaScriptId(this)}`;
-};
-
-SubscriptedExp.prototype.gen = function () {
-  return `${this.array.gen()}[${this.subscript.gen()}]`;
-};
-
-NegationExp.prototype.gen = function () {
-  return `(- (${this.operand.gen()}))`;
-};
-
-Nil.prototype.gen = function () {
-  return 'null';
-};
-
-Param.prototype.gen = function () {
-  return javaScriptId(this);
-};
-
-RecordExp.prototype.gen = function () {
-  return `{${this.bindings.map(b => b.gen()).join(',')}}`;
-};
-
-Variable.prototype.gen = function () {
-  return `let ${javaScriptId(this)} = ${this.init.gen()}`;
-};
-
-WhileExp.prototype.gen = function () {
-  return `while (${this.test.gen()}) { ${this.body.gen()} }`;
-};
-*/
 /* eslint-disable eol-last */
